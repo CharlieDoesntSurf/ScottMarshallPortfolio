@@ -39,7 +39,7 @@ export default function App() {
   return <div className={`portfolio ${page !== 'model-overview' && page !== 'benchmark-eval' ? 'portfolio-home' : ''}`}>
     <a className="portfolio-skip" href="#main-content" onClick={event => { event.preventDefault(); document.getElementById('main-content')?.focus(); }}>Skip to content</a>
     <header className="portfolio-header">
-      <a className="portfolio-brand" href="#welcome"><span className="portfolio-monogram">SM<span>.</span></span><span>Scott Marshall<small>PERSONAL SPACE</small></span></a>
+      <a className="portfolio-brand" href="#welcome"><span className="portfolio-monogram">SM<span>.</span></span><span>Scott Marshall<small>PORTFOLIO</small></span></a>
       <nav aria-label="Main navigation">{pages.map(([id, label]) => <a key={id} href={`#${id}`} aria-current={page === id ? 'page' : undefined}>{label}</a>)}</nav>
       <a className="portfolio-github" href="https://github.com/SpicyAIDev" target="_blank" rel="noreferrer">GitHub <ArrowUpRight size={15}/></a>
     </header>
