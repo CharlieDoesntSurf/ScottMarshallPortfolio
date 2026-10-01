@@ -38,8 +38,9 @@ The generated website is in `dist/`.
 
 Navigation uses URL hashes, so the host does not need route rewrites.
 The site includes the resume PDF and locally stored tool logos in `public/`.
-Use a host root URL; subdirectory hosting requires configuring Vite's base path
-and the public-asset URLs. Repository imports require access to this private repo.
+Relative asset paths support both root URLs and GitHub Pages project URLs.
+GitHub Pages uses `.github/workflows/pages.yml` to build and deploy `dist`;
+select GitHub Actions as the Pages source, not a branch folder. Repository imports require access to this private repo.
 
 ## Agent Design
 
