@@ -1,0 +1,982 @@
+[
+  {
+    "name": "Python",
+    "level": "Fluent",
+    "category": "Languages & data",
+    "logo": "/tool-logos/python.svg",
+    "source": "User-provided proficiency",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/python.svg",
+    "initials": "P",
+    "group": "Languages & data"
+  },
+  {
+    "name": "Pandas",
+    "level": "Fluent",
+    "category": "Languages & data",
+    "logo": "/tool-logos/pandas.svg",
+    "source": "User-provided proficiency",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/pandas.svg",
+    "initials": "P",
+    "group": "Languages & data"
+  },
+  {
+    "name": "PySpark",
+    "level": "Fluent",
+    "category": "Languages & data",
+    "logo": "/tool-logos/apachespark.svg",
+    "source": "User-provided proficiency",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/apachespark.svg",
+    "initials": "P",
+    "group": "Languages & data"
+  },
+  {
+    "name": "SQL",
+    "level": "Fluent",
+    "category": "Languages & data",
+    "logo": null,
+    "source": "User-provided proficiency",
+    "logoSource": null,
+    "initials": "SQL",
+    "group": "Languages & data"
+  },
+  {
+    "name": "Databricks",
+    "level": "Fluent",
+    "category": "Languages & data",
+    "logo": "/tool-logos/databricks.svg",
+    "source": "User-provided proficiency",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/databricks.svg",
+    "initials": "D",
+    "group": "Languages & data"
+  },
+  {
+    "name": "Codex",
+    "level": "Fluent",
+    "category": "AI & design",
+    "logo": "/tool-logos/openai.svg",
+    "source": "User-provided proficiency",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/openai.svg",
+    "initials": "C",
+    "group": "AI & design"
+  },
+  {
+    "name": "Claude Code",
+    "level": "Fluent",
+    "category": "AI & design",
+    "logo": "/tool-logos/claude.svg",
+    "source": "User-provided proficiency",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/claude.svg",
+    "initials": "CC",
+    "group": "AI & design"
+  },
+  {
+    "name": "Cursor",
+    "level": "Fluent",
+    "category": "AI & design",
+    "logo": null,
+    "source": "User-provided proficiency",
+    "logoSource": null,
+    "initials": "C",
+    "group": "AI & design"
+  },
+  {
+    "name": "Grok Build",
+    "level": "Fluent",
+    "category": "AI & design",
+    "logo": null,
+    "source": "User-provided proficiency",
+    "logoSource": null,
+    "initials": "GB",
+    "group": "AI & design"
+  },
+  {
+    "name": "Figma",
+    "level": "Fluent",
+    "category": "AI & design",
+    "logo": "/tool-logos/figma.svg",
+    "source": "User-provided proficiency",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/figma.svg",
+    "initials": "F",
+    "group": "AI & design"
+  },
+  {
+    "name": "Gaia",
+    "level": "Fluent",
+    "category": "Palantir",
+    "logo": "/tool-logos/palantir.svg",
+    "source": "User-provided proficiency; Palantir family mark",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/palantir.svg",
+    "initials": "G",
+    "group": "Palantir"
+  },
+  {
+    "name": "Foundry",
+    "level": "Fluent",
+    "category": "Palantir",
+    "logo": "/tool-logos/palantir.svg",
+    "source": "User-provided proficiency; Palantir family mark",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/palantir.svg",
+    "initials": "F",
+    "group": "Palantir"
+  },
+  {
+    "name": "Maverick",
+    "level": "Fluent",
+    "category": "Palantir",
+    "logo": "/tool-logos/palantir.svg",
+    "source": "User-provided proficiency; Palantir family mark",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/palantir.svg",
+    "initials": "M",
+    "group": "Palantir"
+  },
+  {
+    "name": "Gotham",
+    "level": "Fluent",
+    "category": "Palantir",
+    "logo": "/tool-logos/palantir.svg",
+    "source": "User-provided proficiency; Palantir family mark",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/palantir.svg",
+    "initials": "G",
+    "group": "Palantir"
+  },
+  {
+    "name": "Unix",
+    "level": "Fluent",
+    "category": "Platforms & infrastructure",
+    "logo": null,
+    "source": "User-provided proficiency",
+    "logoSource": null,
+    "initials": ">_",
+    "group": "Platforms & infrastructure"
+  },
+  {
+    "name": "Supabase",
+    "level": "Fluent",
+    "category": "Platforms & infrastructure",
+    "logo": "/tool-logos/supabase.svg",
+    "source": "User-provided proficiency",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/supabase.svg",
+    "initials": "S",
+    "group": "Platforms & infrastructure"
+  },
+  {
+    "name": "Git",
+    "level": "Fluent",
+    "category": "Platforms & infrastructure",
+    "logo": "/tool-logos/git.svg",
+    "source": "User-provided proficiency",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/git.svg",
+    "initials": "G",
+    "group": "Platforms & infrastructure"
+  },
+  {
+    "name": "Docker",
+    "level": "Fluent",
+    "category": "Platforms & infrastructure",
+    "logo": "/tool-logos/docker.svg",
+    "source": "User-provided proficiency",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/docker.svg",
+    "initials": "D",
+    "group": "Platforms & infrastructure"
+  },
+  {
+    "name": "Kubernetes",
+    "level": "Fluent",
+    "category": "Platforms & infrastructure",
+    "logo": "/tool-logos/kubernetes.svg",
+    "source": "User-provided proficiency",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/kubernetes.svg",
+    "initials": "K",
+    "group": "Platforms & infrastructure"
+  },
+  {
+    "name": "C++",
+    "level": "Some Experience",
+    "category": "Languages & data",
+    "logo": "/tool-logos/cplusplus.svg",
+    "source": "User-provided proficiency; C++ spelling confirmed by resume",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/cplusplus.svg",
+    "initials": "C",
+    "group": "Languages & data"
+  },
+  {
+    "name": "Java",
+    "level": "Some Experience",
+    "category": "Languages & data",
+    "logo": "/tool-logos/openjdk.svg",
+    "source": "User-provided proficiency; C++ spelling confirmed by resume",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/openjdk.svg",
+    "initials": "J",
+    "group": "Languages & data"
+  },
+  {
+    "name": "C#",
+    "level": "Some Experience",
+    "category": "Languages & data",
+    "logo": "/tool-logos/csharp.svg",
+    "source": "User-provided proficiency; C++ spelling confirmed by resume",
+    "logoSource": "https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg",
+    "initials": "C#",
+    "group": "Languages & data"
+  },
+  {
+    "name": "TypeScript",
+    "level": "Some Experience",
+    "category": "Languages & data",
+    "logo": "/tool-logos/typescript.svg",
+    "source": "User-provided proficiency; C++ spelling confirmed by resume",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/typescript.svg",
+    "initials": "T",
+    "group": "Languages & data"
+  },
+  {
+    "name": "Kotlin",
+    "level": "Some Experience",
+    "category": "Languages & data",
+    "logo": "/tool-logos/kotlin.svg",
+    "source": "User-provided proficiency; C++ spelling confirmed by resume",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/kotlin.svg",
+    "initials": "K",
+    "group": "Languages & data"
+  },
+  {
+    "name": "JavaScript",
+    "level": "Some Experience",
+    "category": "Languages & data",
+    "logo": "/tool-logos/javascript.svg",
+    "source": "User-provided proficiency; C++ spelling confirmed by resume",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/javascript.svg",
+    "initials": "J",
+    "group": "Languages & data"
+  },
+  {
+    "name": "HTML",
+    "level": "Some Experience",
+    "category": "Languages & data",
+    "logo": "/tool-logos/html5.svg",
+    "source": "User-provided proficiency; C++ spelling confirmed by resume",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/html5.svg",
+    "initials": "H",
+    "group": "Languages & data"
+  },
+  {
+    "name": "Swift",
+    "level": "Some Experience",
+    "category": "Languages & data",
+    "logo": "/tool-logos/swift.svg",
+    "source": "User-provided proficiency; C++ spelling confirmed by resume",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/swift.svg",
+    "initials": "S",
+    "group": "Languages & data"
+  },
+  {
+    "name": "Android Studio",
+    "level": "Some Experience",
+    "category": "Mobile",
+    "logo": "/tool-logos/androidstudio.svg",
+    "source": "User-provided proficiency",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/androidstudio.svg",
+    "initials": "AS",
+    "group": "Mobile"
+  },
+  {
+    "name": "iOS",
+    "level": "Some Experience",
+    "category": "Mobile",
+    "logo": "/tool-logos/ios.svg",
+    "source": "User-provided proficiency",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/ios.svg",
+    "initials": "i",
+    "group": "Mobile"
+  },
+  {
+    "name": "AWS",
+    "level": "Some Experience",
+    "category": "Platforms & infrastructure",
+    "logo": "/tool-logos/amazonwebservices.svg",
+    "source": "Resume: tools and Revature role",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/amazonwebservices.svg",
+    "initials": "A",
+    "group": "Platforms & infrastructure"
+  },
+  {
+    "name": "Jenkins",
+    "level": "Some Experience",
+    "category": "Platforms & infrastructure",
+    "logo": "/tool-logos/jenkins.svg",
+    "source": "Resume: tools and Revature role",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/jenkins.svg",
+    "initials": "J",
+    "group": "Platforms & infrastructure"
+  },
+  {
+    "name": "GitHub",
+    "level": "Some Experience",
+    "category": "Platforms & infrastructure",
+    "logo": "/tool-logos/github.svg",
+    "source": "Resume: tools and Revature role",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/github.svg",
+    "initials": "G",
+    "group": "Platforms & infrastructure"
+  },
+  {
+    "name": "Apache Kafka",
+    "level": "Some Experience",
+    "category": "Platforms & infrastructure",
+    "logo": "/tool-logos/apachekafka.svg",
+    "source": "Resume: tools and Revature role",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/apachekafka.svg",
+    "initials": "AK",
+    "group": "Platforms & infrastructure"
+  },
+  {
+    "name": "Apache Hadoop",
+    "level": "Some Experience",
+    "category": "Platforms & infrastructure",
+    "logo": "/tool-logos/apachehadoop.svg",
+    "source": "Resume: tools and Revature role",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/apachehadoop.svg",
+    "initials": "AH",
+    "group": "Platforms & infrastructure"
+  },
+  {
+    "name": "Apache Hive",
+    "level": "Some Experience",
+    "category": "Platforms & infrastructure",
+    "logo": "/tool-logos/apachehive.svg",
+    "source": "Resume: tools and Revature role",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/apachehive.svg",
+    "initials": "AH",
+    "group": "Platforms & infrastructure"
+  },
+  {
+    "name": "Apache Sqoop",
+    "level": "Some Experience",
+    "category": "Platforms & infrastructure",
+    "logo": null,
+    "source": "Resume: tools and Revature role",
+    "logoSource": null,
+    "initials": "SQ",
+    "group": "Platforms & infrastructure"
+  },
+  {
+    "name": "MapReduce",
+    "level": "Some Experience",
+    "category": "Platforms & infrastructure",
+    "logo": "/tool-logos/apachehadoop.svg",
+    "source": "Resume: tools and Revature role",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/apachehadoop.svg",
+    "initials": "M",
+    "group": "Platforms & infrastructure"
+  },
+  {
+    "name": "Jupyter",
+    "level": "Some Experience",
+    "category": "AI & design",
+    "logo": "/tool-logos/jupyter.svg",
+    "source": "Resume: roles and tools",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/jupyter.svg",
+    "initials": "J",
+    "group": "AI & design"
+  },
+  {
+    "name": "OpenClaw",
+    "level": "Some Experience",
+    "category": "AI & design",
+    "logo": null,
+    "source": "Resume: roles and tools",
+    "logoSource": null,
+    "initials": "OC",
+    "group": "AI & design"
+  },
+  {
+    "name": "ChatGPT",
+    "level": "Some Experience",
+    "category": "AI & design",
+    "logo": "/tool-logos/openai.svg",
+    "source": "Resume: roles and tools",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/openai.svg",
+    "initials": "C",
+    "group": "AI & design"
+  },
+  {
+    "name": "Claude",
+    "level": "Some Experience",
+    "category": "AI & design",
+    "logo": "/tool-logos/claude.svg",
+    "source": "Resume: roles and tools",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/claude.svg",
+    "initials": "C",
+    "group": "AI & design"
+  },
+  {
+    "name": "Maven",
+    "level": "Some Experience",
+    "category": "Palantir",
+    "logo": "/tool-logos/palantir.svg",
+    "source": "Resume: Palantir/Maven tools; Palantir family mark",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/palantir.svg",
+    "initials": "M",
+    "group": "Palantir"
+  },
+  {
+    "name": "AIDP",
+    "level": "Some Experience",
+    "category": "Palantir",
+    "logo": "/tool-logos/palantir.svg",
+    "source": "Resume: Palantir/Maven tools; Palantir family mark",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/palantir.svg",
+    "initials": "A",
+    "group": "Palantir"
+  },
+  {
+    "name": "Ontology Management",
+    "level": "Some Experience",
+    "category": "Palantir",
+    "logo": "/tool-logos/palantir.svg",
+    "source": "Resume: Palantir/Maven tools; Palantir family mark",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/palantir.svg",
+    "initials": "OM",
+    "group": "Palantir"
+  },
+  {
+    "name": "Target Work Bench",
+    "level": "Some Experience",
+    "category": "Palantir",
+    "logo": "/tool-logos/palantir.svg",
+    "source": "Resume: Palantir/Maven tools; Palantir family mark",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/palantir.svg",
+    "initials": "TW",
+    "group": "Palantir"
+  },
+  {
+    "name": "React",
+    "level": "Some Experience",
+    "category": "Web & SDKs",
+    "logo": "/tool-logos/react.svg",
+    "source": "GitHub: KnitPickAI/package.json and GPTModelOverviewPage/package.json; declared stack",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/react.svg",
+    "initials": "R",
+    "group": "Web & SDKs"
+  },
+  {
+    "name": "Vite",
+    "level": "Some Experience",
+    "category": "Web & SDKs",
+    "logo": "/tool-logos/vite.svg",
+    "source": "GitHub: KnitPickAI/package.json and GPTModelOverviewPage/package.json; declared stack",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/vite.svg",
+    "initials": "V",
+    "group": "Web & SDKs"
+  },
+  {
+    "name": "Tailwind CSS",
+    "level": "Some Experience",
+    "category": "Web & SDKs",
+    "logo": "/tool-logos/tailwindcss.svg",
+    "source": "GitHub: KnitPickAI/package.json and GPTModelOverviewPage/package.json; declared stack",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/tailwindcss.svg",
+    "initials": "TC",
+    "group": "Web & SDKs"
+  },
+  {
+    "name": "CSS",
+    "level": "Some Experience",
+    "category": "Web & SDKs",
+    "logo": "/tool-logos/css3.svg",
+    "source": "GitHub: KnitPickAI/package.json and GPTModelOverviewPage/package.json; declared stack",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/css3.svg",
+    "initials": "C",
+    "group": "Web & SDKs"
+  },
+  {
+    "name": "Radix UI",
+    "level": "Some Experience",
+    "category": "Web & SDKs",
+    "logo": "/tool-logos/radixui.svg",
+    "source": "GitHub: KnitPickAI/package.json and GPTModelOverviewPage/package.json; declared stack",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/radixui.svg",
+    "initials": "RU",
+    "group": "Web & SDKs"
+  },
+  {
+    "name": "React Hook Form",
+    "level": "Some Experience",
+    "category": "Web & SDKs",
+    "logo": "/tool-logos/reacthookform.svg",
+    "source": "GitHub: KnitPickAI/package.json and GPTModelOverviewPage/package.json; declared stack",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/reacthookform.svg",
+    "initials": "RH",
+    "group": "Web & SDKs"
+  },
+  {
+    "name": "Recharts",
+    "level": "Some Experience",
+    "category": "Web & SDKs",
+    "logo": null,
+    "source": "GitHub: KnitPickAI/package.json and GPTModelOverviewPage/package.json; declared stack",
+    "logoSource": null,
+    "initials": "RC",
+    "group": "Web & SDKs"
+  },
+  {
+    "name": "Hono",
+    "level": "Some Experience",
+    "category": "Web & SDKs",
+    "logo": "/tool-logos/hono.svg",
+    "source": "GitHub: KnitPickAI/package.json and GPTModelOverviewPage/package.json; declared stack",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/hono.svg",
+    "initials": "H",
+    "group": "Web & SDKs"
+  },
+  {
+    "name": "Supabase JS SDK",
+    "level": "Some Experience",
+    "category": "Web & SDKs",
+    "logo": "/tool-logos/supabase.svg",
+    "source": "GitHub: KnitPickAI/package.json and GPTModelOverviewPage/package.json; declared stack",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/supabase.svg",
+    "initials": "SJ",
+    "group": "Web & SDKs"
+  },
+  {
+    "name": "React Native",
+    "level": "Some Experience",
+    "category": "Mobile",
+    "logo": "/tool-logos/react.svg",
+    "source": "GitHub: bolt_workout/package.json; declared stack",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/react.svg",
+    "initials": "RN",
+    "group": "Mobile"
+  },
+  {
+    "name": "Expo",
+    "level": "Some Experience",
+    "category": "Mobile",
+    "logo": "/tool-logos/expo.svg",
+    "source": "GitHub: bolt_workout/package.json; declared stack",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/expo.svg",
+    "initials": "E",
+    "group": "Mobile"
+  },
+  {
+    "name": "Expo Router",
+    "level": "Some Experience",
+    "category": "Mobile",
+    "logo": "/tool-logos/expo.svg",
+    "source": "GitHub: bolt_workout/package.json; declared stack",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/expo.svg",
+    "initials": "ER",
+    "group": "Mobile"
+  },
+  {
+    "name": "React Navigation",
+    "level": "Some Experience",
+    "category": "Mobile",
+    "logo": "/tool-logos/react.svg",
+    "source": "GitHub: bolt_workout/package.json; declared stack",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/react.svg",
+    "initials": "RN",
+    "group": "Mobile"
+  },
+  {
+    "name": "React Native Reanimated",
+    "level": "Some Experience",
+    "category": "Mobile",
+    "logo": "/tool-logos/react.svg",
+    "source": "GitHub: bolt_workout/package.json; declared stack",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/react.svg",
+    "initials": "RN",
+    "group": "Mobile"
+  },
+  {
+    "name": "NumPy",
+    "level": "Some Experience",
+    "category": "Languages & data",
+    "logo": "/tool-logos/numpy.svg",
+    "source": "GitHub: stat_stack_nfl/requirements.txt; declared stack",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/numpy.svg",
+    "initials": "N",
+    "group": "Languages & data"
+  },
+  {
+    "name": "SciPy",
+    "level": "Some Experience",
+    "category": "Languages & data",
+    "logo": "/tool-logos/scipy.svg",
+    "source": "GitHub: stat_stack_nfl/requirements.txt; declared stack",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/scipy.svg",
+    "initials": "S",
+    "group": "Languages & data"
+  },
+  {
+    "name": "PyArrow",
+    "level": "Some Experience",
+    "category": "Languages & data",
+    "logo": null,
+    "source": "GitHub: stat_stack_nfl/requirements.txt; declared stack",
+    "logoSource": null,
+    "initials": "P",
+    "group": "Languages & data"
+  },
+  {
+    "name": "Delta Lake",
+    "level": "Some Experience",
+    "category": "Languages & data",
+    "logo": "/tool-logos/delta.svg",
+    "source": "GitHub: stat_stack_nfl/requirements.txt; declared stack",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/delta.svg",
+    "initials": "DL",
+    "group": "Languages & data"
+  },
+  {
+    "name": "PostgreSQL",
+    "level": "Some Experience",
+    "category": "Languages & data",
+    "logo": "/tool-logos/postgresql.svg",
+    "source": "GitHub: stat_stack_nfl/requirements.txt; declared stack",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/postgresql.svg",
+    "initials": "P",
+    "group": "Languages & data"
+  },
+  {
+    "name": "SQLAlchemy",
+    "level": "Some Experience",
+    "category": "Languages & data",
+    "logo": "/tool-logos/sqlalchemy.svg",
+    "source": "GitHub: stat_stack_nfl/requirements.txt; declared stack",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/sqlalchemy.svg",
+    "initials": "S",
+    "group": "Languages & data"
+  },
+  {
+    "name": "Pydantic",
+    "level": "Some Experience",
+    "category": "Languages & data",
+    "logo": "/tool-logos/pydantic.svg",
+    "source": "GitHub: stat_stack_nfl/requirements.txt; declared stack",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/pydantic.svg",
+    "initials": "P",
+    "group": "Languages & data"
+  },
+  {
+    "name": "Matplotlib",
+    "level": "Some Experience",
+    "category": "Languages & data",
+    "logo": null,
+    "source": "GitHub: stat_stack_nfl/requirements.txt; declared stack",
+    "logoSource": null,
+    "initials": "MP",
+    "group": "Languages & data"
+  },
+  {
+    "name": "Plotly",
+    "level": "Some Experience",
+    "category": "Languages & data",
+    "logo": "/tool-logos/plotly.svg",
+    "source": "GitHub: stat_stack_nfl/requirements.txt; declared stack",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/plotly.svg",
+    "initials": "P",
+    "group": "Languages & data"
+  },
+  {
+    "name": "scikit-learn",
+    "level": "Some Experience",
+    "category": "Machine learning",
+    "logo": "/tool-logos/scikitlearn.svg",
+    "source": "GitHub: stat_stack_nfl/requirements.txt; declared stack",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/scikitlearn.svg",
+    "initials": "s",
+    "group": "ML frameworks & platforms"
+  },
+  {
+    "name": "PyTorch",
+    "level": "Some Experience",
+    "category": "Machine learning",
+    "logo": "/tool-logos/pytorch.svg",
+    "source": "GitHub: stat_stack_nfl/requirements.txt; declared stack",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/pytorch.svg",
+    "initials": "P",
+    "group": "ML frameworks & platforms"
+  },
+  {
+    "name": "TensorFlow",
+    "level": "Some Experience",
+    "category": "Machine learning",
+    "logo": "/tool-logos/tensorflow.svg",
+    "source": "GitHub: stat_stack_nfl/requirements.txt; declared stack",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/tensorflow.svg",
+    "initials": "T",
+    "group": "ML frameworks & platforms"
+  },
+  {
+    "name": "XGBoost",
+    "level": "Some Experience",
+    "category": "Machine learning",
+    "logo": null,
+    "source": "GitHub: stat_stack_nfl/requirements.txt; declared stack",
+    "logoSource": null,
+    "initials": "XG",
+    "group": "Boosting & ensembles"
+  },
+  {
+    "name": "Pinecone",
+    "level": "Some Experience",
+    "category": "Machine learning",
+    "logo": null,
+    "source": "GitHub: stat_stack_nfl/requirements.txt; declared stack",
+    "logoSource": null,
+    "initials": "PC",
+    "group": "ML frameworks & platforms"
+  },
+  {
+    "name": "Flask",
+    "level": "Some Experience",
+    "category": "Web & SDKs",
+    "logo": "/tool-logos/flask.svg",
+    "source": "GitHub: stat_stack_nfl/requirements.txt and sassafrass_template/pyproject.toml; declared stack",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/flask.svg",
+    "initials": "F",
+    "group": "Web & SDKs"
+  },
+  {
+    "name": "FastAPI",
+    "level": "Some Experience",
+    "category": "Web & SDKs",
+    "logo": "/tool-logos/fastapi.svg",
+    "source": "GitHub: stat_stack_nfl/requirements.txt and sassafrass_template/pyproject.toml; declared stack",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/fastapi.svg",
+    "initials": "F",
+    "group": "Web & SDKs"
+  },
+  {
+    "name": "Psycopg",
+    "level": "Some Experience",
+    "category": "Web & SDKs",
+    "logo": "/tool-logos/postgresql.svg",
+    "source": "GitHub: stat_stack_nfl/requirements.txt and sassafrass_template/pyproject.toml; declared stack",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/postgresql.svg",
+    "initials": "P",
+    "group": "Web & SDKs"
+  },
+  {
+    "name": "Supabase Python SDK",
+    "level": "Some Experience",
+    "category": "Web & SDKs",
+    "logo": "/tool-logos/supabase.svg",
+    "source": "GitHub: stat_stack_nfl/requirements.txt and sassafrass_template/pyproject.toml; declared stack",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/supabase.svg",
+    "initials": "SP",
+    "group": "Web & SDKs"
+  },
+  {
+    "name": "pytest",
+    "level": "Some Experience",
+    "category": "Platforms & infrastructure",
+    "logo": "/tool-logos/pytest.svg",
+    "source": "GitHub: stat_stack_nfl/requirements.txt, README.md and sassafrass_template/pyproject.toml",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/pytest.svg",
+    "initials": "p",
+    "group": "Platforms & infrastructure"
+  },
+  {
+    "name": "Ruff",
+    "level": "Some Experience",
+    "category": "Platforms & infrastructure",
+    "logo": "/tool-logos/ruff.svg",
+    "source": "GitHub: stat_stack_nfl/requirements.txt, README.md and sassafrass_template/pyproject.toml",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/ruff.svg",
+    "initials": "R",
+    "group": "Platforms & infrastructure"
+  },
+  {
+    "name": "mypy",
+    "level": "Some Experience",
+    "category": "Platforms & infrastructure",
+    "logo": null,
+    "source": "GitHub: stat_stack_nfl/requirements.txt, README.md and sassafrass_template/pyproject.toml",
+    "logoSource": null,
+    "initials": "MY",
+    "group": "Platforms & infrastructure"
+  },
+  {
+    "name": "Docker Compose",
+    "level": "Some Experience",
+    "category": "Platforms & infrastructure",
+    "logo": "/tool-logos/docker.svg",
+    "source": "GitHub: stat_stack_nfl/requirements.txt, README.md and sassafrass_template/pyproject.toml",
+    "logoSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/13.21.0/icons/docker.svg",
+    "initials": "DC",
+    "group": "Platforms & infrastructure"
+  },
+  {
+    "name": "Linear Regression",
+    "level": "Some Experience",
+    "category": "Machine learning",
+    "group": "Regression & classification",
+    "logo": null,
+    "logoSource": null,
+    "source": "GitHub: stat_stack_nfl/ml/model_scripts/nfl_ml_framework.py (imports and model ensemble definitions)",
+    "initials": "LR"
+  },
+  {
+    "name": "Lasso",
+    "level": "Some Experience",
+    "category": "Machine learning",
+    "group": "Regression & classification",
+    "logo": null,
+    "logoSource": null,
+    "source": "GitHub: stat_stack_nfl/ml/model_scripts/nfl_ml_framework.py (imports and model ensemble definitions)",
+    "initials": "L"
+  },
+  {
+    "name": "Ridge Regression",
+    "level": "Some Experience",
+    "category": "Machine learning",
+    "group": "Regression & classification",
+    "logo": null,
+    "logoSource": null,
+    "source": "GitHub: stat_stack_nfl/ml/model_scripts/nfl_ml_framework.py (imports and model ensemble definitions)",
+    "initials": "RR"
+  },
+  {
+    "name": "Elastic Net",
+    "level": "Some Experience",
+    "category": "Machine learning",
+    "group": "Regression & classification",
+    "logo": null,
+    "logoSource": null,
+    "source": "GitHub: stat_stack_nfl/ml/model_scripts/nfl_ml_framework.py (imports and model ensemble definitions)",
+    "initials": "EN"
+  },
+  {
+    "name": "Logistic Regression",
+    "level": "Some Experience",
+    "category": "Machine learning",
+    "group": "Regression & classification",
+    "logo": null,
+    "logoSource": null,
+    "source": "GitHub: stat_stack_nfl/ml/model_scripts/nfl_ml_framework.py (imports and model ensemble definitions)",
+    "initials": "LR"
+  },
+  {
+    "name": "Bayesian Ridge",
+    "level": "Some Experience",
+    "category": "Machine learning",
+    "group": "Regression & classification",
+    "logo": null,
+    "logoSource": null,
+    "source": "GitHub: stat_stack_nfl/ml/model_scripts/nfl_ml_framework.py (imports and model ensemble definitions)",
+    "initials": "BR"
+  },
+  {
+    "name": "Support Vector Machines",
+    "level": "Some Experience",
+    "category": "Machine learning",
+    "group": "Regression & classification",
+    "logo": null,
+    "logoSource": null,
+    "source": "GitHub: stat_stack_nfl/ml/model_scripts/nfl_ml_framework.py (imports and model ensemble definitions)",
+    "initials": "SVM"
+  },
+  {
+    "name": "K-Nearest Neighbors",
+    "level": "Some Experience",
+    "category": "Machine learning",
+    "group": "Regression & classification",
+    "logo": null,
+    "logoSource": null,
+    "source": "GitHub: stat_stack_nfl/ml/model_scripts/nfl_ml_framework.py (imports and model ensemble definitions)",
+    "initials": "KN"
+  },
+  {
+    "name": "Gradient Boosting",
+    "level": "Some Experience",
+    "category": "Machine learning",
+    "group": "Boosting & ensembles",
+    "logo": null,
+    "logoSource": null,
+    "source": "GitHub: stat_stack_nfl/ml/model_scripts/nfl_ml_framework.py (imports and model ensemble definitions)",
+    "initials": "GB"
+  },
+  {
+    "name": "Random Forest",
+    "level": "Some Experience",
+    "category": "Machine learning",
+    "group": "Boosting & ensembles",
+    "logo": null,
+    "logoSource": null,
+    "source": "GitHub: stat_stack_nfl/ml/model_scripts/nfl_ml_framework.py (imports and model ensemble definitions)",
+    "initials": "RF"
+  },
+  {
+    "name": "AdaBoost",
+    "level": "Some Experience",
+    "category": "Machine learning",
+    "group": "Boosting & ensembles",
+    "logo": null,
+    "logoSource": null,
+    "source": "GitHub: stat_stack_nfl/ml/model_scripts/nfl_ml_framework.py (imports and model ensemble definitions)",
+    "initials": "A"
+  },
+  {
+    "name": "Decision Trees",
+    "level": "Some Experience",
+    "category": "Machine learning",
+    "group": "Boosting & ensembles",
+    "logo": null,
+    "logoSource": null,
+    "source": "GitHub: stat_stack_nfl/ml/model_scripts/nfl_ml_framework.py (imports and model ensemble definitions)",
+    "initials": "DT"
+  },
+  {
+    "name": "LightGBM",
+    "level": "Some Experience",
+    "category": "Machine learning",
+    "group": "Boosting & ensembles",
+    "logo": null,
+    "logoSource": null,
+    "source": "GitHub: stat_stack_nfl/ml/model_scripts/nfl_ml_framework.py (imports and model ensemble definitions)",
+    "initials": "L"
+  },
+  {
+    "name": "CatBoost",
+    "level": "Some Experience",
+    "category": "Machine learning",
+    "group": "Boosting & ensembles",
+    "logo": null,
+    "logoSource": null,
+    "source": "GitHub: stat_stack_nfl/ml/model_scripts/nfl_ml_framework.py (imports and model ensemble definitions)",
+    "initials": "C"
+  },
+  {
+    "name": "Voting Ensembles",
+    "level": "Some Experience",
+    "category": "Machine learning",
+    "group": "Boosting & ensembles",
+    "logo": null,
+    "logoSource": null,
+    "source": "GitHub: stat_stack_nfl/ml/model_scripts/nfl_ml_framework.py (imports and model ensemble definitions)",
+    "initials": "VE"
+  },
+  {
+    "name": "Stacking Ensembles",
+    "level": "Some Experience",
+    "category": "Machine learning",
+    "group": "Boosting & ensembles",
+    "logo": null,
+    "logoSource": null,
+    "source": "GitHub: stat_stack_nfl/ml/model_scripts/nfl_ml_framework.py (imports and model ensemble definitions)",
+    "initials": "SE"
+  },
+  {
+    "name": "MATLAB",
+    "level": "Some Experience",
+    "category": "Languages & data",
+    "group": "Languages & data",
+    "logo": "/tool-logos/matlab.svg",
+    "logoSource": "https://raw.githubusercontent.com/devicons/devicon/master/icons/matlab/matlab-original.svg",
+    "source": "User-requested addition",
+    "initials": "MAT"
+  }
+]

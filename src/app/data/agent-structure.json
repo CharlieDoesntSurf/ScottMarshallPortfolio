@@ -1,0 +1,103 @@
+{
+  "sha": "ac559feafecf37761ab30e245741b7d81055deb1",
+  "tree": [
+    {
+      "path": ".codex/config.toml",
+      "size": 446
+    },
+    {
+      "path": ".editorconfig",
+      "size": 172
+    },
+    {
+      "path": ".env.example",
+      "size": 640
+    },
+    {
+      "path": ".gitignore",
+      "size": 146
+    },
+    {
+      "path": ".nvmrc",
+      "size": 4
+    },
+    {
+      "path": ".python-version",
+      "size": 5
+    },
+    {
+      "path": "AGENTS.md",
+      "size": 995
+    },
+    {
+      "path": "Brewfile",
+      "size": 109
+    },
+    {
+      "path": "README.md",
+      "size": 1747
+    },
+    {
+      "path": "data_editing/README.md",
+      "size": 88
+    },
+    {
+      "path": "data_retreival/README.md",
+      "size": 89
+    },
+    {
+      "path": "docs/chrome-devtools-mcp.md",
+      "size": 1077
+    },
+    {
+      "path": "docs/mcp.md",
+      "size": 1245
+    },
+    {
+      "path": "docs/setup.md",
+      "size": 548
+    },
+    {
+      "path": "mcp/servers.example.json",
+      "size": 848
+    },
+    {
+      "path": "package-lock.json",
+      "size": 95234
+    },
+    {
+      "path": "package.json",
+      "size": 851
+    },
+    {
+      "path": "pyproject.toml",
+      "size": 611
+    },
+    {
+      "path": "scripts/start-chrome-debug.ps1",
+      "size": 865
+    },
+    {
+      "path": "src/index.js",
+      "size": 78
+    },
+    {
+      "path": "tests/smoke.test.js",
+      "size": 157
+    },
+    {
+      "path": "tests/test_smoke.py",
+      "size": 52
+    },
+    {
+      "path": "tsconfig.json",
+      "size": 322
+    },
+    {
+      "path": "uv.lock",
+      "size": 369839
+    }
+  ],
+  "truncated": false,
+  "readme": "# sassafrass_template\n\nStarter repo for building an app with friends using:\n\n- Node.js and npm for the main app runtime\n- Python for data scripts\n- Homebrew for macOS bootstrap\n- Supabase and Postgres for storage\n- MCP-based tooling for Figma and Supabase\n- Chrome DevTools MCP for localhost browser debugging\n- GPT APIs for data workflows\n\n## Quick start\n\n### 1. Install local tools\n\nmacOS:\n\n```bash\nbrew bundle\n```\n\nWindows:\n\n- Install Node.js 22+\n- Install Python 3.11+\n- Install PostgreSQL 17+\n- Install Git\n- Optionally install `uv` for Python dependency management\n\n### 2. Install project dependencies\n\n```bash\nnpm install\npython -m venv .venv\n.venv\\Scripts\\activate\npython -m pip install --upgrade pip\npip install -e .[dev]\n```\n\n### 3. Fill in environment variables\n\nCopy values from `.env.example` into `.env` and add real credentials.\n\n### 4. Connect MCP servers\n\nUse the examples in `mcp/servers.example.json` and the setup notes in `docs/mcp.md`.\n\n### 5. Start Chrome for localhost debugging\n\n```bash\nnpm run chrome:debug\n```\n\nThat launches Chrome on `http://127.0.0.1:3000` with remote debugging on `http://127.0.0.1:9222`.\n\n## Included directories\n\n- `data_retreival/`: retrieval and ingestion scripts\n- `data_editing/`: cleanup, enrichment, and editing scripts\n\n## Chrome DevTools MCP\n\n- Repo MCP config lives in `.codex/config.toml`\n- Launcher script lives in `scripts/start-chrome-debug.ps1`\n- Detailed localhost setup notes live in `docs/chrome-devtools-mcp.md`\n\n## Notes\n\n- `AGENTS.md` is the Codex repo-instructions file equivalent to the kind of per-repo guidance people often keep in `CLAUDE.md`.\n- `.env` is gitignored, but an empty starter file is included because this repo is meant to be handed off as a working template.\n"
+}

@@ -1,0 +1,91 @@
+{
+  "name": "Scott Marshall",
+  "clearance": "CLEARANCE ELIGIBILITY: TS/SCI (Current)",
+  "contact": [
+    "2202 Waiola St. Apt. C",
+    "Honolulu, HI 96826",
+    "(336) 707-8552",
+    "scottmarshallxyz@gmail.com"
+  ],
+  "roles": [
+    {
+      "organization": "The Select Group (under Amentum),  Camp Smith, HI",
+      "title": "J326 AI Lead and Data Engineering / Science / Architecture",
+      "dates": "March 2025 - PRESENT",
+      "paragraphs": [
+        "Work as a developer and technical liaison for USINDOPACOM Joint Fires Division.  Created, installed, enriched, tested agents, models, and applications on several networks for the Joint Fires Division.",
+        "Coordinated with several development teams to analyze how AI/ Data could improve the Targeting Cycle, Weaponeering Process, Assessments, Collections, and Order of Effects.",
+        "Worked alongside operators in the Joint Fires Center and Joint Operations Center to provide training and support for AI tools and applications.",
+        "Evaluated AI tools developed for J2/J3 organizations and reported capabilities and potential use cases to leadership.  Translated leadership priorities into technical requirements for developers and engineers across J2, J3, J4, CDAO, and JFN organizations.",
+        "This required in-depth technical understanding of the following:"
+      ],
+      "bullets": [
+        "Prompt Engineering, Tool-Calling, and how to structure a complex Agentic System",
+        "Network to Network Capabilities and Synchronization",
+        "Weaponeering tools like JTCG/ME\u2019s Sims and Physics-Based Tools, Capability Assessment, CSP\u2019s, Non-Kinetic Effects",
+        "Military Doctrine and Structure for Planning and Messaging",
+        "Joint Fires Network: Jupyter Notebooks, Python SDKs and Libraries, Local Model Installation and Tuning",
+        "Models and AI Tools: Palantir/Maven, GenAI, Compass AI, Scale, Clairvoyant, Nebula, ChatGPT, Starshield (Grok), Claude",
+        "J-Series Message Traffic: Parsing, Binning, Combining for Players, Tracks, Platforms, Events and reflecting these changes",
+        "Data Sources: Blue and Red Object Ontologies, ADVANA, MARS, ATOMS,  MRI (Munitions Readiness Initiative), UMAMI, Logistics"
+      ]
+    },
+    {
+      "organization": "Booz Allen Hamilton, Camp Smith, HI",
+      "title": "ADVANA Data Engineer/ Lead Developer",
+      "dates": "July 2022 - March 2025",
+      "paragraphs": [
+        "Worked as the lead developer and data engineer for the ADVANA Incident Response Team under the CDAO.",
+        "Worked on the establishment of hundreds of defense data pipelines including MRI, GCCS, Link16, Thresher, GDSS, JOPES, SMS, IGC, NTS, FLIGHT AWARE"
+      ],
+      "bullets": []
+    },
+    {
+      "organization": "Booz Allen Hamilton",
+      "title": "ADVANA Lead Data Engineer (PENTAGON)",
+      "dates": "August 2021 - July 2022",
+      "paragraphs": [
+        "Worked as the sole Data Engineer for what would become a 60-person worldwide data analytics team.",
+        "Created processes for tracking and verifying data transfers."
+      ],
+      "bullets": []
+    },
+    {
+      "organization": "INFOSYS LTD, Newark, DE",
+      "title": "Data Engineer at Bank of America",
+      "dates": "DECEMBER 2018 - JULY 2021",
+      "paragraphs": [
+        "Worked as a data engineer/developer for Bank of America."
+      ],
+      "bullets": []
+    },
+    {
+      "organization": "Revature, Reston, VA",
+      "title": "Software Developer",
+      "dates": "SEPTEMBER 2018 - DECEMBER 2018",
+      "paragraphs": [
+        "Created a data pipeline for business evaluation using Hadoop, Map/Reduce, Sqoop, and Hive."
+      ],
+      "bullets": []
+    }
+  ],
+  "education": [
+    "University Of North Carolina at Charlotte, Charlotte, NC\u2014 Bachelor of Science in Electrical Engineering",
+    "August 2012 -  August 2016",
+    "GPA: 3.20",
+    "Signals and Systems, Logic System Design, Computer Engineering, Graphics Processing, Electronics"
+  ],
+  "skills": [
+    "Agent Development with Frontier/ Physics-Based Models",
+    "Tool-Calling, Prompt Engineering, Analyzing Agentic Systems",
+    "Structured, Unstructured, Streaming Sources",
+    "Weaponeering, Targeting, Assessment, Collection Cycles and Practices",
+    "Analyzing, Testing, Tuning, Benchmarking Models and Applications"
+  ],
+  "tools": [
+    "Databricks, AWS, GitHub, Docker, Jenkins",
+    "UNIX, Python, JAVA, C++, JavaScript, SQL, Kafka, Spark",
+    "Openclaw, Claude Code, Codex, Grok Build",
+    "Palantir/Maven: AIDP, Gotham, Foundry, Maverick, Ontology Management, Target Work Bench, Gaia"
+  ]
+}

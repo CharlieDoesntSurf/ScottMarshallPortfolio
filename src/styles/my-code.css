@@ -1,0 +1,45 @@
+.my-code-page { padding-bottom:60px; }
+.my-code-page>.portfolio-intro { max-width:670px; }
+.code-repository { display:flex; align-items:center; gap:25px; padding:30px; margin:35px 0 50px; background:linear-gradient(120deg,#191421,#10151a); border:1px solid #c7a6ff2c; border-radius:14px; }
+.code-repo-icon { color:#c7b0ed; align-self:flex-start; padding-top:9px; }
+.code-repo-details { flex:1; min-width:0; }
+.code-owner { display:flex; flex-wrap:wrap; gap:15px; align-items:center; color:#9b8bae; font-size:9px; letter-spacing:1.4px; }
+.code-owner>span { display:flex; align-items:center; gap:6px; color:#8cc5b2; letter-spacing:.2px; }
+.code-repo-details h2 { color:#f0eaf8; font-size:29px; margin:12px 0; letter-spacing:-.6px; }
+.code-repo-details p { color:#939dad; font-size:13px; line-height:1.8; max-width:650px; }
+.code-repo-tags { display:flex; gap:8px; flex-wrap:wrap; margin-top:20px; }
+.code-repo-tags span { font-size:10px; color:#b6a5cd; border:1px solid #c7a6ff20; background:#c7a6ff08; padding:4px 9px; border-radius:5px; }
+.code-repository>.portfolio-primary { flex-shrink:0; }
+.code-directory-heading { display:flex; gap:20px; align-items:center; justify-content:space-between; margin-bottom:28px; }
+.code-directory-heading h2 { font-size:23px; font-weight:500; }
+.code-directory-heading>span { font-size:11px; color:#8590a0; }
+.code-script-group { margin-bottom:35px; }
+.code-script-group header { padding-bottom:15px; }
+.code-folder { display:flex; align-items:center; gap:12px; color:#b4a0d5; }
+.code-folder h3 { font-size:15px; font-weight:500; }
+.code-folder>span { font-size:10px; color:#92809f; }
+.code-script-group header p { color:#7d899b; font-size:12px; margin:8px 0 0 31px; }
+.code-script-group ul { list-style:none; padding:0; margin:0; border-top:1px solid #ffffff15; }
+.code-script-group li { border-bottom:1px solid #ffffff0d; }
+.code-script-group li a { display:flex; align-items:center; gap:16px; text-decoration:none; color:#a394bd; padding:16px 13px; border-radius:5px; }
+.code-script-group li a:hover { background:#bda2ee0a; }
+.code-script-group li a>div { min-width:0; flex:1; }
+.code-script-group strong { display:block; font-size:13px; font-weight:500; color:#d5d5e1; overflow-wrap:anywhere; }
+.code-script-group li span { display:block; margin-top:5px; color:#707d91; font-family:monospace; font-size:10px; overflow-wrap:anywhere; }
+.code-script-group small { color:#798194; font-size:10px; white-space:nowrap; }
+.code-script-group svg { flex-shrink:0; }
+.code-snapshot { font-size:11px; color:#7a8596; line-height:1.8; }
+.code-snapshot a { color:#b9a2de; }
+@media(max-width:850px) { .code-repository { flex-wrap:wrap; } .code-repository>.portfolio-primary { margin-left:56px; } }
+@media(max-width:500px) { .code-repository { padding:23px; gap:16px; } .code-repo-icon { display:none; } .code-repository>.portfolio-primary { margin-left:0; } .code-repo-details { flex-basis:100%; } .code-directory-heading { align-items:flex-start; flex-direction:column; gap:8px; } .code-script-group li a { padding:15px 0; gap:12px; } }
+
+.repo-readme { border:1px solid #ffffff1c; border-radius:12px; padding:32px; background:#0d1016; color:#adb6c6; line-height:1.9; font-size:14px; margin-bottom:40px; overflow-wrap:anywhere; }
+.repo-readme h2 { font-size:28px; color:#eeeaf6; margin:0 0 22px; }
+.repo-readme h3 { font-size:21px; color:#d4c6ea; margin:30px 0 15px; border-bottom:1px solid #ffffff13; padding-bottom:12px; }
+.repo-readme h4 { font-size:16px; color:#e1dbea; margin:24px 0 12px; }
+.repo-readme p,.repo-readme ul { margin:14px 0; }
+.repo-readme ul { list-style:disc; padding-left:25px; }
+.repo-readme code { font-size:12px; background:#b5a0e512; padding:2px 5px; border-radius:4px; color:#cec2e1; }
+.repo-readme pre { overflow-x:auto; background:#07090d; padding:18px; border:1px solid #ffffff12; border-radius:8px; margin:16px 0; }
+.repo-readme pre code { padding:0; background:none; }
+@media(max-width:600px) { .repo-readme { padding:22px; } }

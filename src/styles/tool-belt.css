@@ -1,0 +1,49 @@
+.tool-belt { padding-bottom:65px; }
+.tool-belt-intro { display:flex; justify-content:space-between; align-items:flex-start; gap:40px; margin:24px 0 40px; }
+.tool-belt-intro>p { color:#9aa5b5; max-width:600px; font-size:16px; line-height:1.85; }
+.tool-belt-intro>span { font-size:36px; color:#c8b5ff; line-height:1; text-align:right; }
+.tool-belt-intro small { display:block; font-size:8px; letter-spacing:1.5px; color:#7f899a; margin-top:14px; }
+.tool-belt-controls { display:flex; align-items:center; gap:20px; margin-bottom:18px; }
+.tool-belt-search { display:flex; gap:12px; align-items:center; width:440px; max-width:100%; padding:14px 17px; border:1px solid #ffffff20; border-radius:9px; background:#111218; color:#958aa8; }
+.tool-belt-search input { width:100%; min-width:0; color:#e8e4ef; background:none; border:0; outline:0; font-size:12px; }
+.tool-belt-search button { display:flex; background:none; border:0; color:#b8abc7; cursor:pointer; }
+.tool-belt-search:focus-within { outline:2px solid #ae96e4; outline-offset:3px; }
+.tool-belt-count { color:#707b8b; font-size:11px; white-space:nowrap; }
+.tool-belt-filters { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:48px; }
+.tool-belt-filters button { color:#9199a8; border:1px solid #ffffff15; padding:8px 12px; border-radius:6px; background:none; font-size:11px; cursor:pointer; }
+.tool-belt-filters button[aria-pressed=true] { color:#d5c6ff; border-color:#a183d577; background:#a183d51a; }
+.tool-belt button:focus-visible { outline:2px solid #c4aeff; outline-offset:3px; }
+.tool-belt-section { border-top:1px solid #ffffff16; padding-top:32px; margin-bottom:52px; }
+.tool-belt-section-heading { display:flex; justify-content:space-between; gap:20px; align-items:center; margin-bottom:27px; }
+.tool-belt-section-index { font-size:9px; color:#a18bbd; letter-spacing:2px; }
+.tool-belt-section-heading h2 { font-size:29px; letter-spacing:-.6px; font-weight:500; margin:12px 0 9px; display:flex; gap:14px; align-items:center; }
+.tool-belt-section-heading h2 span { font-size:11px; color:#b9a3dc; letter-spacing:0; background:#ab80e31a; border:1px solid #ab80e322; border-radius:20px; padding:3px 9px; }
+.tool-belt-section-heading p { color:#8290a1; font-size:12px; line-height:1.7; }
+.tool-belt-section-heading>svg { color:#756784; }
+.tool-belt-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; list-style:none; padding:0; margin:0; }
+.tool-belt-card { display:flex; align-items:center; gap:16px; min-width:0; min-height:100px; padding:20px; background:linear-gradient(115deg,#14121a,#0d1015); border:1px solid #ffffff13; border-radius:11px; }
+.tool-belt-logo { display:flex; align-items:center; justify-content:center; width:46px; height:46px; flex-shrink:0; border-radius:11px; border:1px solid #bba2e525; background:#c6a4ff0a; }
+.tool-belt-logo img { width:27px; height:27px; object-fit:contain; filter:invert(1); opacity:.86; }
+.tool-belt-logo>span { font-family:monospace; font-size:15px; font-weight:600; color:#c8b3e7; }
+.tool-belt-card h4 { font-size:14px; font-weight:500; line-height:1.45; color:#e6e4ec; overflow-wrap:anywhere; margin:0 0 5px; }
+.tool-belt-card p { font-size:9px; color:#7d8596; line-height:1.5; margin:0; }
+.explored-tools .tool-belt-card { background:#0b0d11; }
+.tool-belt-empty { color:#8690a0; padding:25px 0; font-size:13px; }
+@media(max-width:1050px) { .tool-belt-grid { grid-template-columns:repeat(3,minmax(0,1fr)); } }
+@media(max-width:750px) { .tool-belt-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .tool-belt-intro>span { display:none; } .tool-belt-card { padding:16px; gap:12px; } }
+@media(max-width:460px) { .tool-belt-grid { grid-template-columns:1fr; } .tool-belt-controls { flex-direction:column; align-items:stretch; gap:12px; } .tool-belt-section-heading h2 { font-size:25px; } }
+
+.tool-belt-groups { display:grid; gap:35px; }
+.tool-belt-group-heading { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+.tool-belt-group-heading h3 { font-size:13px; font-weight:500; color:#b6a9c9; letter-spacing:.3px; }
+.tool-belt-group-heading>span { font-size:10px; color:#6e647e; }
+.tool-belt-group-heading::after { content:''; height:1px; flex:1; background:linear-gradient(90deg,#b6a9c91c,transparent); }
+.tool-belt-grid { display:flex; flex-wrap:wrap; gap:10px 22px; }
+.tool-belt-card,.explored-tools .tool-belt-card { min-height:62px; padding:10px 0; background:transparent; border:0; border-radius:0; width:calc(25% - 17px); gap:12px; }
+.tool-belt-logo { width:36px; height:36px; border-radius:8px; }
+.tool-belt-logo img { width:23px; height:23px; }
+.tool-belt-logo>span { font-size:12px; }
+.tool-belt-card h4 { font-size:13px; margin:0; }
+@media(max-width:1050px) { .tool-belt .tool-belt-card { width:calc(33.333% - 15px); } }
+@media(max-width:750px) { .tool-belt .tool-belt-card { width:calc(50% - 11px); } }
+@media(max-width:460px) { .tool-belt .tool-belt-card { width:100%; } }

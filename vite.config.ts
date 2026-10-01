@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import path from 'path'
+import packageJson from './package.json'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 
@@ -26,6 +27,13 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
+      // Figma Make exports imports with pinned versions in their names.
+      ...Object.fromEntries(
+        Object.entries(packageJson.dependencies).map(
+          ([name, version]) => [`${name}@${version}`, name],
+        ),
+      ),
+      'react-router@7.13.0': 'react-router',
       '@/styles': path.resolve(__dirname, './src/styles'),
       '@': path.resolve(__dirname, './src/app'),
     },

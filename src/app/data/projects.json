@@ -1,0 +1,303 @@
+[
+  {
+    "name": "GPTModelOverviewPage",
+    "category": "AI & education",
+    "description": "Interactive guide to the GPT pipeline, from tokenization and embeddings to attention, feed-forward layers, and generation. Includes a training simulation and prompt bank.",
+    "tools": [
+      "React",
+      "Vite",
+      "Tailwind CSS",
+      "Figma Make"
+    ],
+    "libraries": [
+      "Lucide React",
+      "Radix UI",
+      "Recharts (declared)"
+    ],
+    "inputs": "Training text, learning rate, context selection, and interactive model controls.",
+    "usage": "Open Model Overview on this site to explore the pipeline and training visualizer.",
+    "url": "https://github.com/SpicyAIDev/GPTModelOverviewPage",
+    "private": true,
+    "languages": [
+      "TypeScript",
+      "CSS",
+      "HTML",
+      "JavaScript"
+    ],
+    "sources": [
+      "README.md",
+      "package.json"
+    ],
+    "displayName": "GPT Model Overview"
+  },
+  {
+    "name": "FFL_Webpage_Original",
+    "category": "Sports analytics",
+    "description": "Fantasy football application with player evaluation, draft value analysis, team management, and statistical dashboards.",
+    "tools": [
+      "React",
+      "Vite",
+      "Tailwind CSS",
+      "Supabase",
+      "Figma Make"
+    ],
+    "libraries": [
+      "Supabase JS",
+      "Recharts",
+      "Radix UI",
+      "React Beautiful DnD"
+    ],
+    "inputs": "Player statistics, average draft position, scoring and injury data, plus league and player selections.",
+    "usage": "Browse player and draft views; connected data features require the configured Supabase backend.",
+    "url": "https://github.com/SpicyAIDev/FFL_Webpage_Original",
+    "private": true,
+    "languages": [
+      "TypeScript",
+      "CSS",
+      "HTML",
+      "Shell",
+      "JavaScript"
+    ],
+    "sources": [
+      "README.md",
+      "package.json"
+    ],
+    "displayName": "Fantasy Football Original"
+  },
+  {
+    "name": "stat_stack_nfl",
+    "category": "Data engineering",
+    "description": "NFL data pipeline for ingestion, cleaning, and analytics, with bronze, silver, and gold data layers and a declared machine-learning stack.",
+    "tools": [
+      "Python",
+      "Docker",
+      "Docker Compose",
+      "Supabase",
+      "Delta Lake"
+    ],
+    "libraries": [
+      "pandas",
+      "NumPy",
+      "nfl_data_py",
+      "PyArrow",
+      "scikit-learn",
+      "PyTorch",
+      "XGBoost"
+    ],
+    "inputs": "NFL statistics, SportsData.io responses, PFF data, and file-based datasets, as documented in the repository.",
+    "usage": "Configure the documented data sources, then run the ingestion scripts locally or with Docker.",
+    "url": "https://github.com/SpicyAIDev/stat_stack_nfl",
+    "private": false,
+    "languages": [
+      "Python",
+      "Dockerfile"
+    ],
+    "sources": [
+      "README.md",
+      "requirements.txt"
+    ],
+    "displayName": "NFL Stat Stack"
+  },
+  {
+    "name": "bolt_workout",
+    "category": "Fitness",
+    "description": "FitCoachAI mobile application for workout and nutrition tracking, onboarding, daily check-ins, and progress views.",
+    "tools": [
+      "Expo",
+      "React Native",
+      "Supabase",
+      "Bolt",
+      "Android Studio"
+    ],
+    "libraries": [
+      "Expo Router",
+      "Supabase JS",
+      "React Navigation",
+      "React Native Reanimated",
+      "Lucide React Native"
+    ],
+    "inputs": "Fitness goals, profile details, workout activity, nutrition entries, and daily check-ins.",
+    "usage": "Configure Supabase and start the Expo application on a device or emulator; some screens are documented as unfinished.",
+    "url": "https://github.com/SpicyAIDev/bolt_workout",
+    "private": true,
+    "languages": [
+      "TypeScript",
+      "JavaScript",
+      "PLpgSQL"
+    ],
+    "sources": [
+      "README.md",
+      "package.json"
+    ],
+    "displayName": "FitCoach AI"
+  },
+  {
+    "name": "Fitnesstrackingapp",
+    "category": "Fitness",
+    "description": "Fitness tracking interface with workout flows, food logging, measurements, journaling, and calendar views, exported from Figma Make.",
+    "tools": [
+      "React",
+      "Vite",
+      "Tailwind CSS",
+      "Figma Make",
+      "Supabase functions"
+    ],
+    "libraries": [
+      "Radix UI",
+      "Recharts",
+      "React Hook Form",
+      "Lucide React",
+      "Motion"
+    ],
+    "inputs": "Workout entries, food logs, body measurements, journal entries, and profile information.",
+    "usage": "Run the web interface locally to explore fitness tracking screens; backend configuration is needed for connected features.",
+    "url": "https://github.com/SpicyAIDev/Fitnesstrackingapp",
+    "private": true,
+    "languages": [
+      "TypeScript",
+      "CSS",
+      "JavaScript",
+      "HTML"
+    ],
+    "sources": [
+      "README.md",
+      "package.json"
+    ],
+    "displayName": "Fitness Tracking App"
+  },
+  {
+    "name": "sassafrass_template",
+    "category": "Developer tools",
+    "description": "Starter repository for a Node.js application and Python data workflows, with database dependencies and setup guidance for MCP integrations.",
+    "tools": [
+      "Node.js",
+      "Python",
+      "PostgreSQL",
+      "Supabase",
+      "Homebrew",
+      "MCP configuration examples"
+    ],
+    "libraries": [
+      "pg",
+      "dotenv",
+      "psycopg",
+      "python-dotenv",
+      "supabase"
+    ],
+    "inputs": "Environment configuration, database connections, and future retrieval or transformation scripts.",
+    "usage": "Install Node and Python dependencies, configure the environment, and add application or data-processing logic.",
+    "url": "https://github.com/SpicyAIDev/sassafrass_template",
+    "private": false,
+    "languages": [
+      "PowerShell",
+      "JavaScript",
+      "Ruby",
+      "Python"
+    ],
+    "sources": [
+      "README.md",
+      "data_editing/README.md",
+      "data_retreival/README.md",
+      "package.json",
+      "pyproject.toml"
+    ],
+    "displayName": "Sassafrass Template"
+  },
+  {
+    "name": "ffl_front_end_commit",
+    "category": "Sports analytics",
+    "description": "Fantasy football frontend checkpoint containing player evaluation, injury analysis, draft value, lineup, and championship analysis views.",
+    "tools": [
+      "React",
+      "Figma Make",
+      "Vite configuration"
+    ],
+    "libraries": [
+      "Dependency manifest not present in this checkpoint"
+    ],
+    "inputs": "Bundled CSV and JSON datasets for player statistics, weekly PPR scoring, injuries, and draft analysis.",
+    "usage": "Inspect the saved frontend and datasets. Restore a dependency manifest before following the README\u2019s npm setup steps.",
+    "url": "https://github.com/SpicyAIDev/ffl_front_end_commit",
+    "private": true,
+    "languages": [
+      "TypeScript",
+      "CSS",
+      "JavaScript",
+      "Shell",
+      "HTML"
+    ],
+    "sources": [
+      "frontend_corrected/README.md"
+    ],
+    "displayName": "Fantasy Football Frontend"
+  },
+  {
+    "name": "fittrackai",
+    "category": "Fitness",
+    "description": "Planned AI-assisted fitness tracking and support application. The repository currently contains a README describing its intended stack.",
+    "tools": [
+      "Grok API (planned)",
+      "Supabase (planned)",
+      "VS Code",
+      "Figma Make"
+    ],
+    "libraries": [
+      "Not specified; README only"
+    ],
+    "inputs": "Fitness tracking data is proposed; input schemas are not yet documented.",
+    "usage": "Review the project outline. Application code and setup instructions have not been added.",
+    "url": "https://github.com/SpicyAIDev/fittrackai",
+    "private": true,
+    "languages": [
+      "Not specified"
+    ],
+    "sources": [
+      "README.md"
+    ],
+    "displayName": "FitTrack AI"
+  },
+  {
+    "name": "Cursor-Projects",
+    "category": "Developer tools",
+    "description": "Repository described as \u201cAll Cursor Code.\u201d Currently an initial placeholder containing Git attributes configuration.",
+    "tools": [
+      "Git",
+      "Cursor (repository description)"
+    ],
+    "libraries": [
+      "None declared"
+    ],
+    "inputs": "No application inputs defined.",
+    "usage": "A starting point for organizing code; there is no runnable application in the current repository.",
+    "url": "https://github.com/SpicyAIDev/Cursor-Projects",
+    "private": true,
+    "languages": [
+      "Not specified"
+    ],
+    "sources": [],
+    "displayName": "Cursor Projects"
+  },
+  {
+    "name": "desktop-tutorial",
+    "category": "Developer tools",
+    "description": "GitHub Desktop tutorial repository for practicing local edits and the Git workflow.",
+    "tools": [
+      "GitHub Desktop",
+      "Git"
+    ],
+    "libraries": [
+      "None; documentation only"
+    ],
+    "inputs": "README edits.",
+    "usage": "Edit the README, then review and commit the changes in GitHub Desktop.",
+    "url": "https://github.com/SpicyAIDev/desktop-tutorial",
+    "private": true,
+    "languages": [
+      "Not specified"
+    ],
+    "sources": [
+      "README.md"
+    ],
+    "displayName": "GitHub Desktop Tutorial"
+  }
+]
