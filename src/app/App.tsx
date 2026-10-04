@@ -8,13 +8,14 @@ import MyCodePage from './components/MyCodePage';
 import AgentStructurePage from './components/AgentStructurePage';
 import '../styles/portfolio.css';
 
+const MLBPage = lazy(() => import('./MLBPage'));
 const BenchmarkEval = lazy(() => import('./BenchmarkEval'));
 
 const pages = [
   ['welcome', 'Welcome'], ['resume', 'Resume'], ['experience', 'Tool Belt'],
   ['projects', 'My Projects'], ['agents', 'Agent Structure'], ['code', 'ML App'],
   ['model-overview', 'Model Overview'],
-  ['benchmark-eval', 'Agent Design'],
+  ['benchmark-eval', 'Agent Design'], ['mlb', 'MLB'],
 ] as const;
 type Page = typeof pages[number][0];
 const readPage = (): Page => {
@@ -44,7 +45,7 @@ export default function App() {
       <a className="portfolio-github" href="https://github.com/SpicyAIDev" target="_blank" rel="noreferrer">GitHub <ArrowUpRight size={15}/></a>
     </header>
     <main id="main-content" tabIndex={-1}>
-      {page === 'model-overview' ? <ModelOverview/> : page === 'benchmark-eval' ? <Suspense fallback={<p className="portfolio-content" role="status">Loading Agent Design…</p>}><BenchmarkEval/></Suspense> : <div className="portfolio-content">
+      {page === 'mlb' ? <Suspense fallback={<p role="status">Loading MLB…</p>}><MLBPage/></Suspense> : page === 'model-overview' ? <ModelOverview/> : page === 'benchmark-eval' ? <Suspense fallback={<p className="portfolio-content" role="status">Loading Agent Design…</p>}><BenchmarkEval/></Suspense> : <div className="portfolio-content">
         {page === 'welcome' ? <>
           <section className="portfolio-hero">
             <div><p className="portfolio-eyebrow"><span/> WELCOME TO MY CORNER OF THE INTERNET</p>

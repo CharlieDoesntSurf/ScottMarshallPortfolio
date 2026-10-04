@@ -84,3 +84,13 @@ Dependencies retain the export versions except for security updates to Vite 6.4.
 and React Router 7.18.4. React and React DOM are installed
 as runtime dependencies. Vite aliases resolve Figma Make's version-suffixed imports
 to the installed npm packages, and the asset resolver supports `figma:asset/` imports.
+
+### MLB tab
+
+The `#mlb` route renders native React components in `src/app/mlb/`. This is the only MLB frontend; there is no iframe, second application, or runtime dependency on a sibling server. MLB styles are scoped to `.mlb-app`.
+
+The Playoff teams view shows confirmed 2026 opening-series roster batters with one OPS window at a time (Season by default). Team multiselect, league, and position filters compose. OPS above 1.000 uses one fifth of the usual vertical scale, visibly marked on the chart: 1.000–2.000 has the same height as .800–1.000. The By position view retains qualified players from 2022–2026 and its linear scale.
+
+CSV collection lives in the sibling `mlb_trends` repository. Run its `scripts/build_playoff_rosters.py`, then `scripts/export_web_data.py` to refresh this repository's bundled JSON, followed by `npm run build` here. All hitting statistics are regular-season only. The roster snapshot is each team's first playoff game date, rather than a union of later rounds.
+
+The playoff view places pitcher ERA beside batter OPS, sharing the time-window, team, league, and season filters. Pitcher role and batting position filters are independent. ERA is the default pitching metric; users can switch to innings pitched. Labels include baseball-notation IP, and player details show ERA, IP, appearances, and starts. The pitching scale is linear. Charts stack on small screens. Refresh pitching CSVs with `mlb_trends/scripts/build_playoff_pitching.py` before the shared JSON export.
