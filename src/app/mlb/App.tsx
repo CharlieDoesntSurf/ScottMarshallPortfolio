@@ -1,17 +1,18 @@
 import { lazy, Suspense, useMemo, useState } from 'react';
 import { ArrowUpRight, ChartNoAxesCombined, ChevronRight, X } from 'lucide-react';
-import data from './data/players.json';
+import { loadQualified } from './data';
+import { useMlbQuery, QueryStatus } from './useMlbQuery';
 import './styles.css';
 import { PositionPlot, type Player } from './PositionPlot';
 import PlayoffExplorer from './PlayoffExplorer';
 const RollingTrends=lazy(()=>import('./RollingTrends'));
-const players=data as Player[];
 const order=['C','1B','2B','3B','SS','LF','CF','RF','DH','PH','PR','P'];
 export default function App(){
  const [view,setView]=useState('playoff');
  const [season,setSeason]=useState(2026),[league,setLeague]=useState('All'),[position,setPosition]=useState('All');
  const [selected,setSelected]=useState<Player|null>(null);
- const seasonPlayers=useMemo(()=>players.filter(p=>p.season===season),[season]);
+ const query=useMlbQuery(view==='position'?`qualified:${season}`:null,()=>loadQualified(season));
+ const seasonPlayers=query.data??[];
  const visible=useMemo(()=>seasonPlayers.filter(p=>(league==='All'||p.league===league)&&(position==='All'||p.position===position)),[seasonPlayers,league,position]);
  const positions=order.filter(pos=>seasonPlayers.some(p=>p.position===pos));
  const domain:[number,number]=[.5,1.05];
@@ -39,7 +40,7 @@ export default function App(){
      <div className="sample-label" role="status"><strong>{visible.length}</strong> qualified players<span>PA rate &gt;30% · season OPS</span></div>
     </div>
     <div className="plot-note"><span>Dots = exact OPS. Labels identify player + team.</span><span>Select a player for details.</span></div>
-    {visible.length?<PositionPlot players={plottedVisible} domain={domain} onSelect={p=>setSelected(visible.find(player=>player.id===p.id)??p)}/>:<div className="empty-state">No qualifying players in this selection.</div>}
+    {query.loading||query.error?<QueryStatus error={query.error} retry={query.retry}/>:visible.length?<PositionPlot players={plottedVisible} domain={domain} onSelect={p=>setSelected(visible.find(player=>player.id===p.id)??p)}/>:<div className="empty-state">No qualifying players in this selection.</div>}
    </section>}
    <details className="methodology"><summary>About this comparison</summary><div><p>In the By position view, players qualify when their full-season plate appearances exceed 30% of the highest full-season PA assigned to their final team. The snapshot views exclude postseason statistics. Rolling trends explicitly separates regular-season and postseason values.</p><p>Position is the role with the most regular-season games. Traded players retain their combined season stats and are shown with their final team. The By position view covers all qualifying players; the Playoff teams view is restricted to confirmed opening-series rosters.</p><p>The OPS scale stays constant within each season. Small horizontal offsets separate dots; leader lines connect labels to exact values. Team colors follow ESPN’s primary team-color metadata, including when viewing historical seasons.</p><p>Regular-season snapshot collected October 2, 2026 UTC. Player stats: MLB Stats API. WAR: Baseball Reference. This page explores performance; it does not establish which metrics predict postseason success.</p></div></details>
    <footer><span>Scott Marshall <span className="footer-dot">/</span> MLB Trends</span><span>Curiosity. Experiments. Progress.</span><a href="https://github.com/CharlieDoesntSurf/ScottMarshallPortfolio" target="_blank" rel="noreferrer">Portfolio on GitHub <ArrowUpRight size={13}/></a></footer>

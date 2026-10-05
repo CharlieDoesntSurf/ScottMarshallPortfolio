@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import data from './data/playoff_pitchers.json';
+import type { Pitcher } from './data';
 import { PositionPlot } from './PositionPlot';
 const keys=['season','half','month','week'] as const;
 const labels=['Season','Half-season','Monthly','Weekly'];
-export default function PitchingChart({season,league,teams,windowIndex,closeToken,onSelectPitcher,sharedCount}:{sharedCount:number;season:number;league:string;teams:string[]|null;windowIndex:number;closeToken:number;onSelectPitcher:()=>void}){
+export default function PitchingChart({data,season,league,teams,windowIndex,closeToken,onSelectPitcher,sharedCount}:{data:Pitcher[];sharedCount:number;season:number;league:string;teams:string[]|null;windowIndex:number;closeToken:number;onSelectPitcher:()=>void}){
  const [role,setRole]=useState('All'),[metric,setMetric]=useState('ERA');
- const [selected,setSelected]=useState<(typeof data)[number]|null>(null);
+ const [selected,setSelected]=useState<Pitcher|null>(null);
  useEffect(()=>setSelected(null),[season,league,teams,windowIndex,role,metric,closeToken]);
  const key=keys[windowIndex];
  const seasonRows=data.filter(p=>p.season===season);

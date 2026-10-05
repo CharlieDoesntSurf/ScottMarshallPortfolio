@@ -17,7 +17,7 @@ npm run dev -- --host 127.0.0.1 --port 5173
 
 Open http://127.0.0.1:5173. Vite reloads the preview when source files change.
 This runs the exported application locally; Figma Make's AI editor is not included.
-No API keys or database connection are required for the current application.
+The MLB tab requires the two public Supabase variables from `.env.example`. Copy them into an ignored `.env.local`; never add database passwords or service-role keys to Vite.
 
 ## Production build
 
@@ -34,7 +34,7 @@ The generated website is in `dist/`.
 - Install command: `npm ci`
 - Build command: `npm run build`
 - Publish/output directory: `dist`
-- Environment variables: none required
+- Environment variables: `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY` (public browser credentials)
 
 Navigation uses URL hashes, so the host does not need route rewrites.
 The site includes the resume PDF and locally stored tool logos in `public/`.
@@ -85,18 +85,24 @@ and React Router 7.18.4. React and React DOM are installed
 as runtime dependencies. Vite aliases resolve Figma Make's version-suffixed imports
 to the installed npm packages, and the asset resolver supports `figma:asset/` imports.
 
-### MLB tab
+### MLB tab and Supabase
 
-The `#mlb` route renders native React components in `src/app/mlb/`. This is the only MLB frontend; there is no iframe, second application, or runtime dependency on a sibling server. MLB styles are scoped to `.mlb-app`.
+The `#mlb` route renders `src/app/mlb/App.tsx`; this is the only MLB frontend. Collection and aggregation live in `/Users/scott/project/mlb_trends`. The browser reads the exposed **`mlb`** schema of Supabase project `rsyeiwzoijdojbawpgrd`.
 
-The Playoff teams view shows confirmed 2026 opening-series roster batters with one OPS window at a time (Season by default). Team multiselect, league, and position filters compose. OPS above 1.000 uses one fifth of the usual vertical scale, visibly marked on the chart: 1.000–2.000 has the same height as .800–1.000. The By position view retains qualified players from 2022–2026 and its linear scale.
+All MLB queries live in `src/app/mlb/data.ts`. The shared public client is `src/app/utils/supabase.ts`. Other future apps can reuse the client while selecting their own schema explicitly. Schemas, table privileges and RLS must be configured separately for each app.
 
-CSV collection lives in the sibling `mlb_trends` repository. Run its `scripts/build_playoff_rosters.py`, then `scripts/export_web_data.py` to refresh this repository's bundled JSON, followed by `npm run build` here. All hitting statistics are regular-season only. The roster snapshot is each team's first playoff game date, rather than a union of later rounds.
+- Playoff Positions: `mlb.playoff_batters`, `mlb.playoff_pitchers`, and related `mlb.pitcher_windows`; four time windows, team/league/position filters, ERA/IP and selected-player details.
+- Player Position: `mlb.qualified_players`, loaded by season (2022–2026) with explicit pagination.
+- Rolling Offense: `mlb.rolling_teams` metadata and `mlb.rolling_series` for only the two selected teams, over `mlb.rolling_team_windows`. Regular-season rolling windows and postseason-only cumulative values remain separate.
 
-The playoff view places pitcher ERA beside batter OPS, sharing the time-window, team, league, and season filters. Pitcher role and batting position filters are independent. ERA is the default pitching metric; users can switch to innings pitched. Labels include baseball-notation IP, and player details show ERA, IP, appearances, and starts. The pitching scale is linear. Charts stack on small screens. Refresh pitching CSVs with `mlb_trends/scripts/build_playoff_pitching.py` before the shared JSON export.
+Queries deduplicate concurrent requests and cache results for five minutes; errors show Retry. There is no static-data fallback. Old bundled JSON and public season files have been removed. Local export/reference copies remain in `mlb_trends/data/web`.
 
-### MLB rolling trends
+Data loaded at **2026-10-05T06:52:52.335243+00:00**. Full table/column mapping, row counts and load provenance are in `/Users/scott/project/supabase_for_front_end.md`, `mlb_trends/data_format.md`, and `mlb_trends/docs/supabase-load-receipt.json`. Refresh with the data project's `scripts/load_supabase.py` after its export pipeline. Data updates become visible without rebuilding the website, subject to the five-minute browser cache.
 
-The MLB **Rolling trends** view supports one playoff team at a time for 2022–2026 (12 teams per year). Four colors represent 10-, 30-, 90-game and season-to-date windows; OPS is solid and AVG dashed. The eight regular-season lines converge at the postseason boundary into two postseason-only cumulative lines. Hover for exact values, or expand the game-by-game table. Actual completed game counts determine the boundary. Current 2026 postseason coverage runs through October 3.
+### GitHub Pages configuration
 
-Chart data is served from `public/mlb-trends/{year}.json`, loaded only for the selected year. The CSV pipeline lives in `mlb_trends/scripts/build_rolling_batting.py`, with source reconciliation in `build_rolling_roster_cohort.py` and checks in `validate_rolling_batting.py`. Full-team totals include all hitters; separate player exports retain opening-series roster members and include missed games in rolling windows. Earlier-club regular-season stats are aligned to the playoff club's game intervals. Rates are calculated from summed counts, and undefined rates remain missing. This retrospective roster selection is descriptive and must be accounted for when evaluating predictive models.
+The live site uses remote `portfolio` (`CharlieDoesntSurf/ScottMarshallPortfolio`); `origin` points to a different repository. `.github/workflows/pages.yml` reads `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` from **repository Actions variables**, checks that both exist, and supplies them at build time. These public variables are configured on the deployment repository. The local `.env.local` is ignored and never uploaded. The Supabase frontend is deployed by the GitHub Pages workflow when this change is pushed to `portfolio/main`.
+
+### Local verification
+
+The current dev server is http://127.0.0.1:5174/#mlb (5173 was occupied); production preview is http://127.0.0.1:4173/#mlb. Five fresh Chrome contexts measured median initial charts at 0.831 s, first rolling view at 0.855 s, and cached rolling revisits at 0.061 s. Live Supabase adds latency compared with local static files; rolling payload size fell about 81%. See `mlb_trends/docs/validation/supabase-browser-report.json` for conditions and individual measurements.

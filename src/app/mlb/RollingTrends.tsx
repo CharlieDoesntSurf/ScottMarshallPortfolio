@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Brush, CartesianGrid, Line, LineChart, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 
-type Rates={avg:number|null;ops:number|null;obp:number|null;slg:number|null;k_pct:number|null;bb_pct:number|null;pa:number};
-type Point={x:number;game:number;phase:'regular'|'postseason';date:string;gamePk:string;'10'?:Rates;'30'?:Rates;'90'?:Rates;season?:Rates;post?:Rates};
-type Team={season:number;teamId:string;team:string;league:string;regularGames:number;postseasonGames:number;rosterBatters:number;lastDate:string;points:Point[]};
+import { loadTeams, loadTeam, type Rates, type Point, type Team } from './data';
+import { useMlbQuery, QueryStatus } from './useMlbQuery';
+
 type Metric='both'|'ops'|'avg';
-type ChartPoint=Point&Record<string,number|null>;
+type ChartPoint=Point&{[key:`${'avg'|'ops'}_${string}`]:number|null};
 
 const windows=[{key:'10',label:'10 games',color:'#b8a4fb'},{key:'30',label:'30 games',color:'#4dd9cd'},{key:'90',label:'90 games',color:'#ffc266'},{key:'season',label:'Season to date',color:'#ff8394'}] as const;
 const metricLabels:Record<Metric,string>={both:'AVG + OPS',ops:'OPS only',avg:'AVG only'};
@@ -34,7 +34,7 @@ function RollingChart({team,metric,xStart,xSpan,yZoom,onBrush}:{team:Team;metric
  const startIndex=Math.min(Math.max(0,xStart-1),Math.max(0,chart.length-1));
  const endIndex=Math.min(chart.length-1,startIndex+xSpan-1);
  const visible=chart.slice(startIndex,endIndex+1);
- const metricKeys=(metric==='both'?['avg','ops']:[metric]);
+ const metricKeys:('avg'|'ops')[]=(metric==='both'?['avg','ops']:[metric]);
  const values=visible.flatMap(p=>metricKeys.flatMap(name=>[...windows.map(w=>p[`${name}_${w.key}`]),p[`${name}_post`]]).filter((v):v is number=>typeof v==='number'));
  const minimum=metric==='ops'?0.3:metric==='avg'?0.15:0;
  const floor=Math.min(minimum,...values);const ceiling=Math.max(...values,metric==='ops'?1:metric==='avg'?.3:1);
@@ -58,17 +58,25 @@ function RollingChart({team,metric,xStart,xSpan,yZoom,onBrush}:{team:Team;metric
 export default function RollingTrends(){
  const [season,setSeason]=useState(2026),[teamId,setTeamId]=useState('147'),[teamTwoId,setTeamTwoId]=useState('111');
  const [metric,setMetric]=useState<Metric>('both'),[xStart,setXStart]=useState(1),[xSpan,setXSpan]=useState(164);
- const [teams,setTeams]=useState<Team[]>([]),[error,setError]=useState(''),[loading,setLoading]=useState(true);
- useEffect(()=>{const abort=new AbortController();setLoading(true);setError('');fetch(`${import.meta.env.BASE_URL}mlb-trends/${season}.json`,{signal:abort.signal}).then(r=>{if(!r.ok)throw Error('Could not load this season.');return r.json();}).then((rows:Team[])=>{rows.sort((a,b)=>a.team.localeCompare(b.team));setTeams(rows);setTeamId(id=>rows.some(t=>t.teamId===id)?id:rows[0].teamId);setTeamTwoId(id=>rows.some(t=>t.teamId===id&&id!==teamId)?id:rows.find(t=>t.teamId!==teamId)?.teamId??rows[0].teamId);setXStart(1);setXSpan(Math.max(...rows.map(t=>t.regularGames+t.postseasonGames)));setLoading(false);}).catch(e=>{if(e.name!=='AbortError'){setError(e.message);setLoading(false);}});return()=>abort.abort();},[season]);
- const team=teams.find(t=>t.teamId===teamId);const teamTwo=teams.find(t=>t.teamId===teamTwoId);
+ const summaries=useMlbQuery(`teams:${season}`,()=>loadTeams(season));
+ const teams=summaries.data??[];
+ const first=teams.find(t=>t.teamId===teamId)??teams[0];
+ const second=teams.find(t=>t.teamId===teamTwoId&&t.teamId!==first?.teamId)??teams.find(t=>t.teamId!==first?.teamId);
+ const firstQuery=useMlbQuery(first?`series:${season}:${first.teamId}`:null,()=>loadTeam(season,first!.teamId));
+ const secondQuery=useMlbQuery(second?`series:${season}:${second.teamId}`:null,()=>loadTeam(season,second!.teamId));
+ const team=firstQuery.data,teamTwo=secondQuery.data;
+ const loading=summaries.loading||firstQuery.loading||secondQuery.loading;
+ const error=summaries.error||firstQuery.error||secondQuery.error;
+ function retry(){summaries.retry();firstQuery.retry();secondQuery.retry();}
+ useEffect(()=>{if(summaries.data?.length){setXStart(1);setXSpan(Math.max(...summaries.data.map(t=>t.regularGames+t.postseasonGames)));}},[summaries.data]);
  function chooseTeamOne(value:string){setTeamId(value);if(value===teamTwoId)setTeamTwoId(teams.find(t=>t.teamId!==value)?.teamId??value);}
  function updateBrush(start:number,end:number){setXStart(start);setXSpan(Math.max(8,end-start+1));}
  return <section className="explorer rolling-explorer" aria-labelledby="rolling-title">
   <div className="explorer-heading"><div><p className="eyebrow">THE SEASON, GAME BY GAME</p><h2 id="rolling-title">Rolling team AVG & OPS</h2></div></div>
-  <div className="filter-bar rolling-filters"><label>Season<select aria-label="Rolling season" value={season} onChange={e=>setSeason(+e.target.value)}>{[2026,2025,2024,2023,2022].map(y=><option key={y}>{y}</option>)}</select></label><label>Playoff team 1<select aria-label="Rolling team 1" value={teamId} disabled={loading} onChange={e=>chooseTeamOne(e.target.value)}>{teams.map(t=><option key={t.teamId} value={t.teamId}>{t.team} · {t.league}</option>)}</select></label><label>Playoff team 2<select aria-label="Rolling team 2" value={teamTwoId} disabled={loading} onChange={e=>setTeamTwoId(e.target.value)}>{teams.filter(t=>t.teamId!==teamId).map(t=><option key={t.teamId} value={t.teamId}>{t.team} · {t.league}</option>)}</select></label><label>Metric focus<select aria-label="Rolling metric focus" value={metric} onChange={e=>setMetric(e.target.value as Metric)}><option value="both">AVG + OPS</option><option value="ops">OPS only</option><option value="avg">AVG only</option></select></label></div>
+  <div className="filter-bar rolling-filters"><label>Season<select aria-label="Rolling season" value={season} onChange={e=>setSeason(+e.target.value)}>{[2026,2025,2024,2023,2022].map(y=><option key={y}>{y}</option>)}</select></label><label>Playoff team 1<select aria-label="Rolling team 1" value={first?.teamId??''} disabled={summaries.loading} onChange={e=>chooseTeamOne(e.target.value)}>{teams.map(t=><option key={t.teamId} value={t.teamId}>{t.team} · {t.league}</option>)}</select></label><label>Playoff team 2<select aria-label="Rolling team 2" value={second?.teamId??''} disabled={summaries.loading} onChange={e=>setTeamTwoId(e.target.value)}>{teams.filter(t=>t.teamId!==first?.teamId).map(t=><option key={t.teamId} value={t.teamId}>{t.team} · {t.league}</option>)}</select></label><label>Metric focus<select aria-label="Rolling metric focus" value={metric} onChange={e=>setMetric(e.target.value as Metric)}><option value="both">AVG + OPS</option><option value="ops">OPS only</option><option value="avg">AVG only</option></select></label></div>
   <div className="rolling-legend" aria-label="Chart legend">{windows.map(w=><span key={w.key}><i style={{background:w.color}}/>{w.label}</span>)}{metric!=='avg'&&<span>━ OPS</span>}{metric!=='ops'&&<span>┄ AVG</span>}<span><i style={{background:'#e7edf7'}}/>Postseason cumulative</span></div>
   <p className="plot-note">Drag the overview beneath either graph to zoom horizontally. Choose OPS or AVG with Metric focus to rescale both charts. The regular season ends at the vertical line.</p>
-  {loading?<p role="status">Loading season…</p>:error?<p role="alert">{error}</p>:team&&teamTwo&&<div className="rolling-team-charts"><RollingChart team={team} metric={metric} xStart={xStart} xSpan={xSpan} yZoom={1} onBrush={updateBrush}/><RollingChart team={teamTwo} metric={metric} xStart={xStart} xSpan={xSpan} yZoom={1} onBrush={updateBrush}/></div>}
+  {loading||error?<QueryStatus error={error} retry={retry} label="Loading selected teams…"/>:team&&teamTwo&&<div className="rolling-team-charts"><RollingChart team={team} metric={metric} xStart={xStart} xSpan={xSpan} yZoom={1} onBrush={updateBrush}/><RollingChart team={teamTwo} metric={metric} xStart={xStart} xSpan={xSpan} yZoom={1} onBrush={updateBrush}/></div>}
   {team&&<><p className="plot-note">Postseason restarts at playoff game 1. The shared postseason-to-date total produces one AVG and one OPS curve. {season===2026?'2026 is in progress; only completed games are shown.':''}</p><details className="methodology"><summary>Values by game & calculation notes</summary><p>Team values include every batter who played for the club, not just its playoff roster. Separate player CSVs use a fixed opening-series playoff-roster cohort and the same team-game windows, including missed games. Earlier-team batting for traded players is included by the corresponding game-time interval. AVG = H / AB; OBP = (H + BB + HBP) / (AB + BB + HBP + SF); SLG = total bases / AB; OPS = OBP + SLG. K% and BB% use plate appearances. No postseason counts enter regular-season windows.</p></details></>}
  </section>;
 }
