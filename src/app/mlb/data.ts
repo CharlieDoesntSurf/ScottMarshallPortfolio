@@ -56,17 +56,3 @@ export const loadTeam=(season:number,teamId:string)=>cached(`series:${season}:${
   const {data,error}=await getSupabase().schema('mlb').rpc('rolling_series',{p_season:season,p_team_id:teamId});
   fail(error);if(!data)throw new Error('No rolling history is available for this team and season.');return data as Team;
 });
-
-export const loadYankees=()=>cached('yankees-acquisitions',async()=>{
- const {data:meta,error}=await getSupabase().schema('mlb').from('yankees_acquisition_metadata').select('metadata').eq('id',1).single();fail(error);
- const events:import('./YankeesAcquisitions').Acquisition[]=[];
- for(let start=0;;start+=500){
-  const {data,error}=await getSupabase().schema('mlb').from('yankees_acquisitions').select('summary').order('acquisition_date').order('id').range(start,start+499);fail(error);
-  const batch=data??[];events.push(...batch.map(r=>r.summary));if(batch.length<500)break;
- }
- return {...meta!.metadata,events} as import('./YankeesAcquisitions').YankeesDataset;
-});
-export const loadYankeesCareer=(id:string)=>cached(`yankees-career:${id}`,async()=>{
- const {data,error}=await getSupabase().schema('mlb').from('yankees_acquisitions').select('annual').eq('id',id).single();fail(error);
- return data!.annual as import('./YankeesAcquisitions').AcquisitionYear[];
-});
