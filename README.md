@@ -106,3 +106,18 @@ The live site uses remote `portfolio` (`CharlieDoesntSurf/ScottMarshallPortfolio
 ### Local verification
 
 The current dev server is http://127.0.0.1:5174/#mlb (5173 was occupied); production preview is http://127.0.0.1:4173/#mlb. Five fresh Chrome contexts measured median initial charts at 0.831 s, first rolling view at 0.855 s, and cached rolling revisits at 0.061 s. Live Supabase adds latency compared with local static files; rolling payload size fell about 81%. See `mlb_trends/docs/validation/supabase-browser-report.json` for conditions and individual measurements.
+
+### Yankees acquisitions
+
+MLB Trends has a **Yankees Acquisitions** tab; direct link: `?mlbView=yankees#mlb`.
+It reads `mlb.yankees_acquisitions` and `mlb.yankees_acquisition_metadata`, with
+paginated summaries and annual detail loaded on selection. The chart uses blue
+for pre-acquisition bWAR, red for subsequent Yankees bWAR, and gold for known
+Yankees payroll estimates. Separate tables cover trades and free-agent signings;
+filters include minors/prospects, returning players, acquisition dates, repeated
+events, and the expensive/low-WAR hypothesis. CSV export follows the filters.
+
+Money is explicitly a sourced payroll estimate, not a complete cash-payment
+ledger. Unknown salary allocations and guarantees remain unknown. Collection,
+contract overrides, financial limitations and validation live in the data
+project's `docs/yankees-acquisitions.md`.
