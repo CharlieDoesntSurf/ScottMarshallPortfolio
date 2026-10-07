@@ -5,7 +5,7 @@ import ResumePage from './components/ResumePage';
 import ProjectsPage from './components/ProjectsPage';
 import ToolBeltPage from './components/ToolBeltPage';
 import MyCodePage from './components/MyCodePage';
-import AgentStructurePage from './components/AgentStructurePage';
+const AgentStructurePage = lazy(() => import('./components/AgentStructurePage'));
 import '../styles/portfolio.css';
 
 const MLBPage = lazy(() => import('./MLBPage'));
@@ -58,14 +58,14 @@ export default function App() {
           <section className="portfolio-explore"><div className="portfolio-section-heading"><div><p className="portfolio-eyebrow">TAKE A LOOK AROUND</p><h2>A few places to start.</h2></div><span>Explore the things I’m building and learning.</span></div>
             <div className="portfolio-cards">
               <a className="portfolio-card" href="#model-overview"><Layers/><span className="portfolio-card-index">01 / EXPLORE</span><h3>Model Overview <ArrowUpRight/></h3><p>Follow the GPT pipeline, from the first token to the final output, with interactive visualizations.</p><span className="portfolio-tag">INTERACTIVE GUIDE</span></a>
-              <a className="portfolio-card" href="#agents"><Sparkles/><span className="portfolio-card-index">02 / DISCOVER</span><h3>Agent Structure <ArrowUpRight/></h3><p>Explore the application template, data workflows, and MCP connections.</p><span className="portfolio-tag">REPOSITORY GUIDE</span></a>
+              <a className="portfolio-card" href="#agents"><Sparkles/><span className="portfolio-card-index">02 / DISCOVER</span><h3>Agent Structure <ArrowUpRight/></h3><p>Explore how prompts, context, and harnesses turn a model into an agent.</p><span className="portfolio-tag">INTERACTIVE GUIDE</span></a>
               <a className="portfolio-card" href="#code"><Code2/><span className="portfolio-card-index">03 / LOOK INSIDE</span><h3>ML App <ArrowUpRight/></h3><p>Go behind the interface. Explore the source and follow the work on GitHub.</p><span className="portfolio-tag">OPEN THE SOURCE</span></a>
             </div>
           </section>
         </> : <>
           <p className="portfolio-eyebrow">SCOTT MARSHALL / {pages.find(([id]) => id === page)?.[1].toUpperCase()}</p>
           <h1 className="portfolio-page-title">{pages.find(([id]) => id === page)?.[1]}</h1>
-          {page === 'experience' ? <ToolBeltPage/> : page === 'resume' ? <ResumePage/> : page === 'projects' ? <ProjectsPage/> : page === 'agents' ? <AgentStructurePage/> : page === 'code' ? <MyCodePage/> : <><h2 className="portfolio-subtitle">{details[page][0]}</h2><p className="portfolio-intro">{details[page][1]}</p><div className="portfolio-empty"><span className="portfolio-tag">IN PROGRESS</span><h2>{details[page][2]}</h2><p>{details[page][3]}</p></div></>}
+          {page === 'experience' ? <ToolBeltPage/> : page === 'resume' ? <ResumePage/> : page === 'projects' ? <ProjectsPage/> : page === 'agents' ? <Suspense fallback={<p role="status">Loading Agent Structure…</p>}><AgentStructurePage/></Suspense> : page === 'code' ? <MyCodePage/> : <><h2 className="portfolio-subtitle">{details[page][0]}</h2><p className="portfolio-intro">{details[page][1]}</p><div className="portfolio-empty"><span className="portfolio-tag">IN PROGRESS</span><h2>{details[page][2]}</h2><p>{details[page][3]}</p></div></>}
         </>}
         <footer className="portfolio-footer"><span>Scott Marshall <span className="footer-dot">/</span> Personal space</span><span>Curiosity. Experiments. Progress.</span><a href="https://github.com/SpicyAIDev" target="_blank" rel="noreferrer">Find me on GitHub ↗</a></footer>
       </div>}

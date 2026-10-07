@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { ArrowUpRight, Github, Lock, Search } from 'lucide-react';
 import projects from '../data/projects.json';
+import TemplateProjectPage from './TemplateProjectPage';
 
 const categories = ['All projects', ...new Set(projects.map(project => project.category))];
 
 export default function ProjectsPage() {
+  const [tab, setTab] = useState('template');
   const [category, setCategory] = useState('All projects');
   const [query, setQuery] = useState('');
   const visible = projects.filter(project =>
@@ -12,6 +14,8 @@ export default function ProjectsPage() {
     [project.name, project.displayName, project.description, ...project.languages, ...project.tools, ...project.libraries].join(' ').toLowerCase().includes(query.toLowerCase().trim())
   );
   return <section className="projects-page" aria-label="GitHub projects">
+    <div className="projects-filters" aria-label="Project views">{[['template', 'Application Template'], ['repositories', 'All Repositories']].map(([id, label]) => <button key={id} aria-pressed={tab === id} onClick={() => setTab(id)}>{label}</button>)}</div>
+    {tab === 'template' ? <TemplateProjectPage/> : <>
     <p className="portfolio-intro">A look inside my repositories: what each project does, what it’s built with, and the data it works with.</p>
     <div className="projects-toolbar"><label className="projects-search"><Search size={17}/><span className="sr-only">Search projects, languages, or tools</span><input value={query} onChange={event => setQuery(event.target.value)} placeholder="Search projects, languages, tools…" type="search"/></label><span aria-live="polite">{visible.length} of {projects.length} repositories</span></div>
     <div className="projects-filters" aria-label="Filter by category">{categories.map(item => <button type="button" key={item} aria-pressed={category === item} onClick={() => setCategory(item)}>{item}</button>)}</div>
@@ -23,5 +27,6 @@ export default function ProjectsPage() {
     </article>)}</div>
     {visible.length === 0 && <div className="portfolio-empty"><h2>No matching projects</h2><p>Try a different language, tool, or project name.</p><button className="portfolio-primary" onClick={() => {setQuery('');setCategory('All projects');}}>Clear filters</button></div>}
     <p className="projects-note">Repository snapshot · September 2026. Descriptions are based on repository documentation, dependencies, and source structure. Declared libraries may include starter dependencies.</p>
+    </>}
   </section>;
 }
