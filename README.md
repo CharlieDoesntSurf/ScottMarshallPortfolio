@@ -106,3 +106,14 @@ The live site uses remote `portfolio` (`CharlieDoesntSurf/ScottMarshallPortfolio
 ### Local verification
 
 The current dev server is http://127.0.0.1:5174/#mlb (5173 was occupied); production preview is http://127.0.0.1:4173/#mlb. Five fresh Chrome contexts measured median initial charts at 0.831 s, first rolling view at 0.855 s, and cached rolling revisits at 0.061 s. Live Supabase adds latency compared with local static files; rolling payload size fell about 81%. See `mlb_trends/docs/validation/supabase-browser-report.json` for conditions and individual measurements.
+
+
+## FitCoach (In Dev)
+
+The portfolio's `#fitcoach` tab embeds the actual FitCoach web/phone UI in a separate, same-origin HTML entry (`fitcoach/index.html`). This keeps its styles isolated from the portfolio's other apps. Vite builds both entries; GitHub Pages serves the complete static demo without an extra server.
+
+The UI snapshot lives in `src/fitcoach`, adapted from `/Users/scott/project/Fitnesstrackingapp`. The visitor can explore 1,324 exercises and 13 starter templates, view demonstrations/instructions, create workouts/custom exercises, record and correct sets, complete the interview and run the offline coach preview. Demo edits are saved only under `fitcoach.portfolio.workspace.v1` in the visitor's browser. The banner and save indicators describe this accurately. The connected localhost app remains in its separate repository; its database server, credentials, private bucket URLs and user records are not included here.
+
+`public/fitcoach/catalog.json` contains public upstream exercise/template data only. Media uses the pinned upstream CDN URLs already used by openGym; license and provenance notices are in `public/fitcoach/legal`. `scripts/export-fitcoach-catalog.mjs` regenerates this public-only snapshot from the prepared source import on the development machine; it is not run by CI. The source revision is `ce30c7304bdeb66a6eb4a3d14821a06035523b06`.
+
+The prebuild step packages a standalone, buildable copy of the FitCoach demo in `public/fitcoach/source.zip`, linked from the demo footer. It includes the demo source, public catalog, license notices and build configuration, with no environment files. Regenerate by running `npm run build`. Update the embedded copy deliberately when the connected application changes.

@@ -19,6 +19,7 @@ function figmaAssetResolver() {
 
 export default defineConfig({
   base: './',
+  build: { rollupOptions: { input: {main: path.resolve(__dirname,'index.html'), fitcoach: path.resolve(__dirname,'fitcoach/index.html')} } },
   plugins: [
     figmaAssetResolver(),
     // The React and Tailwind plugins are both required for Make, even if

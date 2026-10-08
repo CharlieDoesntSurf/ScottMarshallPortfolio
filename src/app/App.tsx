@@ -8,6 +8,7 @@ import MyCodePage from './components/MyCodePage';
 const AgentStructurePage = lazy(() => import('./components/AgentStructurePage'));
 import '../styles/portfolio.css';
 
+const FitCoachPage = lazy(() => import('./FitCoachPage'));
 const MLBPage = lazy(() => import('./MLBPage'));
 const BenchmarkEval = lazy(() => import('./BenchmarkEval'));
 
@@ -15,7 +16,7 @@ const pages = [
   ['welcome', 'Welcome'], ['resume', 'Resume'], ['experience', 'Tool Belt'],
   ['projects', 'My Projects'], ['agents', 'Agent Structure'], ['code', 'ML App'],
   ['model-overview', 'Model Overview'],
-  ['benchmark-eval', 'Agent Design'], ['mlb', 'MLB'],
+  ['benchmark-eval', 'Agent Design'], ['mlb', 'MLB'], ['fitcoach', 'FitCoach (In Dev)'],
 ] as const;
 type Page = typeof pages[number][0];
 const readPage = (): Page => {
@@ -45,7 +46,7 @@ export default function App() {
       <a className="portfolio-github" href="https://github.com/SpicyAIDev" target="_blank" rel="noreferrer">GitHub <ArrowUpRight size={15}/></a>
     </header>
     <main id="main-content" tabIndex={-1}>
-      {page === 'mlb' ? <Suspense fallback={<p role="status">Loading MLB…</p>}><MLBPage/></Suspense> : page === 'model-overview' ? <ModelOverview/> : page === 'benchmark-eval' ? <Suspense fallback={<p className="portfolio-content" role="status">Loading Agent Design…</p>}><BenchmarkEval/></Suspense> : <div className="portfolio-content">
+      {page === 'fitcoach' ? <Suspense fallback={<p role="status">Loading FitCoach…</p>}><FitCoachPage/></Suspense> : page === 'mlb' ? <Suspense fallback={<p role="status">Loading MLB…</p>}><MLBPage/></Suspense> : page === 'model-overview' ? <ModelOverview/> : page === 'benchmark-eval' ? <Suspense fallback={<p className="portfolio-content" role="status">Loading Agent Design…</p>}><BenchmarkEval/></Suspense> : <div className="portfolio-content">
         {page === 'welcome' ? <>
           <section className="portfolio-hero">
             <div><p className="portfolio-eyebrow"><span/> WELCOME TO MY CORNER OF THE INTERNET</p>
