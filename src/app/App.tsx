@@ -16,7 +16,7 @@ const pages = [
   ['welcome', 'Welcome'], ['resume', 'Resume'], ['experience', 'Tool Belt'],
   ['projects', 'My Projects'], ['agents', 'Agent Structure'], ['code', 'ML App'],
   ['model-overview', 'Model Overview'],
-  ['benchmark-eval', 'Agent Design'], ['mlb', 'MLB'], ['fitcoach', 'FitCoach (In Dev)'], ['fleet-geek', 'Fleet Geek & Rocket Nerd'],
+  ['benchmark-eval', 'Agent Design'], ['mlb', 'MLB'], ['fitcoach', 'FitCoach (In Dev)'],
 ] as const;
 type Page = typeof pages[number][0];
 const readPage = (): Page => {
@@ -31,7 +31,11 @@ const details = {
 export default function App() {
   const [page, setPage] = useState<Page>(readPage);
   useEffect(() => {
-    const navigate = () => { setPage(readPage()); window.scrollTo(0, 0); };
+    const navigate = () => {
+      if (window.location.hash === '#fleet-geek') { window.location.replace('./fleet-geek/index.html'); return; }
+      setPage(readPage()); window.scrollTo(0, 0);
+    };
+    if (window.location.hash === '#fleet-geek') navigate();
     window.addEventListener('hashchange', navigate);
     return () => window.removeEventListener('hashchange', navigate);
   }, []);
@@ -42,11 +46,11 @@ export default function App() {
     <a className="portfolio-skip" href="#main-content" onClick={event => { event.preventDefault(); document.getElementById('main-content')?.focus(); }}>Skip to content</a>
     <header className="portfolio-header">
       <a className="portfolio-brand" href="#welcome"><span className="portfolio-monogram">SM<span>.</span></span><span>Scott Marshall<small>PORTFOLIO</small></span></a>
-      <nav aria-label="Main navigation">{pages.map(([id, label]) => <a key={id} href={`#${id}`} aria-current={page === id ? 'page' : undefined}>{label}</a>)}</nav>
+      <nav aria-label="Main navigation">{pages.map(([id, label]) => <a key={id} href={`#${id}`} aria-current={page === id ? 'page' : undefined}>{label}</a>)}<a href="./fleet-geek/index.html">Fleet Geek &amp; Rocket Nerd <ArrowUpRight size={13}/></a></nav>
       <a className="portfolio-github" href="https://github.com/SpicyAIDev" target="_blank" rel="noreferrer">GitHub <ArrowUpRight size={15}/></a>
     </header>
     <main id="main-content" tabIndex={-1}>
-      {page === 'fleet-geek' ? <section className="fleet-portfolio-demo"><div><h1>Fleet Geek &amp; Rocket Nerd</h1><a href="./fleet-geek/index.html" target="_blank" rel="noreferrer">Open full-screen demo ↗</a></div><iframe src="./fleet-geek/index.html" title="Fleet Geek and Rocket Nerd interactive demo" allow="fullscreen"/></section> : page === 'fitcoach' ? <Suspense fallback={<p role="status">Loading FitCoach…</p>}><FitCoachPage/></Suspense> : page === 'mlb' ? <Suspense fallback={<p role="status">Loading MLB…</p>}><MLBPage/></Suspense> : page === 'model-overview' ? <ModelOverview/> : page === 'benchmark-eval' ? <Suspense fallback={<p className="portfolio-content" role="status">Loading Agent Design…</p>}><BenchmarkEval/></Suspense> : <div className="portfolio-content">
+      {page === 'fitcoach' ? <Suspense fallback={<p role="status">Loading FitCoach…</p>}><FitCoachPage/></Suspense> : page === 'mlb' ? <Suspense fallback={<p role="status">Loading MLB…</p>}><MLBPage/></Suspense> : page === 'model-overview' ? <ModelOverview/> : page === 'benchmark-eval' ? <Suspense fallback={<p className="portfolio-content" role="status">Loading Agent Design…</p>}><BenchmarkEval/></Suspense> : <div className="portfolio-content">
         {page === 'welcome' ? <>
           <section className="portfolio-hero">
             <div><p className="portfolio-eyebrow"><span/> WELCOME TO MY CORNER OF THE INTERNET</p>

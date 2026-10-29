@@ -120,4 +120,4 @@ The prebuild step packages a standalone, buildable copy of the FitCoach demo in 
 
 ## Fleet Geek & Rocket Nerd
 
-The `#fleet-geek` portfolio tab embeds `public/fleet-geek/index.html`, a self-contained static snapshot of the separate `fleet-geek-rocket-nerd` repository. The My Projects entry also links to the full-screen demo and source repository. No Sites authentication or server is needed. Preserve in-page source links and artwork credits when updating the snapshot.
+The portfolio navigation and My Projects entry link directly to the standalone `fleet-geek/index.html` site, a self-contained static snapshot of the separate `fleet-geek-rocket-nerd` repository. It opens without portfolio navigation or an iframe, preserving the original design. Older `#fleet-geek` links redirect to this standalone page. The project card also links to the source repository. No Sites authentication or server is needed. Preserve in-page source links and artwork credits when updating the snapshot.
