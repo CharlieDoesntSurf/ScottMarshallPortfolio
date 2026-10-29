@@ -1,5 +1,36 @@
 [
   {
+    "name": "fleet-geek-rocket-nerd",
+    "displayName": "Fleet Geek & Rocket Nerd",
+    "category": "Data visualization",
+    "description": "Interactive fleet hierarchy and missile reference catalog, with public-source research, 3D weapon views, range comparisons, and human-scale silhouettes.",
+    "tools": [
+      "Codex",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Canvas",
+      "SVG"
+    ],
+    "libraries": [
+      "Sketchfab Viewer API"
+    ],
+    "inputs": "Public fleet estimates, missile specifications, manufacturer descriptions, and owner-supplied reference imagery. Estimates and illustrative models are labeled.",
+    "usage": "Open the live demo to explore Fleet Geek and Rocket Nerd. No sign-in or backend setup required.",
+    "url": "https://github.com/CharlieDoesntSurf/fleet-geek-rocket-nerd",
+    "private": true,
+    "languages": [
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "sources": [
+      "README.md",
+      "dist/"
+    ],
+    "demoUrl": "./fleet-geek/index.html"
+  },
+  {
     "name": "GPTModelOverviewPage",
     "category": "AI & education",
     "description": "Interactive guide to the GPT pipeline, from tokenization and embeddings to attention, feed-forward layers, and generation. Includes a training simulation and prompt bank.",

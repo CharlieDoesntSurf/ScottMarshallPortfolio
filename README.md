@@ -117,3 +117,7 @@ The UI snapshot lives in `src/fitcoach`, adapted from `/Users/scott/project/Fitn
 `public/fitcoach/catalog.json` contains public upstream exercise/template data only. Media uses the pinned upstream CDN URLs already used by openGym; license and provenance notices are in `public/fitcoach/legal`. `scripts/export-fitcoach-catalog.mjs` regenerates this public-only snapshot from the prepared source import on the development machine; it is not run by CI. The source revision is `ce30c7304bdeb66a6eb4a3d14821a06035523b06`.
 
 The prebuild step packages a standalone, buildable copy of the FitCoach demo in `public/fitcoach/source.zip`, linked from the demo footer. It includes the demo source, public catalog, license notices and build configuration, with no environment files. Regenerate by running `npm run build`. Update the embedded copy deliberately when the connected application changes.
+
+## Fleet Geek & Rocket Nerd
+
+The `#fleet-geek` portfolio tab embeds `public/fleet-geek/index.html`, a self-contained static snapshot of the separate `fleet-geek-rocket-nerd` repository. The My Projects entry also links to the full-screen demo and source repository. No Sites authentication or server is needed. Preserve in-page source links and artwork credits when updating the snapshot.
