@@ -20,8 +20,8 @@ export function WorkoutBuilder({
     <section className="card builder">
       <div className="section-top">
         <div>
-          <h3>Your workout, your way.</h3>
-          <p>Choose from the catalog or add a custom exercise.</p>
+          <h3>Make it yours.</h3>
+
         </div>
         <button className="secondary" onClick={() => setOpen(!open)}>
           {open ? "Close builder" : "Create workout"}

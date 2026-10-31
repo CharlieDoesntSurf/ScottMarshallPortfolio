@@ -6,7 +6,8 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite",
-    "prebuild": "node scripts/package-fitcoach-source.mjs"
+    "prebuild": "node scripts/package-fitcoach-source.mjs",
+    "test:interview": "node --test server/coach-interview.test.mjs"
   },
   "dependencies": {
     "@emotion/react": "11.14.0",

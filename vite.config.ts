@@ -1,3 +1,4 @@
+import { coachInterviewApi } from './server/coach-interview.mjs'
 import { defineConfig } from 'vite'
 import path from 'path'
 import packageJson from './package.json'
@@ -21,6 +22,7 @@ export default defineConfig({
   base: './',
   build: { rollupOptions: { input: {main: path.resolve(__dirname,'index.html'), fitcoach: path.resolve(__dirname,'fitcoach/index.html')} } },
   plugins: [
+    coachInterviewApi(),
     figmaAssetResolver(),
     // The React and Tailwind plugins are both required for Make, even if
     // Tailwind is not being actively used – do not remove them

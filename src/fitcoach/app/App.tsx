@@ -1,3 +1,6 @@
+import teddyLogo from "../assets/coach-teddy.png";
+import { TeddyBrand } from "./prototype/TeddyBrand";
+import { InterviewChat } from "./prototype/InterviewChat";
 import { useEffect, useRef, useState } from "react";
 import {
   Activity,
@@ -26,14 +29,12 @@ import {
 } from "lucide-react";
 import { IPhoneFrame } from "./prototype/IPhoneFrame";
 import {
-  emptyIntake,
   weekDays,
   schemaGroups,
   newSession,
   type Intake,
   type Session,
   type Routine,
-  type Equipment,
 } from "./prototype/data";
 import {
   agentContract,
@@ -79,7 +80,6 @@ export default function App() {
     mainShellRef.current?.scrollTo(0, 0);
     window.scrollTo(0, 0);
   }, [page, view, active?.id]);
-  const [draft, setDraft] = useState<Intake>(intake ?? emptyIntake);
   const [preview, setPreview] = useState<CoachPreview | null>(null);
   const [notice, setNotice] = useState("");
   const [search, setSearch] = useState("");
@@ -87,9 +87,6 @@ export default function App() {
 
   const [equipment, setEquipment] = useState("All equipment");
   useEffect(() => setVisibleCount(24), [search, equipment]);
-  useEffect(() => {
-    if (intake) setDraft(intake);
-  }, [intake]);
   const [libraryTab, setLibraryTab] = useState<"routines" | "exercises">(
     "routines",
   );
@@ -108,17 +105,13 @@ export default function App() {
     (sum, s) => sum + s.sets.filter((s) => s.done).length,
     0,
   );
-  const setField = <K extends keyof Intake>(key: K, value: Intake[K]) =>
-    setDraft({ ...draft, [key]: value });
-  const toggle = <T,>(list: T[], item: T) =>
-    list.includes(item) ? list.filter((x) => x !== item) : [...list, item];
   const runPreview = () => {
     if (!intake) {
       go("interview");
       return;
     }
     setPreview(previewCoach(intake, exercises));
-    setNotice("Preview generated locally. No API request was made.");
+    setNotice("Workout preview ready.");
   };
   const start = (r: Routine) => {
     setActive(newSession(r));
@@ -156,7 +149,7 @@ export default function App() {
     );
   const title = nav.find((n) => n.id === page)!.label;
   const content = (
-    <div className={`fit-app ${view === "phone" ? "compact" : ""}`}>
+    <div className={`fit-app ${view === "phone" ? "compact" : ""} ${page === "interview" && !active ? "is-interview" : ""}`}>
       {view === "phone" && (
         <div className="phone-status">
           <b>9:41</b>
@@ -176,10 +169,7 @@ export default function App() {
             go("overview");
           }}
         >
-          <span className="brand-icon">
-            <Activity size={24} />
-          </span>
-          fitcoach<span className="brand-dot">.</span>
+          <TeddyBrand />
         </a>
         <div className="nav-label">YOUR SPACE</div>
         <nav>
@@ -198,11 +188,7 @@ export default function App() {
         </nav>
         <div className="sidebar-bottom">
           <div className="local-dot" /> DEMO WORKSPACE
-          <p>
-            Your next chapter
-            <br />
-            starts with one rep.
-          </p>
+
           <div className="profile">
             <span>{intake?.name.charAt(0).toUpperCase() || "Y"}</span>
             <div>
@@ -250,7 +236,7 @@ export default function App() {
                 <div>
                   <p className="eyebrow">YOUR WORKOUT · DEMO LOG</p>
                   <h1>{active.name}</h1>
-                  <p>Record what you did. Loads are in kilograms.</p>
+                  <p>Loads in kg.</p>
                 </div>
                 <button
                   className="secondary"
@@ -386,13 +372,13 @@ export default function App() {
             <>
               <div className="page-heading">
                 <div>
-                  <p className="eyebrow">MAKE ROOM FOR A STRONGER YOU</p>
+                  <p className="eyebrow">YOUR DAILY CHECK-IN</p>
                   <h1>
                     {intake
                       ? `Let's keep moving, ${intake.name}.`
-                      : "Small steps. Real progress."}
+                      : "Let’s make moves."}
                   </h1>
-                  <p>Your training, your rhythm. All in one place.</p>
+
                 </div>
                 <span className="date-label">
                   {today.toLocaleDateString("en-US", {
@@ -409,32 +395,20 @@ export default function App() {
                       <Sparkles size={13} /> BUILT AROUND YOU
                     </span>
                     <h2>
-                      A plan that starts
+                      Your pace.
                       <br />
-                      with your story.
+                      Your plan.
                     </h2>
-                    <p>
-                      Tell us where you are and where you want to go.
-                      <br className="desktop-break" /> Let’s make your next step
-                      a little clearer.
-                    </p>
+
                     <button className="primary" onClick={() => go("interview")}>
                       {intake
-                        ? "Update your interview"
-                        : "Start your interview"}
+                        ? "Update my profile"
+                        : "Talk to Teddy"}
                       <ArrowRight size={17} />
                     </button>
-                    <small>About 2 minutes · Saved in this browser</small>
+                    <small>One conversation to get started.</small>
                   </div>
-                  <div className="orbit-art" aria-hidden="true">
-                    <div className="orbit o1" />
-                    <div className="orbit o2" />
-                    <div className="orbit o3" />
-                    <div className="orbit-center">
-                      <Activity size={48} />
-                    </div>
-                    <span className="orbit-spark">✦</span>
-                  </div>
+                  <img className="teddy-hero-logo" src={teddyLogo} alt="Coach Teddy" />
                 </section>
                 <section className="card week-card">
                   <div className="section-top">
@@ -478,7 +452,7 @@ export default function App() {
                       <small>
                         {intake?.days.includes(weekDays[selectedDay])
                           ? `${intake.minutes} minutes · Choose a routine`
-                          : "Your schedule starts with your interview"}
+                          : "Choose your training days"}
                       </small>
                     </div>
                   </div>
@@ -547,7 +521,7 @@ export default function App() {
                   <div>
                     <span className="eyebrow">OPENGYM STARTER ROUTINE</span>
                     <h2>{routines[0]?.name || "Build your first workout"}</h2>
-                    <p>Simple movements. A solid place to begin.</p>
+
                     <div className="metadata">
                       <span>
                         <Clock3 size={14} />
@@ -574,13 +548,12 @@ export default function App() {
                     <span className="tag">PREVIEW</span>
                   </div>
                   <h3>
-                    A little guidance.
-                    <br />A lot of possibility.
+                    Your next step.
                   </h3>
                   <p>
                     {intake
-                      ? "Your interview is ready. Explore how your coach will turn your context into a draft."
-                      : "Your coach starts by listening. Complete your interview to preview the experience."}
+                      ? "Your profile is ready."
+                      : "Let’s find your starting point."}
                   </p>
                   <button
                     className="text-button"
@@ -615,214 +588,26 @@ export default function App() {
                     ))
                 ) : (
                   <p>
-                    Your story is just getting started. Your completed workouts
-                    will appear here.
+                    No workouts logged yet.
                   </p>
                 )}
               </section>
             </>
           ) : page === "interview" ? (
-            <>
-              <div className="page-heading">
-                <div>
-                  <p className="eyebrow">FIRST, A LITTLE ABOUT YOU</p>
-                  <h1>Let’s find your rhythm.</h1>
-                  <p>
-                    A brief interview to make your training feel like yours.
-                  </p>
-                </div>
-                <span className="pill">01 / YOUR FOUNDATION</span>
-              </div>
-              <form
-                className="interview-grid"
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  try {
-                    const result = previewCoach(draft, exercises);
-                    saveIntake(draft);
-                    setPreview(result);
-                    setPage("agent");
-                    setNotice(
-                      "Interview saved in this browser. Your offline coach preview is ready.",
-                    );
-                  } catch (err) {
-                    setNotice((err as Error).message);
-                  }
-                }}
-              >
-                <div className="card form-card">
-                  <label>
-                    Your first name
-                    <input
-                      required
-                      maxLength={60}
-                      placeholder="What should we call you?"
-                      value={draft.name}
-                      onChange={(e) => setField("name", e.target.value)}
-                    />
-                  </label>
-                  <fieldset>
-                    <legend>What are you working toward?</legend>
-                    <div className="option-grid">
-                      {[
-                        "Build strength",
-                        "Build muscle",
-                        "Improve fitness",
-                        "Build consistency",
-                      ].map((goal) => (
-                        <button
-                          key={goal}
-                          type="button"
-                          aria-pressed={draft.goal === goal}
-                          className={
-                            draft.goal === goal ? "option selected" : "option"
-                          }
-                          onClick={() => setField("goal", goal)}
-                        >
-                          <Target size={17} />
-                          {goal}
-                          {draft.goal === goal && <Check size={15} />}
-                        </button>
-                      ))}
-                    </div>
-                  </fieldset>
-                  <label>
-                    Your training experience
-                    <select
-                      value={draft.experience}
-                      onChange={(e) => setField("experience", e.target.value)}
-                    >
-                      {[
-                        "Getting started",
-                        "Some experience",
-                        "Experienced",
-                      ].map((s) => (
-                        <option key={s}>{s}</option>
-                      ))}
-                    </select>
-                  </label>
-                  <fieldset>
-                    <legend>Which days can you make time?</legend>
-                    <div className="day-options">
-                      {weekDays.map((d) => (
-                        <button
-                          type="button"
-                          aria-pressed={draft.days.includes(d)}
-                          className={draft.days.includes(d) ? "selected" : ""}
-                          key={d}
-                          onClick={() =>
-                            setField("days", toggle(draft.days, d))
-                          }
-                        >
-                          {d}
-                        </button>
-                      ))}
-                    </div>
-                  </fieldset>
-                  <label>
-                    Time for each session{" "}
-                    <span className="range-value">{draft.minutes} min</span>
-                    <input
-                      type="range"
-                      min="15"
-                      max="90"
-                      step="5"
-                      value={draft.minutes}
-                      onChange={(e) =>
-                        setField("minutes", Number(e.target.value))
-                      }
-                    />
-                  </label>
-                  <fieldset>
-                    <legend>What equipment do you have?</legend>
-                    <div className="chips">
-                      {(
-                        [
-                          "Bodyweight",
-                          "Dumbbells",
-                          "Barbell",
-                          "Cable",
-                          "Machine",
-                        ] as Equipment[]
-                      ).map((v) => (
-                        <button
-                          type="button"
-                          className={
-                            draft.equipment.includes(v) ? "selected" : ""
-                          }
-                          aria-pressed={draft.equipment.includes(v)}
-                          key={v}
-                          onClick={() =>
-                            setField("equipment", toggle(draft.equipment, v))
-                          }
-                        >
-                          {v}
-                        </button>
-                      ))}
-                    </div>
-                  </fieldset>
-                  <label>
-                    Any limitations or movements to avoid?{" "}
-                    <small>Optional</small>
-                    <textarea
-                      maxLength={1500}
-                      placeholder="Anything you want your coach to take into account…"
-                      value={draft.limitations}
-                      onChange={(e) => setField("limitations", e.target.value)}
-                    />
-                  </label>
-                  <label>
-                    What’s your personal “why”? <small>Optional</small>
-                    <textarea
-                      maxLength={2000}
-                      placeholder="I want to feel stronger for…"
-                      value={draft.motivation}
-                      onChange={(e) => setField("motivation", e.target.value)}
-                    />
-                  </label>
-                  <button className="primary" type="submit">
-                    Save & preview my coach <ArrowRight size={17} />
-                  </button>
-                </div>
-                <aside className="card interview-aside">
-                  <span className="icon-tile pink">
-                    <Heart size={24} />
-                  </span>
-                  <h2>
-                    Your goals.
-                    <br />
-                    Your starting point.
-                  </h2>
-                  <p>
-                    There’s no perfect answer. A plan you can show up for is a
-                    good place to start.
-                  </p>
-                  <hr />
-                  <h4>What happens next</h4>
-                  <ol>
-                    <li>Save your interview on this browser.</li>
-                    <li>Review a sample coach response.</li>
-                    <li>Shape the experience before connecting AI.</li>
-                  </ol>
-                  <div className="small-note">
-                    <ShieldCheck size={18} />
-                    <span>
-                      Nothing is sent to a model or database in this prototype.
-                    </span>
-                  </div>
-                </aside>
-              </form>
-            </>
+            <InterviewChat initialIntake={intake} onSave={(profile: Intake) => {
+              const result = previewCoach(profile, exercises);
+              saveIntake(profile);
+              setPreview(result);
+              setPage("agent");
+              setNotice("Profile saved.");
+            }} />
           ) : page === "workouts" ? (
             <>
               <div className="page-heading">
                 <div>
                   <p className="eyebrow">BUILD YOUR PRACTICE</p>
-                  <h1>A little stronger, every day.</h1>
-                  <p>
-                    Build your own workout or explore the complete openGym
-                    exercise library.
-                  </p>
+                  <h1>Your workouts.</h1>
+
                 </div>
                 <span className="pill">{exercises.length} EXERCISES</span>
               </div>
@@ -970,10 +755,9 @@ export default function App() {
                   <p className="eyebrow">
                     LISTEN → UNDERSTAND → SUGGEST → REVIEW
                   </p>
-                  <h1>Meet your future coach.</h1>
+                  <h1>Your starting plan.</h1>
                   <p>
-                    A transparent rehearsal of the agent, before connecting a
-                    model.
+                    A local workout preview from your profile.
                   </p>
                 </div>
                 <span className="pill">
@@ -1008,7 +792,7 @@ export default function App() {
                         className="primary"
                         onClick={() => go("interview")}
                       >
-                        Start your interview <ArrowRight size={16} />
+                        Talk to Teddy <ArrowRight size={16} />
                       </button>
                     </>
                   )}
@@ -1046,13 +830,13 @@ export default function App() {
                           })
                         }
                       >
-                        <ArrowDownToLine size={16} /> Export review packet
+                        <ArrowDownToLine size={16} /> Export preview
                       </button>
                     </div>
                   )}
                 </section>
                 <section className="card">
-                  <p className="eyebrow">AGENT CONTRACT · V1</p>
+                  <details className="coach-details"><summary>How suggestions work</summary>
                   <h2>Designed to be reviewable.</h2>
                   <div className="contract-step">
                     <span>01</span>
@@ -1091,10 +875,10 @@ export default function App() {
                   <div className="small-note">
                     <ShieldCheck size={19} />
                     <span>
-                      Model selection and live API evaluation are still pending.
-                      This preview does not assess model quality.
+                      Interview chat uses OpenAI. Workout suggestions here use local rules.
                     </span>
                   </div>
+                </details>
                 </section>
               </div>
             </>
@@ -1199,7 +983,7 @@ export default function App() {
           )}
         </main>
         <footer className="app-footer">
-          <span>FITCOACH · A LITTLE BETTER, EVERY DAY.</span>
+          <span>COACH TEDDY · BE WELL, YOUR WAY.</span>
           <span>Browser-saved demo · In Dev</span>
         </footer>
       </div>
@@ -1309,11 +1093,11 @@ export default function App() {
   );
   return (
     <div className={`prototype-stage ${view}`}>
-      <div className="demo-disclosure">Interactive development demo · Your entries stay in this browser · AI is off</div>
+      <div className="demo-disclosure">Demo · Workouts saved in this browser</div>
       <div className="preview-toolbar">
         <div>
           <Activity size={18} />
-          <b>FitCoach</b>
+          <b>Coach Teddy</b>
           <span>DESIGN PREVIEW</span>
         </div>
         <div className="view-switch" aria-label="Preview mode">
@@ -1343,7 +1127,7 @@ export default function App() {
           <div className="phone-caption">
             <span className="eyebrow">YOUR ROUTINE, IN YOUR POCKET</span>
             <h2>Built to move with you.</h2>
-            <p>Same workspace. A little more portable.</p>
+
           </div>
           <IPhoneFrame>{content}</IPhoneFrame>
           <p className="phone-footnote">

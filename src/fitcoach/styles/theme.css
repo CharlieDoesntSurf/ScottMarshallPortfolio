@@ -16,7 +16,7 @@
   --secondary-foreground: #ffffff;
   --muted: #3a3a3c;
   --muted-foreground: #8e8e93;
-  --accent: #ffa7ef;
+  --accent: #ff4fa3;
   --accent-foreground: #000000;
   --destructive: #ff453a;
   --destructive-foreground: #ffffff;
@@ -26,7 +26,7 @@
   --switch-background: #3a3a3c;
 
   /* iOS Activity Colors */
-  --activity-move: #fa114f;
+  --activity-move: #969d99;
   --activity-exercise: #a6ff00;
   --activity-stand: #00fff6;
 
@@ -41,15 +41,15 @@
   --font-weight-medium: 500;
   --font-weight-normal: 400;
   --ring: rgba(255, 255, 255, 0.3);
-  --chart-1: #fa114f;
+  --chart-1: #969d99;
   --chart-2: #a6ff00;
   --chart-3: #00fff6;
-  --chart-4: #ffa7ef;
+  --chart-4: #ff4fa3;
   --chart-5: #ff9f0a;
   --radius: 12px;
   --sidebar: #000000;
   --sidebar-foreground: #ffffff;
-  --sidebar-primary: #ffa7ef;
+  --sidebar-primary: #ff4fa3;
   --sidebar-primary-foreground: #000000;
   --sidebar-accent: #1c1c1e;
   --sidebar-accent-foreground: #ffffff;
@@ -70,7 +70,7 @@
   --secondary-foreground: #ffffff;
   --muted: #3a3a3c;
   --muted-foreground: #8e8e93;
-  --accent: #ffa7ef;
+  --accent: #ff4fa3;
   --accent-foreground: #000000;
   --destructive: #ff453a;
   --destructive-foreground: #ffffff;
@@ -79,14 +79,14 @@
   --ring: rgba(255, 255, 255, 0.3);
   --font-weight-medium: 500;
   --font-weight-normal: 400;
-  --chart-1: #fa114f;
+  --chart-1: #969d99;
   --chart-2: #a6ff00;
   --chart-3: #00fff6;
-  --chart-4: #ffa7ef;
+  --chart-4: #ff4fa3;
   --chart-5: #ff9f0a;
   --sidebar: #000000;
   --sidebar-foreground: #ffffff;
-  --sidebar-primary: #ffa7ef;
+  --sidebar-primary: #ff4fa3;
   --sidebar-primary-foreground: #000000;
   --sidebar-accent: #1c1c1e;
   --sidebar-accent-foreground: #ffffff;

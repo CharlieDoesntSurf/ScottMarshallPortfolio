@@ -112,7 +112,7 @@ The current dev server is http://127.0.0.1:5174/#mlb (5173 was occupied); produc
 
 The portfolio's `#fitcoach` tab embeds the actual FitCoach web/phone UI in a separate, same-origin HTML entry (`fitcoach/index.html`). This keeps its styles isolated from the portfolio's other apps. Vite builds both entries; GitHub Pages serves the complete static demo without an extra server.
 
-The UI snapshot lives in `src/fitcoach`, adapted from `/Users/scott/project/Fitnesstrackingapp`. The visitor can explore 1,324 exercises and 13 starter templates, view demonstrations/instructions, create workouts/custom exercises, record and correct sets, complete the interview and run the offline coach preview. Demo edits are saved only under `fitcoach.portfolio.workspace.v1` in the visitor's browser. The banner and save indicators describe this accurately. The connected localhost app remains in its separate repository; its database server, credentials, private bucket URLs and user records are not included here.
+The UI snapshot lives in `src/fitcoach`, adapted from `/Users/scott/project/Fitnesstrackingapp`. The visitor can explore 1,324 exercises and 13 starter templates, view demonstrations/instructions, create workouts/custom exercises, record and correct sets, chat with Teddy when a model server is available and run the local workout preview. Demo edits are saved only under `fitcoach.portfolio.workspace.v1` in the visitor's browser. The banner and save indicators describe this accurately. The connected localhost app remains in its separate repository; its database server, credentials, private bucket URLs and user records are not included here.
 
 `public/fitcoach/catalog.json` contains public upstream exercise/template data only. Media uses the pinned upstream CDN URLs already used by openGym; license and provenance notices are in `public/fitcoach/legal`. `scripts/export-fitcoach-catalog.mjs` regenerates this public-only snapshot from the prepared source import on the development machine; it is not run by CI. The source revision is `ce30c7304bdeb66a6eb4a3d14821a06035523b06`.
 
@@ -121,3 +121,17 @@ The prebuild step packages a standalone, buildable copy of the FitCoach demo in 
 ## Fleet Geek & Rocket Nerd
 
 The portfolio navigation and My Projects entry link directly to the standalone `fleet-geek/index.html` site, a self-contained static snapshot of the separate `fleet-geek-rocket-nerd` repository. It opens without portfolio navigation or an iframe, preserving the original design. Older `#fleet-geek` links redirect to this standalone page. The project card also links to the source repository. No Sites authentication or server is needed. Preserve in-page source links and artwork credits when updating the snapshot.
+
+## Coach Teddy theme and model interview
+
+The existing Overview, Workouts, Interview, Coach and Blueprint navigation remains. The theme uses the supplied Coach Teddy logo and the pink, near-black and lime palette from CharlieDoesntSurf/CoachTeddyWellnessApp. Interview is now a live OpenAI conversation; its validated profile is reviewed before saving. The separate workout preview still uses local rules.
+
+Run `npm run dev`. The Vite server handles `POST /api/coach/interview` before other APIs. Set `OPENAI_API_KEY` in a server-only `.env` or the process environment; optionally set `OPENAI_MODEL` (default `gpt-4o-mini`). On this machine the existing `xcode_token` in `/Users/scott/project/.env` is also supported, and the standalone app's `.env` can supply the key to both apps. Credentials never enter frontend variables or bundles. Only interview messages and an existing profile are sent to OpenAI, with `store: false`; workout history is not sent. Chat stays in memory across tab/view changes and resets on reload. Existing profile persistence is unchanged.
+
+`npm run test:interview` covers request validation, credentials boundary, structured output, upstream failures and localhost origin restrictions.
+
+### Hosting
+
+GitHub Pages serves static assets and cannot run this endpoint. Local development and `vite preview` include the model endpoint. For a hosted portfolio, supply `VITE_COACH_API_URL` at build time pointing to a separately hosted, authenticated model service, or host the app with a same-origin server endpoint. The URL is public configuration, never a secret. The supplied middleware intentionally accepts loopback hosts and same-origin requests only; do not remove that protection to expose a shared paid API key publicly. A production service needs authentication, authorized origins, durable rate limits and server-side secrets. No hosted service or production deployment is created by these source changes.
+
+API format: https://developers.openai.com/api/docs/guides/structured-outputs
