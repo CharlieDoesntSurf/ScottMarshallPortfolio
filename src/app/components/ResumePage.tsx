@@ -5,7 +5,7 @@ import ToolBeltPage from './ToolBeltPage';
 export default function ResumePage() {
   return <article className="resume-page">
     <header className="resume-profile">
-      <div className="resume-introduction"><h1>{resume.name}</h1><p className="resume-role">{resume.roles[0].title}</p><p className="resume-clearance">Clearance: TS/SCI (Current)</p><div className="resume-links">
+      <div className="resume-introduction"><h1>{resume.name}</h1><p className="resume-role">{resume.roles[0].title}</p><p className="resume-clearance">Clearance: <span className="resume-clearance-value">TS/SCI (CURRENT)</span></p><div className="resume-links">
         <a className="portfolio-primary" href={`${import.meta.env.BASE_URL}resume/scott-marshall-resume-september-2026.pdf`} download="Scott-Marshall-Resume-September-2026.pdf"><Download size={16}/> Download PDF</a>
         <a className="portfolio-primary" href="https://github.com/SpicyAIDev" target="_blank" rel="noreferrer"><Github size={16}/> GitHub <ArrowUpRight size={14}/></a>
       </div></div>
