@@ -73,7 +73,7 @@
   },
   {
     "name": "AI FDE",
-    "group": "Palantir",
+    "group": "Palantir, Front End & Testing",
     "logo": "/tool-logos/core/palantir.svg",
     "initials": "AI",
     "note": "Python, TypeScript & Widget repos",
@@ -81,7 +81,7 @@
   },
   {
     "name": "Foundry",
-    "group": "Palantir",
+    "group": "Palantir, Front End & Testing",
     "logo": "/tool-logos/core/palantir.svg",
     "initials": "F",
     "note": "",
@@ -89,7 +89,7 @@
   },
   {
     "name": "Ontology",
-    "group": "Palantir",
+    "group": "Palantir, Front End & Testing",
     "logo": "/tool-logos/core/palantir.svg",
     "initials": "Ont",
     "note": "",
@@ -97,7 +97,7 @@
   },
   {
     "name": "Workshop",
-    "group": "Palantir",
+    "group": "Palantir, Front End & Testing",
     "logo": "/tool-logos/core/palantir.svg",
     "initials": "Wor",
     "note": "",
@@ -105,7 +105,7 @@
   },
   {
     "name": "AIP",
-    "group": "Palantir",
+    "group": "Palantir, Front End & Testing",
     "logo": "/tool-logos/core/palantir.svg",
     "initials": "AIP",
     "note": "",
@@ -113,7 +113,7 @@
   },
   {
     "name": "Gaia",
-    "group": "Palantir",
+    "group": "Palantir, Front End & Testing",
     "logo": "/tool-logos/core/palantir.svg",
     "initials": "G",
     "note": "",
@@ -121,7 +121,7 @@
   },
   {
     "name": "Maverick",
-    "group": "Palantir",
+    "group": "Palantir, Front End & Testing",
     "logo": "/tool-logos/core/palantir.svg",
     "initials": "M",
     "note": "",
@@ -129,7 +129,7 @@
   },
   {
     "name": "Gotham",
-    "group": "Palantir",
+    "group": "Palantir, Front End & Testing",
     "logo": "/tool-logos/core/palantir.svg",
     "initials": "G",
     "note": "",
@@ -177,7 +177,7 @@
   },
   {
     "name": "React",
-    "group": "Front End & Testing",
+    "group": "Palantir, Front End & Testing",
     "logo": "/tool-logos/core/react.svg",
     "initials": "R",
     "note": "",
@@ -185,7 +185,7 @@
   },
   {
     "name": "Tailwind CSS",
-    "group": "Front End & Testing",
+    "group": "Palantir, Front End & Testing",
     "logo": "/tool-logos/core/tailwindcss.svg",
     "initials": "TC",
     "note": "",
@@ -193,7 +193,7 @@
   },
   {
     "name": "Vite",
-    "group": "Front End & Testing",
+    "group": "Palantir, Front End & Testing",
     "logo": "/tool-logos/core/vite.svg",
     "initials": "V",
     "note": "",
@@ -201,7 +201,7 @@
   },
   {
     "name": "CSS",
-    "group": "Front End & Testing",
+    "group": "Palantir, Front End & Testing",
     "logo": "/tool-logos/core/css3.svg",
     "initials": "C",
     "note": "",
@@ -209,7 +209,7 @@
   },
   {
     "name": "TypeScript",
-    "group": "Front End & Testing",
+    "group": "Palantir, Front End & Testing",
     "logo": "/tool-logos/core/typescript.svg",
     "initials": "T",
     "note": "",
@@ -217,7 +217,7 @@
   },
   {
     "name": "HTML",
-    "group": "Front End & Testing",
+    "group": "Palantir, Front End & Testing",
     "logo": "/tool-logos/core/html5.svg",
     "initials": "H",
     "note": "",
@@ -225,7 +225,7 @@
   },
   {
     "name": "Qlik",
-    "group": "Front End & Testing",
+    "group": "Palantir, Front End & Testing",
     "logo": "/tool-logos/core/qlik.svg",
     "initials": "Q",
     "note": "",
@@ -233,7 +233,7 @@
   },
   {
     "name": "Tableau",
-    "group": "Front End & Testing",
+    "group": "Palantir, Front End & Testing",
     "logo": "/tool-logos/core/tableau.svg",
     "initials": "T",
     "note": "",
@@ -241,7 +241,7 @@
   },
   {
     "name": "Log4j",
-    "group": "Front End & Testing",
+    "group": "Palantir, Front End & Testing",
     "logo": "/tool-logos/core/apache.svg",
     "initials": "L4J",
     "note": "Logging & diagnostics",
@@ -249,7 +249,7 @@
   },
   {
     "name": "pytest",
-    "group": "Front End & Testing",
+    "group": "Palantir, Front End & Testing",
     "logo": "/tool-logos/core/pytest.svg",
     "initials": "p",
     "note": "",
@@ -257,7 +257,7 @@
   },
   {
     "name": "Node.js Test Runner",
-    "group": "Front End & Testing",
+    "group": "Palantir, Front End & Testing",
     "logo": null,
     "initials": "JS",
     "note": "Built-in test runner",
@@ -265,7 +265,7 @@
   },
   {
     "name": "PyTorch Breakpoint",
-    "group": "Front End & Testing",
+    "group": "Palantir, Front End & Testing",
     "logo": "/tool-logos/core/pytorch.svg",
     "initials": "PT",
     "note": "Breakpoint debugging for PyTorch workflows",

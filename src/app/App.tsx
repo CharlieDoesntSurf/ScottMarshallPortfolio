@@ -42,7 +42,7 @@ export default function App() {
   return <div className={`portfolio ${page === 'resume' ? 'portfolio-resume' : page === 'projects' ? 'portfolio-projects' : ''} ${page !== 'model-overview' && page !== 'benchmark-eval' ? 'portfolio-home' : ''}`}>
     <a className="portfolio-skip" href="#main-content" onClick={event => { event.preventDefault(); document.getElementById('main-content')?.focus(); }}>Skip to content</a>
     <header className="portfolio-header">
-      <a className="portfolio-brand" href="#resume" aria-label="Scott Marshall home"><img className="portfolio-nixon-logo" src={`${import.meta.env.BASE_URL}fleet-geek/assets/person-silhouette.png`} alt=""/><span className="portfolio-sm">SM</span></a>
+      <a className="portfolio-brand" href="#resume" aria-label="Scott Marshall home"><span className="portfolio-profile-photo"><img src={`${import.meta.env.BASE_URL}profile/surf-sunset.png`} alt=""/></span></a>
       <nav aria-label="Main navigation">{navigation.map(({ id, label, icon: Icon, tone }) => <a className={`nav-tab tone-${tone}`} key={id} href={id === 'defense' ? './fleet-geek/index.html' : `#${id}`} aria-current={page === id ? 'page' : undefined}><>{id === 'defense' ? <img className="defense-nav-logo" src={`${import.meta.env.BASE_URL}fleet-geek/assets/person-silhouette.png`} alt=""/> : id === 'fitcoach' ? <TeddyBear/> : <Icon size={16} aria-hidden="true"/>}</>{label}</a>)}</nav>
     </header>
     <main id="main-content" tabIndex={-1}>
