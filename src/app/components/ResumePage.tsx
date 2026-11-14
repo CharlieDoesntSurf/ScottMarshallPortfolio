@@ -1,15 +1,29 @@
-import { Download, Mail, Phone, MapPin, Github, ArrowUpRight, BrainCircuit, Network, Layers } from 'lucide-react';
+import { Download, Github, ArrowUpRight, BrainCircuit, Network, Layers } from 'lucide-react';
 import resume from '../data/resume.json';
 import ToolBeltPage from './ToolBeltPage';
 
 export default function ResumePage() {
   return <article className="resume-page">
-    <header className="resume-profile">
-      <div className="resume-introduction"><h1>{resume.name}</h1><p className="resume-role">{resume.roles[0].title}</p><p className="resume-clearance">Clearance: <span className="resume-clearance-value">TS/SCI (CURRENT)</span></p><div className="resume-links">
-        <a className="portfolio-primary" href={`${import.meta.env.BASE_URL}resume/scott-marshall-resume-september-2026.pdf`} download="Scott-Marshall-Resume-September-2026.pdf"><Download size={16}/> Download PDF</a>
-        <a className="portfolio-primary" href="https://github.com/SpicyAIDev" target="_blank" rel="noreferrer"><Github size={16}/> GitHub <ArrowUpRight size={14}/></a>
-      </div></div>
-      <div className="resume-contact-block"><address><span><MapPin size={14}/><span>{resume.contact[0]}<br/>{resume.contact[1]}</span></span><a href="tel:+13367078552"><Phone size={14}/>{resume.contact[2]}</a><a href={`mailto:${resume.contact[3]}`}><Mail size={14}/>{resume.contact[3]}</a><a className="resume-unclass" href="mailto:scott.m.marshall15.ctr@mail.mil"><Mail size={14}/><span>Unclass: scott.m.marshall15.ctr@mail.mil</span></a><a className="resume-unclass" href="tel:+18084770125"><Phone size={14}/><span>Unclass Line: (808)477-0125</span></a></address></div>
+    <header className="resume-magazine">
+      <div className="resume-magazine-title">
+        <p className="resume-kicker">HONOLULU, HAWAII / RESUME</p>
+        <h1>{resume.name}.</h1>
+        <p className="resume-magazine-role">{resume.roles[0].title}</p>
+        <div className="resume-magazine-actions">
+          <a href={`${import.meta.env.BASE_URL}resume/scott-marshall-resume-september-2026.pdf`} download="Scott-Marshall-Resume-September-2026.pdf"><Download size={15}/> Download PDF</a>
+          <a href="https://github.com/SpicyAIDev" target="_blank" rel="noreferrer"><Github size={15}/> GitHub <ArrowUpRight size={13}/></a>
+        </div>
+      </div>
+      <div className="resume-magazine-details">
+        <div className="resume-magazine-clearance"><span>CLEARANCE</span><strong className="resume-clearance-value">TS/SCI <small>(CURRENT)</small></strong></div>
+        <address className="resume-contact-grid">
+          <div><span className="resume-contact-label">ADDRESS</span><span>{resume.contact[0]}<br/>{resume.contact[1]}</span></div>
+          <div><span className="resume-contact-label">PHONE</span><a href="tel:+13367078552">{resume.contact[2]}</a></div>
+          <div className="resume-contact-wide"><span className="resume-contact-label">EMAIL</span><a href={`mailto:${resume.contact[3]}`}>{resume.contact[3]}</a></div>
+          <div className="resume-contact-wide"><span className="resume-contact-label">UNCLASS EMAIL</span><a href="mailto:scott.m.marshall15.ctr@mail.mil">scott.m.marshall15.ctr@mail.mil</a></div>
+          <div className="resume-contact-wide"><span className="resume-contact-label">UNCLASS LINE</span><a href="tel:+18084770125">(808)477-0125</a></div>
+        </address>
+      </div>
     </header>
     <ToolBeltPage embedded/>
     <section className="portfolio-explore" aria-labelledby="explore-title"><div className="portfolio-section-heading"><div><p className="portfolio-eyebrow">EXPLORE MY WORK</p><h2 id="explore-title">A few places to start.</h2></div></div><div className="portfolio-cards">
