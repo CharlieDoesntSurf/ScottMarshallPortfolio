@@ -137,7 +137,7 @@
   },
   {
     "name": "Supabase",
-    "group": "Platforms & infrastructure",
+    "group": "Languages & data",
     "logo": "/tool-logos/core/supabase.svg",
     "initials": "S",
     "note": "",
@@ -145,7 +145,7 @@
   },
   {
     "name": "Git",
-    "group": "Platforms & infrastructure",
+    "group": "Languages & data",
     "logo": "/tool-logos/core/git.svg",
     "initials": "G",
     "note": "",
@@ -153,7 +153,7 @@
   },
   {
     "name": "Docker",
-    "group": "Platforms & infrastructure",
+    "group": "Languages & data",
     "logo": "/tool-logos/core/docker.svg",
     "initials": "D",
     "note": "",
@@ -161,7 +161,7 @@
   },
   {
     "name": "Kubernetes",
-    "group": "Platforms & infrastructure",
+    "group": "Languages & data",
     "logo": "/tool-logos/core/kubernetes.svg",
     "initials": "K",
     "note": "",
@@ -169,7 +169,7 @@
   },
   {
     "name": "Unix",
-    "group": "Platforms & infrastructure",
+    "group": "Languages & data",
     "logo": null,
     "initials": ">_",
     "note": "",

@@ -4,9 +4,14 @@ import ToolBeltPage from './ToolBeltPage';
 
 export default function ResumePage() {
   return <article className="resume-page">
-    <div className="resume-topline"><p>RESUME / SCOTT MARSHALL</p><a className="portfolio-primary" href={`${import.meta.env.BASE_URL}resume/scott-marshall-resume-september-2026.pdf`} download="Scott-Marshall-Resume-September-2026.pdf"><Download size={17}/> Download PDF</a></div>
-    <header className="resume-profile"><div><h1>{resume.name}</h1><p className="resume-role">{resume.roles[0].title}</p><p className="resume-summary">Building AI systems and the data foundations behind them.</p><div className="resume-links"><a className="portfolio-primary" href="https://github.com/SpicyAIDev" target="_blank" rel="noreferrer"><Github size={16}/> GitHub <ArrowUpRight size={14}/></a><a className="portfolio-secondary" href="#experience">Tool Belt <ArrowUpRight size={14}/></a></div><span className="resume-clearance">{resume.clearance}</span></div><address><span><MapPin size={15}/><span>{resume.contact[0]}<br/>{resume.contact[1]}</span></span><a href="tel:+13367078552"><Phone size={15}/>{resume.contact[2]}</a><a href={`mailto:${resume.contact[3]}`}><Mail size={15}/>{resume.contact[3]}</a></address></header>
-    <div className="resume-focus" aria-label="Core capabilities"><span>AI training &amp; fine-tuning</span><span>Testing &amp; troubleshooting</span><span>Data engineering, science &amp; architecture</span><span>Agentic full-stack development</span></div>
+    <header className="resume-profile">
+      <div className="resume-identity"><h1>{resume.name}</h1><span className="resume-clearance">Clearance Eligibility: TS/SCI (Current)</span></div>
+      <div><p className="resume-role">{resume.roles[0].title}</p><p className="resume-summary">Building AI systems and the data foundations behind them.</p><div className="resume-links">
+        <a className="portfolio-primary" href={`${import.meta.env.BASE_URL}resume/scott-marshall-resume-september-2026.pdf`} download="Scott-Marshall-Resume-September-2026.pdf"><Download size={16}/> Download PDF</a>
+        <a className="portfolio-primary" href="https://github.com/SpicyAIDev" target="_blank" rel="noreferrer"><Github size={16}/> GitHub <ArrowUpRight size={14}/></a>
+      </div></div>
+      <address><span><MapPin size={15}/><span>{resume.contact[0]}<br/>{resume.contact[1]}</span></span><a href="tel:+13367078552"><Phone size={15}/>{resume.contact[2]}</a><a href={`mailto:${resume.contact[3]}`}><Mail size={15}/>{resume.contact[3]}</a></address>
+    </header>
     <ToolBeltPage embedded/>
     <section className="portfolio-explore" aria-labelledby="explore-title"><div className="portfolio-section-heading"><div><p className="portfolio-eyebrow">EXPLORE MY WORK</p><h2 id="explore-title">A few places to start.</h2></div></div><div className="portfolio-cards">
       {[
