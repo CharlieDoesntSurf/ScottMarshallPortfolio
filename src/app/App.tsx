@@ -20,15 +20,16 @@ const pages = [
   { id: 'mlb', label: 'Data/ Model Viz', icon: Activity, tone: 'cyan' },
   { id: 'projects', label: 'Github', icon: Github, tone: 'violet' },
 ] as const;
-type Page = typeof pages[number]['id'] | 'experience';
+type Page = typeof pages[number]['id'] | 'experience' | 'welcome';
 const navigation = [pages[0], { id: 'defense', label: 'Defense Apps', icon: FileUser, tone: 'amber' }, ...pages.slice(1)];
 const readPage = (): Page => {
   const hash = window.location.hash.slice(1);
+  if (!hash || hash === 'welcome') return 'welcome';
   return hash === 'experience' ? hash : pages.find(page => page.id === hash)?.id ?? 'resume';
 };
 export default function App() {
   const [page, setPage] = useState<Page>(readPage);
-  const label = page === 'experience' ? 'Tool Belt' : pages.find(item => item.id === page)?.label;
+  const label = page === 'welcome' ? 'Welcome' : page === 'experience' ? 'Tool Belt' : pages.find(item => item.id === page)?.label;
   useEffect(() => {
     const navigate = () => {
       if (window.location.hash === '#fleet-geek') { window.location.replace('./fleet-geek/index.html'); return; }
@@ -39,6 +40,18 @@ export default function App() {
     return () => window.removeEventListener('hashchange', navigate);
   }, []);
   useEffect(() => { document.title = `${label} | Scott Marshall`; }, [label]);
+  useEffect(() => {
+    if (page !== 'welcome') return;
+    const enter = (event: KeyboardEvent) => { if (event.key === 'Enter') { event.preventDefault(); window.location.hash = 'resume'; } };
+    window.addEventListener('keydown', enter);
+    return () => window.removeEventListener('keydown', enter);
+  }, [page]);
+  if (page === 'welcome') return <main className="portfolio-landing">
+    <a className="portfolio-landing-enter" href="#resume" aria-label="You found me! Welcome to Scott Marshall's Portfolio. Open resume.">
+      <img className="portfolio-landing-image" src={`${import.meta.env.BASE_URL}profile/surf-sunset.png`} alt="Scott with a surfboard at sunset on the beach" fetchPriority="high"/>
+      <div className="portfolio-landing-copy"><h1>You found me!</h1><p>Welcome to Scott Marshall's Portfolio</p></div>
+    </a>
+  </main>;
   return <div className={`portfolio ${page === 'resume' ? 'portfolio-resume' : page === 'projects' ? 'portfolio-projects' : ''} ${page !== 'model-overview' && page !== 'benchmark-eval' ? 'portfolio-home' : ''}`}>
     <a className="portfolio-skip" href="#main-content" onClick={event => { event.preventDefault(); document.getElementById('main-content')?.focus(); }}>Skip to content</a>
     <header className="portfolio-header">
