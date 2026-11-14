@@ -1,0 +1,266 @@
+[
+  {
+    "name": "PyTorch",
+    "group": "Languages & data",
+    "logo": "/tool-logos/core/pytorch.svg",
+    "initials": "P",
+    "note": "",
+    "featured": true
+  },
+  {
+    "name": "Python",
+    "group": "Languages & data",
+    "logo": "/tool-logos/core/python.svg",
+    "initials": "P",
+    "note": "",
+    "featured": false
+  },
+  {
+    "name": "Pandas",
+    "group": "Languages & data",
+    "logo": "/tool-logos/core/pandas.svg",
+    "initials": "P",
+    "note": "",
+    "featured": false
+  },
+  {
+    "name": "PySpark",
+    "group": "Languages & data",
+    "logo": "/tool-logos/core/apachespark.svg",
+    "initials": "P",
+    "note": "",
+    "featured": false
+  },
+  {
+    "name": "SQL",
+    "group": "Languages & data",
+    "logo": null,
+    "initials": "SQL",
+    "note": "",
+    "featured": false
+  },
+  {
+    "name": "Databricks",
+    "group": "Languages & data",
+    "logo": "/tool-logos/core/databricks.svg",
+    "initials": "D",
+    "note": "",
+    "featured": false
+  },
+  {
+    "name": "Codex",
+    "group": "Languages & data",
+    "logo": "/tool-logos/core/openai.svg",
+    "initials": "C",
+    "note": "",
+    "featured": false
+  },
+  {
+    "name": "Claude Code",
+    "group": "Languages & data",
+    "logo": "/tool-logos/core/claude.svg",
+    "initials": "CC",
+    "note": "",
+    "featured": false
+  },
+  {
+    "name": "Apache Kafka",
+    "group": "Languages & data",
+    "logo": "/tool-logos/core/apachekafka.svg",
+    "initials": "AK",
+    "note": "",
+    "featured": false
+  },
+  {
+    "name": "AI FDE",
+    "group": "Palantir",
+    "logo": "/tool-logos/core/palantir.svg",
+    "initials": "AI",
+    "note": "Python, TypeScript & Widget repos",
+    "featured": false
+  },
+  {
+    "name": "Foundry",
+    "group": "Palantir",
+    "logo": "/tool-logos/core/palantir.svg",
+    "initials": "F",
+    "note": "",
+    "featured": false
+  },
+  {
+    "name": "Ontology",
+    "group": "Palantir",
+    "logo": "/tool-logos/core/palantir.svg",
+    "initials": "Ont",
+    "note": "",
+    "featured": false
+  },
+  {
+    "name": "Workshop",
+    "group": "Palantir",
+    "logo": "/tool-logos/core/palantir.svg",
+    "initials": "Wor",
+    "note": "",
+    "featured": false
+  },
+  {
+    "name": "AIP",
+    "group": "Palantir",
+    "logo": "/tool-logos/core/palantir.svg",
+    "initials": "AIP",
+    "note": "",
+    "featured": false
+  },
+  {
+    "name": "Gaia",
+    "group": "Palantir",
+    "logo": "/tool-logos/core/palantir.svg",
+    "initials": "G",
+    "note": "",
+    "featured": false
+  },
+  {
+    "name": "Maverick",
+    "group": "Palantir",
+    "logo": "/tool-logos/core/palantir.svg",
+    "initials": "M",
+    "note": "",
+    "featured": false
+  },
+  {
+    "name": "Gotham",
+    "group": "Palantir",
+    "logo": "/tool-logos/core/palantir.svg",
+    "initials": "G",
+    "note": "",
+    "featured": false
+  },
+  {
+    "name": "Supabase",
+    "group": "Platforms & infrastructure",
+    "logo": "/tool-logos/core/supabase.svg",
+    "initials": "S",
+    "note": "",
+    "featured": false
+  },
+  {
+    "name": "Git",
+    "group": "Platforms & infrastructure",
+    "logo": "/tool-logos/core/git.svg",
+    "initials": "G",
+    "note": "",
+    "featured": false
+  },
+  {
+    "name": "Docker",
+    "group": "Platforms & infrastructure",
+    "logo": "/tool-logos/core/docker.svg",
+    "initials": "D",
+    "note": "",
+    "featured": false
+  },
+  {
+    "name": "Kubernetes",
+    "group": "Platforms & infrastructure",
+    "logo": "/tool-logos/core/kubernetes.svg",
+    "initials": "K",
+    "note": "",
+    "featured": false
+  },
+  {
+    "name": "Unix",
+    "group": "Platforms & infrastructure",
+    "logo": null,
+    "initials": ">_",
+    "note": "",
+    "featured": false
+  },
+  {
+    "name": "React",
+    "group": "Front End",
+    "logo": "/tool-logos/core/react.svg",
+    "initials": "R",
+    "note": "",
+    "featured": false
+  },
+  {
+    "name": "Tailwind CSS",
+    "group": "Front End",
+    "logo": "/tool-logos/core/tailwindcss.svg",
+    "initials": "TC",
+    "note": "",
+    "featured": false
+  },
+  {
+    "name": "Vite",
+    "group": "Front End",
+    "logo": "/tool-logos/core/vite.svg",
+    "initials": "V",
+    "note": "",
+    "featured": false
+  },
+  {
+    "name": "CSS",
+    "group": "Front End",
+    "logo": "/tool-logos/core/css3.svg",
+    "initials": "C",
+    "note": "",
+    "featured": false
+  },
+  {
+    "name": "TypeScript",
+    "group": "Front End",
+    "logo": "/tool-logos/core/typescript.svg",
+    "initials": "T",
+    "note": "",
+    "featured": false
+  },
+  {
+    "name": "HTML",
+    "group": "Front End",
+    "logo": "/tool-logos/core/html5.svg",
+    "initials": "H",
+    "note": "",
+    "featured": false
+  },
+  {
+    "name": "Qlik",
+    "group": "Front End",
+    "logo": "/tool-logos/core/qlik.svg",
+    "initials": "Q",
+    "note": "",
+    "featured": false
+  },
+  {
+    "name": "Tableau",
+    "group": "Front End",
+    "logo": "/tool-logos/core/tableau.svg",
+    "initials": "T",
+    "note": "",
+    "featured": false
+  },
+  {
+    "name": "Log4j",
+    "group": "Testing",
+    "logo": "/tool-logos/core/apache.svg",
+    "initials": "L4J",
+    "note": "Logging & diagnostics",
+    "featured": false
+  },
+  {
+    "name": "pytest",
+    "group": "Testing",
+    "logo": "/tool-logos/core/pytest.svg",
+    "initials": "p",
+    "note": "",
+    "featured": false
+  },
+  {
+    "name": "Node.js Test Runner",
+    "group": "Testing",
+    "logo": null,
+    "initials": "JS",
+    "note": "Built-in test runner",
+    "featured": false
+  }
+]
