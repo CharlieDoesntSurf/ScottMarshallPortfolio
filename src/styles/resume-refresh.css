@@ -58,3 +58,9 @@
 .tool-belt .tool-belt-logo img{width:20px;height:20px}
 .tool-belt .tool-belt-card h4{font-size:10px}
 .tool-belt .tool-featured{gap:3px}
+.portfolio-nixon-logo{display:block;width:36px;height:40px;object-fit:contain}
+.tone-pink{--accent:#ff4fa3}
+.portfolio-header nav .nav-tab.tone-pink{color:#ff4fa3}
+.portfolio-header nav .nav-tab .teddy-bear{display:block;width:22px;height:20px;flex-shrink:0;--teddy-cutout:#0b1018}
+.portfolio-resume .portfolio-header nav .nav-tab .teddy-bear{--teddy-cutout:#080808}
+.portfolio-header nav .nav-tab.tone-pink[aria-current=page] .teddy-bear{--teddy-cutout:#301b2d}
