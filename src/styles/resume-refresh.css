@@ -78,3 +78,13 @@
 .portfolio-projects .projects-filters button[aria-pressed=true]{background:#dedede;color:#151515;border-color:#dedede}
 .portfolio-projects .project-entry a{color:#dedede}
 .resume-clearance-value{color:#ffdb45}
+/* Denser secondary stacks: Palantir and Front End & Testing. */
+.resume-page .tool-belt-compact .tool-belt-grid,.tool-belt .tool-belt-compact .tool-belt-grid{grid-template-columns:repeat(12,minmax(0,1fr));gap:6px}
+.tool-belt .tool-belt-compact .tool-belt-card{min-height:48px;padding:5px 3px;gap:4px}
+.tool-belt .tool-belt-compact .tool-belt-logo{width:16px;height:16px}
+.tool-belt .tool-belt-compact .tool-belt-logo img{width:14px;height:14px}
+.tool-belt .tool-belt-compact .tool-belt-logo>span{font-size:11px}
+.tool-belt .tool-belt-compact .tool-belt-card h4{font-size:9px;line-height:1.25}
+@media(max-width:1000px){.resume-page .tool-belt-compact .tool-belt-grid,.tool-belt .tool-belt-compact .tool-belt-grid{grid-template-columns:repeat(8,minmax(0,1fr))}}
+@media(max-width:650px){.resume-page .tool-belt-compact .tool-belt-grid,.tool-belt .tool-belt-compact .tool-belt-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:360px){.resume-page .tool-belt-compact .tool-belt-grid,.tool-belt .tool-belt-compact .tool-belt-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
