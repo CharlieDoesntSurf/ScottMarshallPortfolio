@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
-import { ArrowUpRight, FileUser, FolderGit2, Network, BrainCircuit, Layers, Activity, Dumbbell } from 'lucide-react';
+import { ArrowUpRight, FileUser, Github, Network, BrainCircuit, Layers, Activity, Dumbbell } from 'lucide-react';
 import { TeddyBear } from '../fitcoach/app/prototype/TeddyBrand';
 import ModelOverview from './ModelOverview';
 import ResumePage from './components/ResumePage';
@@ -16,9 +16,9 @@ const pages = [
   { id: 'model-overview', label: 'Building LLM’s', icon: BrainCircuit, tone: 'violet' },
   { id: 'agents', label: 'How Agents Work', icon: Network, tone: 'cyan' },
   { id: 'benchmark-eval', label: 'My Architecture', icon: Layers, tone: 'amber' },
-  { id: 'projects', label: 'My Projects', icon: FolderGit2, tone: 'violet' },
-  { id: 'mlb', label: 'MLB', icon: Activity, tone: 'cyan' },
   { id: 'fitcoach', label: 'Coach Teddy', icon: Dumbbell, tone: 'pink' },
+  { id: 'mlb', label: 'Data/ Model Viz', icon: Activity, tone: 'cyan' },
+  { id: 'projects', label: 'Github', icon: Github, tone: 'violet' },
 ] as const;
 type Page = typeof pages[number]['id'] | 'experience';
 const navigation = [pages[0], { id: 'defense', label: 'Defense Apps', icon: FileUser, tone: 'amber' }, ...pages.slice(1)];
@@ -39,10 +39,10 @@ export default function App() {
     return () => window.removeEventListener('hashchange', navigate);
   }, []);
   useEffect(() => { document.title = `${label} | Scott Marshall`; }, [label]);
-  return <div className={`portfolio ${page === 'resume' ? 'portfolio-resume' : ''} ${page !== 'model-overview' && page !== 'benchmark-eval' ? 'portfolio-home' : ''}`}>
+  return <div className={`portfolio ${page === 'resume' ? 'portfolio-resume' : page === 'projects' ? 'portfolio-projects' : ''} ${page !== 'model-overview' && page !== 'benchmark-eval' ? 'portfolio-home' : ''}`}>
     <a className="portfolio-skip" href="#main-content" onClick={event => { event.preventDefault(); document.getElementById('main-content')?.focus(); }}>Skip to content</a>
     <header className="portfolio-header">
-      <a className="portfolio-brand" href="#resume" aria-label="Scott Marshall home"><img className="portfolio-nixon-logo" src={`${import.meta.env.BASE_URL}fleet-geek/assets/person-silhouette.png`} alt=""/></a>
+      <a className="portfolio-brand" href="#resume" aria-label="Scott Marshall home"><img className="portfolio-nixon-logo" src={`${import.meta.env.BASE_URL}fleet-geek/assets/person-silhouette.png`} alt=""/><span className="portfolio-sm">SM</span></a>
       <nav aria-label="Main navigation">{navigation.map(({ id, label, icon: Icon, tone }) => <a className={`nav-tab tone-${tone}`} key={id} href={id === 'defense' ? './fleet-geek/index.html' : `#${id}`} aria-current={page === id ? 'page' : undefined}><>{id === 'defense' ? <img className="defense-nav-logo" src={`${import.meta.env.BASE_URL}fleet-geek/assets/person-silhouette.png`} alt=""/> : id === 'fitcoach' ? <TeddyBear/> : <Icon size={16} aria-hidden="true"/>}</>{label}</a>)}</nav>
     </header>
     <main id="main-content" tabIndex={-1}>

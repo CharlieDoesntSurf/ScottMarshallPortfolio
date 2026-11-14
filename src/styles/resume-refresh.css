@@ -64,3 +64,16 @@
 .portfolio-header nav .nav-tab .teddy-bear{display:block;width:22px;height:20px;flex-shrink:0;--teddy-cutout:#0b1018}
 .portfolio-resume .portfolio-header nav .nav-tab .teddy-bear{--teddy-cutout:#080808}
 .portfolio-header nav .nav-tab.tone-pink[aria-current=page] .teddy-bear{--teddy-cutout:#301b2d}
+.portfolio-brand{gap:8px}
+.portfolio-sm{font:500 23px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:-1px;color:#ededed}
+.resume-introduction .resume-clearance{display:block;color:#fff;font-size:20px;font-weight:500;letter-spacing:-.4px;line-height:1.4;margin:14px 0 0}
+.resume-introduction .resume-links{justify-content:flex-start;margin:12px 0 0}
+.portfolio-header{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.portfolio-projects,.portfolio-projects .portfolio-header{background:#080808;color:#ededed;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.portfolio-projects .portfolio-page-title{font-size:36px;font-weight:500;letter-spacing:-1.2px}
+.portfolio-projects .portfolio-eyebrow,.portfolio-projects .project-meta,.portfolio-projects .project-entry dt{font-family:monospace;color:#dedede}
+.portfolio-projects .project-entry,.portfolio-projects .projects-search{background:#141414;border-color:#323232}
+.portfolio-projects .project-entry h2{color:#ededed;font-weight:500}
+.portfolio-projects .project-entry p,.portfolio-projects .project-entry dd,.portfolio-projects .portfolio-intro{color:#a3a3a3}
+.portfolio-projects .projects-filters button[aria-pressed=true]{background:#dedede;color:#151515;border-color:#dedede}
+.portfolio-projects .project-entry a{color:#dedede}
