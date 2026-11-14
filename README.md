@@ -101,7 +101,7 @@ Data loaded at **2026-10-05T06:52:52.335243+00:00**. Full table/column mapping, 
 
 ### GitHub Pages configuration
 
-The live site uses remote `portfolio` (`CharlieDoesntSurf/ScottMarshallPortfolio`); `origin` points to a different repository. `.github/workflows/pages.yml` reads `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` from **repository Actions variables**, checks that both exist, and supplies them at build time. These public variables are configured on the deployment repository. The local `.env.local` is ignored and never uploaded. The Supabase frontend is deployed by the GitHub Pages workflow when this change is pushed to `portfolio/main`.
+The live site uses remote `portfolio` (`CharlieDoesntSurf/charliedoesntsurf.github.io`); `origin` points to a different repository. `.github/workflows/pages.yml` reads `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` from **repository Actions variables**, checks that both exist, and supplies them at build time. These public variables are configured on the deployment repository. The local `.env.local` is ignored and never uploaded. The Supabase frontend is deployed by the GitHub Pages workflow when this change is pushed to `portfolio/main`.
 
 ### Local verification
 

@@ -48,14 +48,14 @@ export default function App() {
   }, [page]);
   if (page === 'welcome') return <main className="portfolio-landing">
     <a className="portfolio-landing-enter" href="#resume" aria-label="You found me! Welcome to Scott Marshall's Portfolio. Open resume.">
-      <img className="portfolio-landing-image" src={`${import.meta.env.BASE_URL}profile/surf-sunset.png`} alt="Scott with a surfboard at sunset on the beach" fetchPriority="high"/>
+      <img className="portfolio-landing-image" src={`${import.meta.env.BASE_URL}profile/surf-sunset.jpg`} alt="Scott with a surfboard at sunset on the beach" fetchPriority="high"/>
       <div className="portfolio-landing-copy"><h1>You found me!</h1><p>Welcome to Scott Marshall's Portfolio</p></div>
     </a>
   </main>;
   return <div className={`portfolio ${page === 'resume' ? 'portfolio-resume' : page === 'projects' ? 'portfolio-projects' : ''} ${page !== 'model-overview' && page !== 'benchmark-eval' ? 'portfolio-home' : ''}`}>
     <a className="portfolio-skip" href="#main-content" onClick={event => { event.preventDefault(); document.getElementById('main-content')?.focus(); }}>Skip to content</a>
     <header className="portfolio-header">
-      <a className="portfolio-brand" href="#resume" aria-label="Scott Marshall home"><span className="portfolio-profile-photo"><img src={`${import.meta.env.BASE_URL}profile/surf-sunset.png`} alt=""/></span></a>
+      <a className="portfolio-brand" href="#resume" aria-label="Scott Marshall home"><span className="portfolio-profile-photo"><img src={`${import.meta.env.BASE_URL}profile/surf-sunset.jpg`} alt=""/></span></a>
       <nav aria-label="Main navigation">{navigation.map(({ id, label, icon: Icon, tone }) => <a className={`nav-tab tone-${tone}`} key={id} href={id === 'defense' ? './fleet-geek/index.html' : `#${id}`} aria-current={page === id ? 'page' : undefined}><>{id === 'defense' ? <img className="defense-nav-logo" src={`${import.meta.env.BASE_URL}fleet-geek/assets/person-silhouette.png`} alt=""/> : id === 'fitcoach' ? <TeddyBear/> : <Icon size={16} aria-hidden="true"/>}</>{label}</a>)}</nav>
     </header>
     <main id="main-content" tabIndex={-1}>
