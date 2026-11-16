@@ -1,6 +1,7 @@
 import {useEffect,useState} from 'react';
 import type {Exercise,Intake,Routine,Session} from './data';
-type Workspace={intake:Intake|null;sessions:Session[];active:Session|null;customExercises:Exercise[];customRoutines:Routine[]};
+import { toIntake, type Journey } from './journey';
+type Workspace={journey?:Journey;intake:Intake|null;sessions:Session[];active:Session|null;customExercises:Exercise[];customRoutines:Routine[]};
 const KEY='fitcoach.portfolio.workspace.v1';
 let state:Workspace={intake:null,sessions:[],active:null,customExercises:[],customRoutines:[]};
 let catalog:{exercises:Exercise[];routines:Routine[]}|null=null;
@@ -27,6 +28,11 @@ export function useDemoWorkspace(){
  return {exercises,routines,...snapshot,ready,error,pending:0,
   setActive:(s:Session|null)=>{if(!s&&state.active?.completedAt)commit({sessions:state.sessions.map(x=>x.id===state.active!.id?state.active!:x),active:null});else commit({active:s});},
   saveIntake:(intake:Intake)=>commit({intake}),
+  saveJourney:(journey:Journey)=>{
+    const next={...state,journey,intake:toIntake(journey.profile)};
+    localStorage.setItem(KEY,JSON.stringify(next));
+    state=next;setSnapshot(next);setError('');
+  },
   edit:(session:Session)=>commit({active:session}),
   finish:()=>{if(!state.active)return;const saved={...state.active,completedAt:state.active.completedAt||new Date().toISOString(),status:'completed' as const};commit({sessions:[...state.sessions.filter(s=>s.id!==saved.id),saved],active:null});},
   retry:()=>commit({}),refreshCatalog};

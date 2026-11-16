@@ -1,6 +1,6 @@
 import teddyLogo from "../assets/coach-teddy.png";
 import { TeddyBrand } from "./prototype/TeddyBrand";
-import { InterviewChat } from "./prototype/InterviewChat";
+import { JourneyDashboard } from "./prototype/JourneyDashboard";
 import { useEffect, useRef, useState } from "react";
 import {
   Activity,
@@ -32,8 +32,7 @@ import {
   weekDays,
   schemaGroups,
   newSession,
-  type Intake,
-  type Session,
+    type Session,
   type Routine,
 } from "./prototype/data";
 import {
@@ -49,7 +48,7 @@ type Page = "overview" | "workouts" | "interview" | "agent" | "database";
 const nav = [
   { id: "overview", label: "Overview", icon: LayoutDashboard },
   { id: "workouts", label: "Workouts", icon: Dumbbell },
-  { id: "interview", label: "Your interview", icon: Heart },
+  { id: "interview", label: "Journey", icon: Heart },
   { id: "agent", label: "Coach preview", icon: Sparkles },
   { id: "database", label: "Data blueprint", icon: Database },
 ] as const;
@@ -74,7 +73,6 @@ export default function App() {
     active,
     intake,
     setActive,
-    saveIntake,
   } = cloud;
   useEffect(() => {
     mainShellRef.current?.scrollTo(0, 0);
@@ -403,10 +401,10 @@ export default function App() {
                     <button className="primary" onClick={() => go("interview")}>
                       {intake
                         ? "Update my profile"
-                        : "Talk to Teddy"}
+                        : "Open Journey"}
                       <ArrowRight size={17} />
                     </button>
-                    <small>One conversation to get started.</small>
+                    <small>Profile · Metrics · Goals</small>
                   </div>
                   <img className="teddy-hero-logo" src={teddyLogo} alt="Coach Teddy" />
                 </section>
@@ -559,7 +557,7 @@ export default function App() {
                     className="text-button"
                     onClick={() => go(intake ? "agent" : "interview")}
                   >
-                    {intake ? "Meet your coach" : "Tell your story"}{" "}
+                    {intake ? "Meet your coach" : "Set your goals"}{" "}
                     <ArrowRight size={16} />
                   </button>
                 </section>
@@ -594,12 +592,9 @@ export default function App() {
               </section>
             </>
           ) : page === "interview" ? (
-            <InterviewChat initialIntake={intake} onSave={(profile: Intake) => {
-              const result = previewCoach(profile, exercises);
-              saveIntake(profile);
-              setPreview(result);
-              setPage("agent");
-              setNotice("Profile saved.");
+            <JourneyDashboard saved={cloud.journey} intake={intake} sessions={sessions} onSave={value => {
+              cloud.saveJourney(value);
+              setPreview(null);
             }} />
           ) : page === "workouts" ? (
             <>
@@ -776,7 +771,7 @@ export default function App() {
                   {intake ? (
                     <>
                       <p>
-                        Using {intake.name}’s interview:{" "}
+                        Using {intake.name}’s profile:{" "}
                         {intake.goal.toLowerCase()}, {intake.days.length} days a
                         week, {intake.minutes} minutes.
                       </p>
@@ -792,7 +787,7 @@ export default function App() {
                         className="primary"
                         onClick={() => go("interview")}
                       >
-                        Talk to Teddy <ArrowRight size={16} />
+                        Open Journey <ArrowRight size={16} />
                       </button>
                     </>
                   )}
@@ -875,7 +870,7 @@ export default function App() {
                   <div className="small-note">
                     <ShieldCheck size={19} />
                     <span>
-                      Interview chat uses OpenAI. Workout suggestions here use local rules.
+                      Journey uses saved profile values. Workout suggestions here use local rules.
                     </span>
                   </div>
                 </details>
@@ -961,6 +956,7 @@ export default function App() {
                   onClick={() =>
                     download("fittrack-workspace.json", {
                       intake,
+                      journey: cloud.journey,
                       sessions,
                       active,
                       pending: JSON.parse(
@@ -998,7 +994,7 @@ export default function App() {
             <n.icon size={19} />
             <span>
               {n.id === "interview"
-                ? "Interview"
+                ? "Journey"
                 : n.id === "database"
                   ? "Blueprint"
                   : n.id === "agent"
