@@ -8,7 +8,8 @@
     "dev": "vite",
     "prebuild": "node scripts/package-fitcoach-source.mjs",
     "test:interview": "node --test server/coach-interview.test.mjs",
-    "test:journey": "node --experimental-strip-types --test src/fitcoach/app/prototype/journey.test.ts"
+    "test:journey": "node --experimental-strip-types --test src/fitcoach/app/prototype/journey.test.ts",
+    "test:chat": "node --test supabase/functions/coach-teddy-chat/chat.test.mjs"
   },
   "dependencies": {
     "@emotion/react": "11.14.0",

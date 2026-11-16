@@ -27,14 +27,14 @@ export function validateRequest(body) {
 export function settings(root = process.cwd()) {
   const values = {};
   // Load only server-side model settings. Never expose them through VITE_ variables.
-  for (const path of ['/Users/scott/project/.env', '/Users/scott/project/Fitnesstrackingapp/.env', `${root}/.env`, `${root}/.env.local`]) {
+  for (const path of ['/Users/scott/project/.env', `${root}/.env`, `${root}/.env.local`]) {
     if (!existsSync(path)) continue;
     for (const line of readFileSync(path, 'utf8').split(/\r?\n/)) {
-      const m = line.match(/^\s*(OPENAI_API_KEY|OPENAI_MODEL|xcode_token)\s*=\s*(.*?)\s*$/);
-      if (m) values[m[1] === 'xcode_token' ? 'OPENAI_API_KEY' : m[1]] = m[2].replace(/^(['"])(.*)\1$/, '$2');
+      const m = line.match(/^\s*(GPTSUB1|OPENAI_MODEL)\s*=\s*(.*?)\s*$/);
+      if (m) values[m[1]] = m[2].replace(/^(['"])(.*)\1$/, '$2');
     }
   }
-  return { key: process.env.OPENAI_API_KEY || values.OPENAI_API_KEY, model: process.env.OPENAI_MODEL || values.OPENAI_MODEL || 'gpt-4o-mini' };
+  return { key: process.env.GPTSUB1 || values.GPTSUB1, model: process.env.OPENAI_MODEL || values.OPENAI_MODEL || 'gpt-4o-mini' };
 }
 export async function interview(body, config, request = fetch) {
   const { messages, initialIntake } = validateRequest(body);

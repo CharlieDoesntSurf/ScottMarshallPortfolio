@@ -1,5 +1,6 @@
 import teddyLogo from "../assets/coach-teddy.png";
 import { TeddyBrand } from "./prototype/TeddyBrand";
+import { CoachChat } from "./prototype/CoachChat";
 import { OverviewMetrics } from "./prototype/OverviewMetrics";
 import { JourneyDashboard } from "./prototype/JourneyDashboard";
 import { useEffect, useRef, useState } from "react";
@@ -51,7 +52,7 @@ const nav = [
   { id: "overview", label: "Overview", icon: LayoutDashboard },
   { id: "workouts", label: "Workouts", icon: Dumbbell },
   { id: "interview", label: "Journey", icon: Heart },
-  { id: "agent", label: "Coach preview", icon: Sparkles },
+  { id: "agent", label: "Coach", icon: Sparkles },
   { id: "database", label: "Data blueprint", icon: Database },
 ] as const;
 function download(name: string, value: unknown) {
@@ -748,6 +749,8 @@ export default function App() {
             </>
           ) : page === "agent" ? (
             <>
+              <CoachChat journey={cloud.journey} intake={intake} sessions={sessions} exercises={exercises} onSave={cloud.saveJourney} />
+              <details className="teddy-local-preview"><summary>Local workout preview</summary>
               <div className="page-heading">
                 <div>
                   <p className="eyebrow">
@@ -879,6 +882,7 @@ export default function App() {
                 </details>
                 </section>
               </div>
+              </details>
             </>
           ) : (
             <>
@@ -973,8 +977,7 @@ export default function App() {
                 </button>
               </section>
               <p className="muted">
-                Portfolio demo. Authentication and the OpenAI
-                connection are deferred. All preserved openGym source files and
+                Portfolio demo. Private text chat uses Supabase sign-in and OpenAI. Fitness data stays in this browser. All preserved openGym source files and
                 guides are available in Supabase; importing source does not
                 activate every feature.
               </p>
