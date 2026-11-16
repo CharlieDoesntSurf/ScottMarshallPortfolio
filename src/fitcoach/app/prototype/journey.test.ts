@@ -45,3 +45,13 @@ test('invalid values are rejected; a zero soreness score is retained', () => {
   assert.equal(next.metrics.soreness?.value,0);
   assert.equal(readingStatus(next.metrics.soreness,1),'Current');
 });
+
+test('daily sleep and energy history preserves previous readings and replaces same-day corrections', () => {
+  let state=createJourney(null);
+  state=recordJourney(state,state.profile,{...state.goals,energy:8},{sleep:'7',energy:'6'},['sleep','energy'],'2026-11-12T20:00:00Z');
+  state=recordJourney(state,state.profile,state.goals,{sleep:'8'},['sleep'],'2026-11-13T20:00:00Z');
+  state=recordJourney(state,state.profile,state.goals,{sleep:'7.5'},['sleep'],'2026-11-13T21:00:00Z');
+  assert.deepEqual(state.metricHistory?.sleep?.map(x=>x.value),[7,7.5]);
+  assert.equal(state.metricHistory?.energy?.length,1);
+  assert.equal(state.goals.energy,8);
+});

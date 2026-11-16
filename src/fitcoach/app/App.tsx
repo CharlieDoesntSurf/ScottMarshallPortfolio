@@ -1,5 +1,6 @@
 import teddyLogo from "../assets/coach-teddy.png";
 import { TeddyBrand } from "./prototype/TeddyBrand";
+import { OverviewMetrics } from "./prototype/OverviewMetrics";
 import { JourneyDashboard } from "./prototype/JourneyDashboard";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -466,6 +467,7 @@ export default function App() {
                   </button>
                 </section>
               </div>
+              <OverviewMetrics saved={cloud.journey} intake={intake} onSave={cloud.saveJourney} />
               <div className="stats-grid">
                 {[
                   {

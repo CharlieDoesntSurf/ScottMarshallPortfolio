@@ -14,8 +14,9 @@ export type JourneyProfile = Omit<Intake, 'minutes'> & { minutes: number | null 
 export type Journey = {
   profile: JourneyProfile;
   metrics: Partial<Record<MetricKey, Reading>>;
-  goals: { weight: number | null; sleep: number | null };
+  goals: { weight: number | null; sleep: number | null; energy?: number | null };
   weightHistory: Reading[];
+  metricHistory?: Partial<Record<MetricKey, Reading[]>>;
   profileUpdatedAt?: string;
   updatedAt?: string;
 };
@@ -42,6 +43,7 @@ export function weightProgress(history: Reading[], target: number | null) {
 export function recordJourney(base: Journey, profile: JourneyProfile, goals: Journey['goals'], values: Partial<Record<MetricKey, string>>, touched: MetricKey[], at = new Date().toISOString()): Journey {
   const metrics = { ...base.metrics };
   let weightHistory = [...base.weightHistory];
+  const metricHistory = { ...base.metricHistory };
   for (const key of touched) {
     const raw = values[key] ?? '';
     if (raw === '') { delete metrics[key]; continue; }
@@ -49,6 +51,9 @@ export function recordJourney(base: Journey, profile: JourneyProfile, goals: Jou
     if (!Number.isFinite(value) || value < def.min || value > def.max || (def.step === 1 && !Number.isInteger(value))) throw new Error(`${def.label} · ${def.min}–${def.max}`);
     const reading = { value, at };
     metrics[key] = reading;
+    const day = new Date(at).toLocaleDateString('en-CA');
+    const previous = metricHistory[key] ?? (key === 'weight' ? base.weightHistory : base.metrics[key] ? [base.metrics[key]!] : []);
+    metricHistory[key] = [...previous.filter(x => new Date(x.at).toLocaleDateString('en-CA') !== day), reading].sort((a,b)=>Date.parse(a.at)-Date.parse(b.at));
     if (key === 'weight') {
       const day = new Date(at).toLocaleDateString('en-CA');
       weightHistory = weightHistory.filter(x => new Date(x.at).toLocaleDateString('en-CA') !== day);
@@ -56,5 +61,5 @@ export function recordJourney(base: Journey, profile: JourneyProfile, goals: Jou
       weightHistory.sort((a,b) => Date.parse(a.at) - Date.parse(b.at));
     }
   }
-  return { ...base, profile, goals, metrics, weightHistory, updatedAt: at, profileUpdatedAt: JSON.stringify(profile) !== JSON.stringify(base.profile) ? at : base.profileUpdatedAt };
+  return { ...base, profile, goals, metrics, weightHistory, metricHistory, updatedAt: at, profileUpdatedAt: JSON.stringify(profile) !== JSON.stringify(base.profile) ? at : base.profileUpdatedAt };
 }
