@@ -44,6 +44,7 @@ import { useDemoWorkspace } from "./prototype/useDemoWorkspace";
 import { ExerciseDemo } from "./prototype/ExerciseDemo";
 import { WorkoutBuilder } from "./prototype/WorkoutBuilder";
 import "../styles/prototype.css";
+import "../styles/teddy-design.css";
 type Page = "overview" | "workouts" | "interview" | "agent" | "database";
 const nav = [
   { id: "overview", label: "Overview", icon: LayoutDashboard },

@@ -1,0 +1,101 @@
+/* Coach Teddy visual foundation. Reference: robinhood.com/us/en/invest/.
+   Black foundation, brand pink primary, yellow accent. Journey alone is pink.
+   System sans approximates the reference without copying proprietary font assets. */
+.fit-app{--teddy-lime:#f4ef58;--teddy-yellow:#f4ef58;font-family:Arial,Helvetica,sans-serif;letter-spacing:-.015em}
+.fit-app h1,.fit-app h2,.fit-app h3{font-weight:400!important;letter-spacing:-.035em}
+.fit-app .page-heading h1{font-size:clamp(36px,4vw,56px)!important;line-height:1.05!important}
+.fit-app .page-heading{margin-bottom:32px}
+.fit-app .card{border-radius:20px;box-shadow:none}
+.fit-app button{transition:background-color .25s,color .25s,border-color .25s,transform .25s}
+.fit-app button:hover{filter:none}
+.fit-app .primary{background:var(--teddy-pink);border-color:var(--teddy-pink);font-weight:500}
+.fit-app .primary:hover{background:#ff80bb;border-color:#ff80bb}
+.fit-app .sidebar nav button.active{background:#ff4fa31c;color:var(--teddy-pink)}
+.fit-app .sidebar nav button:hover{background:#ff4fa312;color:var(--teddy-pink)}
+.fit-app .mobile-nav button.active,.fit-app .header-path,.fit-app .eyebrow{color:var(--teddy-pink)!important}
+.fit-app .hero-card .primary{background:#111;color:#fff;border-color:#111}
+.fit-app .hero-card h2{font-weight:400!important;line-height:1.12!important}
+.fit-app .app-header{height:64px}
+.fit-app.is-interview .main-shell{background:#ff4fa3}
+.fit-app.is-interview .main-content{padding:36px 40px 28px;background:linear-gradient(180deg,#ff4fa3 0%,#ff72b5 52%,#ff9ccc 100%)}
+.fit-app.is-interview .cloud-status:not(.error){display:none}
+.fit-app.is-interview .cloud-status.error{color:#181014}
+.fit-app .journey{--j-muted:#66535d;--j-line:#14101429;color:#141014;max-width:1000px;gap:28px;color-scheme:light}
+.fit-app .journey-heading{position:relative;justify-content:center;text-align:center;padding:8px 0 22px}
+.fit-app .journey-heading h1{font-size:clamp(52px,5.8vw,76px)!important;font-weight:400!important;letter-spacing:-.065em;line-height:1!important;margin:12px 0 0}
+.fit-app .journey-heading h1>span{color:#141014}
+.fit-app .journey-kicker{color:#321524;letter-spacing:.12em;font-size:11px;font-weight:400}
+.fit-app .journey-local{position:absolute;right:0;top:10px;color:#321524;font-size:10px}
+.fit-app .journey-local i{background:#141014}
+.fit-app .journey-summary{padding:0 0 22px}
+.fit-app .journey-avatar{border-radius:50%;background:#141014;color:#ff86bf;font-weight:400;width:48px;height:48px}
+.fit-app .journey-identity input{font-size:24px;font-weight:400;color:#141014}
+.fit-app .journey input::placeholder{color:#78636f;opacity:1}
+.fit-app .journey-completion circle{stroke:#14101425}
+.fit-app .journey-completion circle+circle{stroke:#141014}
+.fit-app .journey-completion strong{font-weight:400}
+.fit-app .journey .journey-section-title h2{font-size:22px!important;font-weight:400!important;letter-spacing:-.025em!important}
+.fit-app .journey-metrics{gap:12px;margin-top:-12px}
+.fit-app .journey-metric,.fit-app .journey-panel{background:#fffaf6;border:0;border-radius:18px;box-shadow:none}
+.fit-app .journey-metric{padding:18px 20px 14px;overflow:hidden;transition:background .3s,transform .3s}
+.fit-app .journey-metric:hover,.fit-app .journey-metric:focus-within{background:#fff;transform:translateY(-3px)}
+.fit-app .journey-metric-top label{color:#141014;font-size:13px;font-weight:400}
+.fit-app .journey-metric-top label>svg{display:none}
+.fit-app .journey-status{color:#141014;font-size:10px;font-weight:400;gap:7px;min-height:28px}
+.fit-app .journey-status>svg{border:1px solid #141014;border-radius:50%;width:25px;height:25px;padding:5px}
+.fit-app .journey-status.current>svg{background:var(--teddy-yellow)}
+.fit-app .journey-number{margin:10px 0 0;gap:8px}
+.fit-app .journey-number input{font-size:46px;font-weight:400;letter-spacing:-.055em;color:#141014;max-width:150px;line-height:1.15}
+.fit-app .journey-number>span{font-size:12px}
+.fit-app .journey-line-art{display:block;width:100%;height:64px;margin:5px 0;color:#282027}
+.fit-app .journey-updated{font-size:10px}
+.fit-app .journey-panel{padding:26px}
+.fit-app .journey-middle{gap:12px}
+.fit-app .journey-trend-summary strong{font-weight:400;font-size:36px}
+.fit-app .journey-chart svg>line{stroke:#ddd0d6}
+.fit-app .journey-chart svg>text{fill:#66535d}
+.fit-app .journey-target-inputs input{color:#141014;border-color:#cdbdc5;font-weight:400}
+.fit-app .journey-progress-label{color:#66535d}
+.fit-app .journey-progress-label strong{color:#141014;font-weight:400}
+.fit-app .journey-progress{background:#e7dfe2;height:7px}
+.fit-app .journey-progress i{background:#141014}
+.fit-app .journey-training{background:#151214;color:#fffaf6;--j-muted:#c0b4ba;--j-line:#ffffff26;padding:32px}
+.fit-app .journey-fields select,.fit-app .journey-input-unit,.fit-app .journey-notes input{background:#242023;color:#fffaf6;border-color:#53474e;border-radius:8px;min-height:46px}
+.fit-app .journey-input-unit input{color:#fffaf6}
+.fit-app .journey-fields label,.fit-app .journey-notes label,.fit-app .journey-field-label{font-size:12px}
+.fit-app .journey-day-picker button{color:#fffaf6;border-color:#53474e;border-radius:50px;font-weight:400}
+.fit-app .journey-day-picker button[aria-pressed=true]{color:#141014;background:var(--teddy-yellow);border-color:var(--teddy-yellow)}
+.fit-app .journey-equipment button{color:#fffaf6;border-color:#53474e;font-size:12px;font-weight:400}
+.fit-app .journey-equipment button[aria-pressed=true]{background:#ff4fa3;color:#141014;border-color:#ff4fa3}
+.fit-app .journey-week-progress strong{font-weight:400}
+.fit-app .journey-count{background:#141014;color:#fffaf6;font-weight:400}
+.fit-app .journey-update-list button{color:#141014;font-size:12px;padding:16px 0}
+.fit-app .journey-update-list button>span{color:#452233}
+.fit-app .journey-all-current{color:#141014}
+.fit-app .journey-save{background:#fffaf6f5;border:1px solid #14101420;border-radius:50px;box-shadow:0 4px 24px #4f0b2912;padding:12px 18px;bottom:12px}
+.fit-app .journey-save>div{color:#45353d}
+.fit-app .journey-save .primary{background:#141014;color:#fffaf6;border-color:#141014;padding:13px 24px;font-weight:400}
+.fit-app .journey-save .primary:hover{background:#3d2732}
+.fit-app .journey-save .primary:disabled{opacity:.45}
+.fit-app .journey-error{color:#ac1446}
+.fit-app .journey input:focus-visible,.fit-app .journey select:focus-visible{outline:2px solid #141014;outline-offset:4px}
+.fit-app .journey-training input:focus-visible,.fit-app .journey-training select:focus-visible{outline-color:#f4ef58}
+.fit-app .journey button:focus-visible{outline-color:#141014}
+.fit-app .journey-training button:focus-visible{outline-color:#f4ef58}
+.fit-app.compact.is-interview .main-content{padding:24px 16px}
+.fit-app.compact .journey{gap:24px}
+.fit-app.compact .journey-heading{padding:18px 0 10px}
+.fit-app.compact .journey-heading h1{font-size:52px!important}
+.fit-app.compact .journey-local{position:static;display:none}
+.fit-app.compact .journey-metric{padding:13px 12px 12px;border-radius:14px}
+.fit-app.compact .journey-metric-top label{font-size:11px}
+.fit-app.compact .journey-status{font-size:9px;gap:3px}
+.fit-app.compact .journey-status>svg{width:20px;height:20px;padding:3px}
+.fit-app.compact .journey-number input{font-size:36px;max-width:95px}
+.fit-app.compact .journey-line-art{height:48px}
+.fit-app.compact .journey-panel{padding:20px}
+.fit-app.compact .journey-identity input{font-size:20px}
+.fit-app.compact .journey-save{padding:10px 13px}
+.fit-app.compact .journey-save .primary{padding:12px 16px}
+@media(max-width:800px){.fit-app.is-interview .main-content{padding:26px 18px}.fit-app .journey-local{display:none}.fit-app .journey-heading h1{font-size:54px!important}.fit-app .journey-metric{padding:14px}.fit-app .journey-number input{font-size:36px}.fit-app .journey-metric-top label{font-size:11px}.fit-app .journey-status{gap:3px;font-size:9px}.fit-app .journey-status>svg{width:20px;height:20px;padding:3px}.fit-app .journey-panel{padding:20px}.fit-app .journey-line-art{height:48px}}
+@media(prefers-reduced-motion:reduce){.fit-app *{transition:none!important;scroll-behavior:auto!important}.fit-app .journey-metric:hover,.fit-app .journey-metric:focus-within{transform:none}}

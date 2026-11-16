@@ -5,6 +5,13 @@ import { weekDays } from './data';
 import { createJourney, equipmentOptions, experienceOptions, goalOptions, metricDefinitions, readingStatus, recordJourney, weightProgress, type Journey, type JourneyProfile, type MetricKey, type Reading } from './journey';
 import '../../styles/journey.css';
 
+// Decorative line studies, never a substitute for a recorded measurement.
+function MetricArt({ index }: { index: number }) {
+  return <svg className="journey-line-art" viewBox="0 0 200 70" fill="none" stroke="currentColor" strokeWidth=".8" aria-hidden="true">
+    {index % 3 === 0 ? Array.from({length:7},(_,i)=><g key={i} transform={`translate(${44+i*15} ${28-Math.sin(i/6*Math.PI)*20})`}><path d="M0 5 8 0 16 5 8 10Z M0 5v30l8 5 8-5V5 M8 10v30"/></g>) : index % 3 === 1 ? Array.from({length:5},(_,i)=><ellipse key={i} cx="100" cy={34+i*3} rx={58-i*10} ry={23-i*3}/>) : Array.from({length:6},(_,i)=><path key={i} d={`M${50+i*18} 58V12l${36-i*5} 46V12Z`}/>)}
+  </svg>;
+}
+
 function WeightChart({ history }: { history: Reading[] }) {
   const cutoff = Date.now() - 30 * 86400000;
   const points = history.filter(x => Date.parse(x.at) >= cutoff);
@@ -74,7 +81,7 @@ export function JourneyDashboard({ saved, intake, sessions, onSave }: { saved?: 
       {metricDefinitions.map((d,i)=>{ const status=readingStatus(base.metrics[d.key],d.days);const Icon=i===0?Scale:i===1?Moon:i===2?Zap:CircleDashed;return <section className={`journey-metric ${i===0?'journey-weight':''}`} key={d.key}>
         <div className="journey-metric-top"><label htmlFor={`journey-${d.key}`}><Icon size={15}/>{d.label}</label><button type="button" className={`journey-status ${status.toLowerCase()}`} title={`${d.label} · Review every ${d.days} ${d.days===1?'day':'days'}`} onClick={()=>{focus(`journey-${d.key}`);if(values[d.key])changeMetric(d.key,values[d.key]!);}}>{touched.includes(d.key)?'Edited':status}<ArrowUpRight size={11}/></button></div>
         <div className="journey-number"><input id={`journey-${d.key}`} aria-label={d.label} inputMode="decimal" type="number" min={d.min} max={d.max} step={d.step} placeholder="—" value={values[d.key] ?? ''} onChange={e=>changeMetric(d.key,e.target.value)}/><span>{d.unit}</span></div>
-        <div className="journey-meter" aria-hidden="true">{Array.from({length:16},(_,j)=><i key={j} className={values[d.key]!=='' && values[d.key]!=null && j < (Number(values[d.key])-d.min)/(d.max-d.min)*16 ? 'filled':''}/>)}</div>
+        <MetricArt index={i}/>
         <span className="journey-updated">{base.metrics[d.key] ? new Date(base.metrics[d.key]!.at).toLocaleDateString(undefined,{month:'short',day:'numeric'}) : 'Not logged'}<span>{d.days===1?'Daily':d.days===7?'Weekly':'Monthly'}</span></span>
       </section>;})}
     </div>
