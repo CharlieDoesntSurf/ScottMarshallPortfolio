@@ -1,0 +1,126 @@
+/* Shared visual language across Teddy's working screens. */
+.fit-app{--teddy-paper:#fffaf6;--teddy-ink:#171416;--teddy-rule:#17141626;--teddy-muted:#6b6267;background:#090a0a}
+.fit-app .main-content{max-width:1400px;padding:42px 40px}
+.fit-app .sidebar{background:#090a0a;border-right:1px solid #ffffff18}
+.fit-app .app-header{background:#090a0a;border-bottom:1px solid #ffffff18}
+.fit-app .sidebar nav button{border-radius:30px;padding:14px 17px;font-size:13px}
+.fit-app .page-heading{align-items:center;margin-bottom:36px}
+.fit-app .page-heading h1{letter-spacing:-.055em}
+.fit-app .eyebrow{font-size:10px;letter-spacing:.12em;font-weight:400}
+.fit-app .pill{border-radius:50px;font-weight:400;letter-spacing:.06em}
+.fit-app .primary,.fit-app .secondary{min-height:44px;padding:12px 22px;border-radius:50px;font-size:12px}
+.fit-app button:focus-visible,.fit-app input:focus-visible,.fit-app textarea:focus-visible,.fit-app select:focus-visible{outline:2px solid var(--teddy-yellow);outline-offset:4px}
+.fit-app:not(.is-interview) .card,.fit-app .routine-modal{background:var(--teddy-paper);color:var(--teddy-ink);border:1px solid transparent;border-radius:20px;color-scheme:light}
+.fit-app .card p,.fit-app .card .muted{color:var(--teddy-muted)}
+.fit-app .card .eyebrow,.fit-app .card .tag{color:var(--teddy-ink)!important}
+.fit-app .card .text-button{color:var(--teddy-ink);font-size:12px}
+.fit-app .card .text-button:hover{text-decoration:underline;text-underline-offset:4px}
+.fit-app .card .secondary{background:transparent;color:var(--teddy-ink);border:1px solid var(--teddy-ink)}
+.fit-app .card .secondary:hover{background:#1714160c}
+.fit-app .card .icon-tile{background:transparent;color:var(--teddy-ink);border:1px solid var(--teddy-rule);border-radius:50%}
+.fit-app .card .metadata,.fit-app .card .tag{color:var(--teddy-muted)}
+.fit-app .overview-grid,.fit-app .bottom-grid{gap:16px}
+.fit-app:not(.is-interview) .hero-card{background:linear-gradient(115deg,#ff4fa3,#ff91c4);color:var(--teddy-ink);padding:32px;min-height:300px}
+.fit-app .hero-card p{color:#462132}
+.fit-app .hero-card .pill{border-color:#17141640;color:var(--teddy-ink)}
+.fit-app .hero-card h2{font-size:clamp(32px,3.5vw,48px)!important;letter-spacing:-.05em}
+.fit-app .week-card{padding:28px}
+.fit-app .week-days{margin:28px 0 24px}
+.fit-app .week-days button{color:var(--teddy-muted);border-radius:50px}
+.fit-app .week-days button strong{color:var(--teddy-ink)}
+.fit-app .week-days button.selected{background:var(--teddy-yellow);color:var(--teddy-ink)}
+.fit-app .week-detail{border-color:var(--teddy-rule);color:var(--teddy-ink)}
+.fit-app .stats-grid{gap:16px;margin:16px 0 40px}
+.fit-app .stat{padding:24px}
+.fit-app .stat strong{font-size:38px;font-weight:400;letter-spacing:-.05em;color:var(--teddy-ink)}
+.fit-app .stat span{color:var(--teddy-muted)}
+.fit-app .section-heading{margin:32px 0 20px}
+.fit-app .section-heading h2{font-size:26px!important}
+.fit-app .workout-feature{padding:18px;gap:24px}
+.fit-app .workout-art{background:#ffb9d9;color:var(--teddy-ink);border-radius:12px;min-height:218px}
+.fit-app .workout-art .journey-line-art{width:100%;height:130px;transform:none;color:var(--teddy-ink)}
+.fit-app .workout-art span{color:var(--teddy-ink);font-size:8px;letter-spacing:.08em}
+.fit-app .workout-feature h2{font-size:28px!important;margin-top:12px}
+.fit-app:not(.is-interview) .coach-card{background:var(--teddy-yellow);padding:28px}
+.fit-app .coach-card h3{font-size:28px!important;margin-top:28px}
+.fit-app .history{padding:28px;margin-top:16px}
+.fit-app .history-row,.fit-app .routine-detail{border-color:var(--teddy-rule)}
+.fit-app .history-row>svg{color:var(--teddy-ink)}
+.fit-app .history-row span{color:var(--teddy-muted)}
+.fit-app .builder{padding:24px 28px;margin-bottom:28px}
+.fit-app .builder h3{font-size:24px!important}
+.fit-app .library-toolbar{gap:12px;flex-wrap:wrap;margin-bottom:24px}
+.fit-app .segmented{border-radius:50px;border-color:#ffffff35;background:transparent;padding:4px}
+.fit-app .segmented button{border-radius:50px;padding:12px 22px;color:#fffaf6}
+.fit-app .segmented button.selected{background:var(--teddy-pink);color:var(--teddy-ink)}
+.fit-app .search,.fit-app .library-toolbar select{border-radius:50px;border-color:#ffffff35;background:transparent;color:#fffaf6;min-height:46px}
+.fit-app .search input{color:#fffaf6}
+.fit-app .search input::placeholder{color:#b4a9af}
+.fit-app .library-toolbar select option{background:#171416}
+.fit-app .routine-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.fit-app .routine-card{display:flex;flex-direction:column;transition:transform .25s,background .25s}
+.fit-app .routine-card:hover{transform:translateY(-4px);background:#fff}
+.fit-app .routine-card .routine-art{order:2;background:transparent;color:var(--teddy-ink);height:130px;width:100%;padding:12px 24px 24px}
+.fit-app .routine-card .routine-art .journey-line-art{height:100%;transform:none;color:var(--teddy-ink);margin:0}
+.fit-app .routine-art>span{display:none}
+.fit-app .routine-copy{width:100%;padding:24px 24px 16px}
+.fit-app .routine-copy h3{font-size:28px!important;margin:16px 0 10px}
+.fit-app .routine-copy p{min-height:34px;font-size:12px}
+.fit-app .routine-copy .metadata{padding-top:16px;border-top:1px solid var(--teddy-rule);font-size:11px;gap:10px}
+.fit-app .routine-copy .metadata>svg{border:1px solid var(--teddy-ink);border-radius:50%;width:28px;height:28px;padding:5px;flex-shrink:0}
+.fit-app .exercise-grid{gap:16px}
+.fit-app .exercise-card{padding:26px}
+.fit-app .exercise-card h3{font-size:22px!important}
+.fit-app .card input,.fit-app .card textarea,.fit-app .card select{background:transparent;color:var(--teddy-ink);border:1px solid #17141655;border-radius:10px}
+.fit-app .card input::placeholder,.fit-app .card textarea::placeholder{color:var(--teddy-muted)}
+.fit-app .builder label,.fit-app .builder-choices button,.fit-app .chips button{color:var(--teddy-ink)}
+.fit-app .builder-choices button,.fit-app .chips button{border:1px solid var(--teddy-rule);border-radius:50px;background:transparent}
+.fit-app .builder-choices button.chosen,.fit-app .chips button{background:#ffc5df;border-color:#ffc5df}
+.fit-app .teddy-chat{max-width:1000px}
+.fit-app .interview-chat{overflow:hidden}
+.fit-app .chat-heading{padding:24px 28px;border-color:var(--teddy-rule)}
+.fit-app .chat-heading .teddy-bear{--teddy-cutout:var(--teddy-paper)}
+.fit-app .chat-heading .teddy-brand{color:var(--teddy-ink)}
+.fit-app .interview-message small{color:var(--teddy-muted);letter-spacing:.1em}
+.fit-app .interview-message p{background:#f0e9e6;color:var(--teddy-ink);padding:18px 22px;font-size:15px}
+.fit-app .interview-message.user p{background:#ffc5df;color:var(--teddy-ink)}
+.fit-app .chat-composer{background:transparent;border-color:var(--teddy-rule);padding:20px 28px}
+.fit-app .chat-composer textarea{padding:14px;min-height:74px}
+.fit-app .chat-composer .primary{border-radius:50%;padding:12px;width:46px;height:46px;min-width:46px}
+.fit-app .teddy-chat .chat-privacy{color:var(--teddy-muted);padding:0 28px 24px}
+.fit-app .schema-flow{gap:16px}
+.fit-app .schema-flow button{border-radius:16px;padding:22px;background:#191719;color:#fffaf6;border-color:#ffffff30}
+.fit-app .schema-flow button.selected{background:var(--teddy-pink);color:var(--teddy-ink);border-color:var(--teddy-pink)}
+.fit-app .schema-tables>div{border-color:var(--teddy-rule)}
+.fit-app .schema-tables code,.fit-app .card li,.fit-app .card code,.fit-app .contract-step>span,.fit-app .agent-grid summary{color:var(--teddy-ink)}
+.fit-app .preview-exercise{background:#efe8e4;color:var(--teddy-ink)}
+.fit-app .coach-result,.fit-app .agent-grid details{border-color:var(--teddy-rule)}
+.fit-app .set-row{color:var(--teddy-muted)}
+.fit-app .set-row input{color:var(--teddy-ink);background:#fff}
+.fit-app .check{border:1px solid var(--teddy-rule);background:transparent;color:var(--teddy-ink);border-radius:50%}
+.fit-app .check.checked{background:var(--teddy-yellow);border-color:var(--teddy-yellow)}
+.fit-app .routine-modal{padding:28px}
+.fit-app .routine-modal .section-top button{color:var(--teddy-ink)}
+.fit-app .routine-detail p{color:var(--teddy-muted)}
+.fit-app.compact .main-content{padding:26px 18px}
+.fit-app.compact .page-heading h1{font-size:38px!important}
+.fit-app.compact .hero-card{padding:24px;min-height:240px}
+.fit-app.compact .hero-card h2{font-size:32px!important}
+.fit-app.compact .routine-grid{grid-template-columns:1fr}
+.fit-app.compact .routine-copy{padding:22px}
+.fit-app.compact .routine-card .routine-art{height:110px}
+.fit-app.compact .builder,.fit-app.compact .week-card,.fit-app.compact .history{padding:22px}
+.fit-app.compact .stats-grid{gap:10px}
+.fit-app.compact .stat{padding:18px 12px}
+.fit-app.compact .stat strong{font-size:30px}
+.fit-app.compact .chat-heading,.fit-app.compact .chat-composer{padding:18px}
+.fit-app.compact .teddy-chat .chat-privacy{padding:0 18px 20px}
+.fit-app.compact .library-toolbar .search{width:100%;margin:0}
+@media(max-width:1000px){.fit-app .routine-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.fit-app .main-content{padding:26px 18px}.fit-app .routine-grid{grid-template-columns:1fr}.fit-app .hero-card{padding:24px}.fit-app .page-heading h1{font-size:38px!important}.fit-app .builder{padding:20px}.fit-app .library-toolbar .search{width:100%;margin:0}.fit-app .routine-copy p{min-height:0}}
+.fit-app .week-days b,.fit-app .week-days .selected b,.fit-app .schema-flow button.selected span{color:var(--teddy-ink)}
+.fit-app .week-days .planned{color:var(--teddy-ink)}
+.phone-caption h2{font-family:Arial,Helvetica,sans-serif;font-weight:400;letter-spacing:-.04em}
+.fit-app .search{flex:1;max-width:320px}
+.fit-app .search input{min-width:0;width:100%}
+.fit-app.compact .search{max-width:none;flex-basis:100%}

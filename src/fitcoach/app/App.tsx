@@ -1,6 +1,7 @@
 import teddyLogo from "../assets/coach-teddy.png";
 import { TeddyBrand } from "./prototype/TeddyBrand";
 import { CoachChat } from "./prototype/CoachChat";
+import { MetricArt } from "./prototype/MetricArt";
 import { OverviewMetrics } from "./prototype/OverviewMetrics";
 import { JourneyDashboard } from "./prototype/JourneyDashboard";
 import { useEffect, useRef, useState } from "react";
@@ -47,6 +48,7 @@ import { ExerciseDemo } from "./prototype/ExerciseDemo";
 import { WorkoutBuilder } from "./prototype/WorkoutBuilder";
 import "../styles/prototype.css";
 import "../styles/teddy-design.css";
+import "../styles/teddy-app.css";
 type Page = "overview" | "workouts" | "interview" | "agent" | "database";
 const nav = [
   { id: "overview", label: "Overview", icon: LayoutDashboard },
@@ -517,7 +519,7 @@ export default function App() {
               <div className="bottom-grid">
                 <section className="card workout-feature">
                   <div className="workout-art" aria-hidden="true">
-                    <Dumbbell size={84} strokeWidth={1} />
+                    <MetricArt index={0} />
                     <span>01 / FOUNDATIONS</span>
                   </div>
                   <div>
@@ -666,7 +668,7 @@ export default function App() {
                         onClick={() => setSelectedRoutine(r)}
                       >
                         <div className="routine-art">
-                          <Dumbbell size={65} strokeWidth={1} />
+                          <MetricArt index={i} />
                           <span>{String(i + 1).padStart(2, "0")}</span>
                         </div>
                         <div className="routine-copy">
