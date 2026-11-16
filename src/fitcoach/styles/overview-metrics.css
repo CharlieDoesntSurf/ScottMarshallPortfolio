@@ -13,3 +13,4 @@
 @keyframes metric-enter{from{transform:translateX(100%)}to{transform:translateX(0)}}
 @media(max-width:700px){.metric-drawer{width:100%;border-radius:0;padding:24px}.fit-app .overview-metric{padding:14px 10px}.overview-metric-value{font-size:30px}.overview-metric-goal{flex-wrap:wrap;gap:3px}.metric-detail-fields input{font-size:36px}}
 @media(prefers-reduced-motion:reduce){.metric-drawer[open]{animation:none}.fit-app .overview-metric{transition:none}}
+.fit-app .journey>.overview-metrics{margin:0;gap:12px}.fit-app .journey .overview-metric .journey-line-art{height:48px}.compact .journey>.overview-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.journey .metric-drawer input{color:#171014}.journey .metric-drawer .metric-detail-fields span{color:#66535d}@media(max-width:800px){.journey>.overview-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}

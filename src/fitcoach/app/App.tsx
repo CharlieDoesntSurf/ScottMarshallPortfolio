@@ -977,7 +977,7 @@ export default function App() {
                 </button>
               </section>
               <p className="muted">
-                Portfolio demo. Private text chat uses Supabase sign-in and OpenAI. Fitness data stays in this browser. All preserved openGym source files and
+                Portfolio demo. Text chat uses a Supabase endpoint and OpenAI. Sign-in is deferred. Fitness data stays in this browser. All preserved openGym source files and
                 guides are available in Supabase; importing source does not
                 activate every feature.
               </p>

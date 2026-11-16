@@ -14,7 +14,7 @@ export type JourneyProfile = Omit<Intake, 'minutes'> & { minutes: number | null 
 export type Journey = {
   profile: JourneyProfile;
   metrics: Partial<Record<MetricKey, Reading>>;
-  goals: { weight: number | null; sleep: number | null; energy?: number | null };
+  goals: { weight: number | null; sleep: number | null; energy?: number | null; bodyFat?: number | null; soreness?: number | null; sleepQuality?: number | null };
   weightHistory: Reading[];
   metricHistory?: Partial<Record<MetricKey, Reading[]>>;
   profileUpdatedAt?: string;
