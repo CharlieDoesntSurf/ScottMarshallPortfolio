@@ -1,0 +1,5 @@
+import type { Session } from './data';
+export function RecentWorkouts({sessions,onOpen}:{sessions:Session[];onOpen:(session:Session)=>void}) {
+ const recent=sessions.filter(s=>s.completedAt).sort((a,b)=>Date.parse(b.completedAt!)-Date.parse(a.completedAt!)).slice(0,7);
+ return <section className="recent-workouts" aria-label="Last seven workouts"><div className="section-top"><h2>Last 7 workouts</h2><span>{recent.length} / 7</span></div><div className="recent-workout-days">{Array.from({length:7},(_,i)=>{const workout=recent[i];if(!workout)return <div className="recent-workout-empty" key={`empty-${i}`}><span>—</span><small>No workout</small></div>;const date=new Date(workout.completedAt!);return <button type="button" key={workout.id} onClick={()=>onOpen(workout)} aria-label={`Open ${workout.name}, ${date.toLocaleDateString()}`}><span>{date.toLocaleDateString(undefined,{weekday:'short'})}</span><b>{date.getDate()}</b><small>{date.toLocaleDateString(undefined,{month:'short',year:'numeric'})}</small><strong>{workout.name}</strong><small>{workout.sets.filter(s=>s.done).length} sets</small></button>})}</div></section>;
+}

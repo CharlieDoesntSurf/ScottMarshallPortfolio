@@ -178,3 +178,18 @@
 .fit-app.compact .journey-intentions label{border-right:0;border-bottom:1px solid #17141620}
 .fit-app.compact .journey>.metric-bar:has(>button:nth-child(3):last-child){grid-template-columns:repeat(3,130px)}
 @media(max-width:800px){.fit-app .journey>.metric-bar{grid-template-columns:repeat(6,145px);overflow-x:auto}.fit-app .journey-intentions{grid-template-columns:1fr}.fit-app .journey-intentions label{border-right:0;border-bottom:1px solid #17141620}.fit-app .journey>.metric-bar:has(>button:nth-child(3):last-child){grid-template-columns:repeat(3,145px)}}
+.fit-app .journey .journey-calendar{background:transparent;border:1px solid #17141635;color:#171416;min-height:0;margin:0;padding:26px;border-radius:18px}
+.fit-app .journey .journey-calendar h3{font-size:24px!important}
+.fit-app .recent-workouts{background:#fffaf6;color:#171416;padding:26px;border-radius:18px;margin-bottom:26px}
+.fit-app .recent-workouts h2{font-size:26px!important;margin:0}
+.fit-app .recent-workouts .section-top>span{font-size:12px;color:#66535d}
+.fit-app .recent-workout-days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));margin-top:22px}
+.fit-app .recent-workout-days>button,.fit-app .recent-workout-empty{min-width:0;display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 10px;background:transparent;border:0;border-right:1px solid #17141620;color:#171416;text-align:center;font:inherit}
+.fit-app .recent-workout-days>:last-child{border-right:0}
+.fit-app .recent-workout-days>button:hover{background:#ffe2ef;border-radius:12px}
+.fit-app .recent-workout-days b{font-size:30px;font-weight:400}
+.fit-app .recent-workout-days strong{font-size:13px;font-weight:400;overflow-wrap:anywhere;margin-top:10px}
+.fit-app .recent-workout-days span,.fit-app .recent-workout-days small{font-size:11px;color:#66535d}
+.fit-app .recent-workout-empty{justify-content:center;min-height:150px}
+.fit-app.compact .recent-workout-days{grid-template-columns:repeat(7,120px);overflow-x:auto}
+@media(max-width:800px){.fit-app .recent-workout-days{grid-template-columns:repeat(7,120px);overflow-x:auto}}

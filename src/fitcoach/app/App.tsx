@@ -31,7 +31,6 @@ import {
 } from "lucide-react";
 import { IPhoneFrame } from "./prototype/IPhoneFrame";
 import {
-  weekDays,
   schemaGroups,
   newSession,
     type Session,
@@ -44,15 +43,16 @@ import {
 } from "./prototype/coach";
 import { useDemoWorkspace } from "./prototype/useDemoWorkspace";
 import { ExerciseDemo } from "./prototype/ExerciseDemo";
+import { RecentWorkouts } from "./prototype/RecentWorkouts";
 import { WorkoutBuilder } from "./prototype/WorkoutBuilder";
 import "../styles/prototype.css";
 import "../styles/teddy-design.css";
 import "../styles/teddy-app.css";
 type Page = "overview" | "workouts" | "interview" | "agent" | "database";
 const nav = [
+  { id: "interview", label: "Journey", icon: Heart },
   { id: "overview", label: "Overview", icon: LayoutDashboard },
   { id: "workouts", label: "Workouts", icon: Dumbbell },
-  { id: "interview", label: "Journey", icon: Heart },
   { id: "agent", label: "Coach", icon: Sparkles },
   { id: "database", label: "Data blueprint", icon: Database },
 ] as const;
@@ -68,7 +68,7 @@ function download(name: string, value: unknown) {
 export default function App() {
   const mainShellRef = useRef<HTMLDivElement>(null);
   const [view, setView] = useState<"web" | "phone">("web");
-  const [page, setPage] = useState<Page>("overview");
+  const [page, setPage] = useState<Page>("interview");
   const cloud = useDemoWorkspace();
   const {
     exercises,
@@ -95,11 +95,6 @@ export default function App() {
   const [schemaIndex, setSchemaIndex] = useState(0);
   const [selectedRoutine, setSelectedRoutine] = useState<Routine | null>(null);
   const today = new Date();
-  const weekStart = new Date(today);
-  weekStart.setDate(today.getDate() - ((today.getDay() + 6) % 7));
-  const calendarEnd = new Date(weekStart);
-  calendarEnd.setDate(calendarEnd.getDate() + 6);
-  const [selectedDay, setSelectedDay] = useState((today.getDay() + 6) % 7);
   const go = (p: Page) => {
     setPage(p);
     setNotice("");
@@ -165,7 +160,7 @@ export default function App() {
       )}
       <div className="main-shell" ref={mainShellRef}>
         <header className="app-header top-navigation">
-          <a className="top-brand" href="#" aria-label="Coach Teddy home" onClick={e=>{e.preventDefault();go("overview");}}><TeddyBrand /></a>
+          <a className="top-brand" href="#" aria-label="Coach Teddy home" onClick={e=>{e.preventDefault();go("interview");}}><TeddyBrand /></a>
           <nav aria-label="Main navigation">
             {nav.map(n=><button key={n.id} aria-label={n.label} aria-current={page===n.id?"page":undefined} className={page===n.id?"active":""} onClick={()=>go(n.id)}><n.icon size={17}/><span>{n.label}</span></button>)}
           </nav>
@@ -350,40 +345,6 @@ export default function App() {
                   })}
                 </span>
               </div>
-              <div className="overview-week">
-                <section className="card week-card week-hero">
-                  <div className="section-top">
-                    <h3>Your week</h3>
-                    <span className="muted">
-                      {weekStart.toLocaleDateString("en-US", { month: "short", day: "numeric" })} – {calendarEnd.toLocaleDateString("en-US", { month: "short", day: "numeric" })}
-                    </span>
-                  </div>
-                  <div className="week-days">
-                    {Array.from({ length: 7 }, (_, i) => {
-                      const d = weekDays[i % 7];
-                      const date = new Date(weekStart);
-                      date.setDate(date.getDate() + i);
-                      return (
-                        <button
-                          key={i}
-                          className={selectedDay === i ? "selected" : ""}
-                          onClick={() => setSelectedDay(i)}
-                          aria-label={date.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" })}
-                          aria-pressed={selectedDay === i}
-                        >
-                          <span>{d[0]}</span>
-                          <b>{date.getDate()}</b>
-                          <i
-                            className={
-                              intake?.days.includes(d) ? "planned" : ""
-                            }
-                          />
-                        </button>
-                      );
-                    })}
-                  </div>
-                </section>
-              </div>
               <OverviewMetrics saved={cloud.journey} intake={intake} onSave={cloud.saveJourney} />
               <div className="stats-grid">
                 {[
@@ -526,6 +487,7 @@ export default function App() {
                 </div>
                 <span className="pill">{exercises.length} EXERCISES</span>
               </div>
+              <RecentWorkouts sessions={sessions} onOpen={cloud.edit}/>
               <WorkoutBuilder
                 exercises={exercises}
                 onSaved={cloud.refreshCatalog}

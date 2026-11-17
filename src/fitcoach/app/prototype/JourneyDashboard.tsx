@@ -1,3 +1,4 @@
+import { WeeklyCalendar } from './WeeklyCalendar';
 import { DailyFocus } from './DailyFocus';
 import { OverviewMetrics } from './OverviewMetrics';
 import { useState } from 'react';
@@ -54,6 +55,7 @@ export function JourneyDashboard({ saved, intake, sessions, onSave }: { saved?: 
     <section className="journey-intentions" aria-label="Personal goals">
       {([['fitnessGoal','Fitness goal'],['reason','Reason'],['additionalInfo','Additional info']] as const).map(([key,label])=><label key={key}>{label}<textarea aria-label={label} rows={4} maxLength={2000} placeholder="—" defaultValue={base.intentions?.[key] || (key==='reason'?profile.motivation:key==='additionalInfo'?profile.limitations:'')} onBlur={e=>{const intentions={fitnessGoal:'',reason:profile.motivation,additionalInfo:profile.limitations,...base.intentions,[key]:e.target.value};if(JSON.stringify(intentions)===JSON.stringify(base.intentions))return;try{const next={...base,intentions,updatedAt:new Date().toISOString()};onSave(next);setBase(next);}catch{setMessage('Save failed · Retry');setFailed(true);}}}/></label>)}
     </section>
+    <WeeklyCalendar days={profile.days}/>
     <div className="journey-section-title"><h2>Nutrition & body</h2></div>
     <OverviewMetrics all bar keys={["calories","protein","bmi"]} saved={base} intake={intake} onSave={value=>{onSave(value);setBase(value);setGoals(value.goals);}}/>
     <div className="journey-middle">
