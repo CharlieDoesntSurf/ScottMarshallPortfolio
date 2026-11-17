@@ -211,3 +211,50 @@
 .fit-app .journey .checkin-summary .overview-metric:hover{background:transparent}
 .fit-app.compact .checkin-fields{grid-template-columns:repeat(2,minmax(0,1fr))}
 @media(max-width:800px){.fit-app .checkin-fields{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.fit-app .inline-checkin{padding:14px 18px}
+.fit-app .inline-checkin h2{font-size:20px!important}
+.fit-app .checkin-fields{grid-template-columns:repeat(8,minmax(0,1fr));gap:10px 16px;margin-top:12px}
+.fit-app .checkin-fields label>div{margin-top:5px}
+.fit-app .checkin-fields input{font-size:23px;padding:3px 0}
+.fit-app .checkin-fields input[type=time],.fit-app .checkin-fields input[type=text]{font-size:13px;min-height:28px}
+.fit-app .checkin-supplements{grid-column:span 4}
+.fit-app .checkin-actions{margin-top:8px}
+.fit-app .checkin-actions .primary{min-height:32px;padding:6px 16px}
+.fit-app .journey>.checkin-summary{grid-template-columns:repeat(8,minmax(0,1fr))}
+.fit-app .saved-daily-details{display:flex;gap:18px;align-items:center;flex-wrap:wrap;background:#fffaf6;border-radius:12px;padding:12px 18px;margin-top:-18px;font-size:12px}
+.fit-app .saved-daily-details b{font-weight:400;margin-left:8px;overflow-wrap:anywhere}
+.fit-app .saved-daily-details small{margin-left:auto;color:#66535d}
+.fit-app .setup-edit{border:1px solid #17141655;border-radius:30px;padding:9px 16px;color:#171416;background:transparent;font-size:12px}
+.fit-app .first-use-setup{max-width:1000px;margin:0 auto;background:#fffaf6;color:#171416;padding:30px;border-radius:22px}
+.fit-app .first-use-setup header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.fit-app .first-use-setup header span{font-size:10px;letter-spacing:.14em}
+.fit-app .first-use-setup h1{font-size:42px!important;margin:10px 0}
+.fit-app .first-use-setup nav{display:flex;gap:8px;margin-bottom:26px;flex-wrap:wrap}
+.fit-app .first-use-setup button{background:transparent;border:1px solid #17141635;color:#171416;border-radius:30px;padding:10px 18px;font:inherit;font-size:12px}
+.fit-app .first-use-setup button[aria-current=step]{background:#ffb9d9;border-color:#ffb9d9}
+.fit-app .first-use-setup button:disabled{opacity:.45}
+.fit-app .setup-fields{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.fit-app .setup-fields label{display:flex;flex-direction:column;gap:7px;font-size:12px}
+.fit-app .setup-fields input,.fit-app .setup-fields select,.fit-app .setup-fields textarea{width:100%;min-width:0;color:#171416;background:transparent;border:1px solid #17141640;border-radius:8px;padding:10px;font:inherit;font-size:14px}
+.fit-app .setup-fields small{color:#66535d;font-size:10px}
+.fit-app .setup-wide{grid-column:1/-1}
+.fit-app .setup-fields fieldset{border:0;padding:0;display:flex;flex-wrap:wrap;gap:16px}
+.fit-app .setup-fields legend{font-size:12px;margin-bottom:10px}
+.fit-app .setup-fields fieldset label{flex-direction:row;align-items:center}
+.fit-app .setup-fields input[type=checkbox]{width:16px;accent-color:#171416}
+.fit-app .setup-metric{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.fit-app .setup-metric>span{grid-column:1/-1;font-size:14px}
+.fit-app .setup-metric>label{font-size:10px}
+.fit-app .first-use-setup footer{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-top:28px;flex-wrap:wrap}
+.fit-app .first-use-setup footer>span{font-size:11px;color:#66535d}
+.fit-app .first-use-setup footer>div{display:flex;gap:8px}
+.fit-app .first-use-setup button[type=submit]{background:#171416;color:#fffaf6}
+.fit-app .first-use-setup [role=alert]{color:#a51043;margin-top:14px}
+.fit-app.compact .journey-local{display:block;position:static}
+.fit-app.compact .checkin-fields{grid-template-columns:repeat(2,minmax(0,1fr))}
+.fit-app.compact .checkin-supplements{grid-column:1/-1}
+.fit-app.compact .journey>.checkin-summary{grid-template-columns:repeat(8,130px)}
+.fit-app.compact .setup-fields{grid-template-columns:1fr}
+.fit-app.compact .first-use-setup{padding:20px}
+@media(max-width:800px){.fit-app .checkin-fields{grid-template-columns:repeat(4,minmax(0,1fr))}.fit-app .journey>.checkin-summary{grid-template-columns:repeat(8,130px)}.fit-app .setup-fields{grid-template-columns:1fr}.fit-app .journey-local{display:block;position:static}}
+@media(max-width:500px){.fit-app .checkin-fields{grid-template-columns:repeat(2,minmax(0,1fr))}.fit-app .checkin-supplements{grid-column:1/-1}}

@@ -16,6 +16,9 @@ export type Reading = { value: number; at: string };
 export type JourneyProfile = Omit<Intake, 'minutes'> & { minutes: number | null };
 export type Journey = {
   profile: JourneyProfile;
+  setupCompletedAt?: string;
+  preferences?: { heightCm: string; diet: string; foodNotes: string; supplements: string };
+  dailyDetails?: { at: string; bedtime: string; wakeTime: string; supplements: string }[];
   intentions?: { fitnessGoal: string; reason: string; additionalInfo: string };
   metrics: Partial<Record<MetricKey, Reading>>;
   goals: { weight: number | null; sleep: number | null; energy?: number | null; bodyFat?: number | null; soreness?: number | null; sleepQuality?: number | null; calories?: number | null; protein?: number | null; bmi?: number | null };

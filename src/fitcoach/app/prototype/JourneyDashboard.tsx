@@ -1,3 +1,4 @@
+import { FirstUseSetup } from './FirstUseSetup';
 import { CheckIn, CheckInSummary } from './CheckIn';
 import { WeeklyCalendar } from './WeeklyCalendar';
 import { DailyFocus } from './DailyFocus';
@@ -10,6 +11,7 @@ import { createJourney, equipmentOptions, experienceOptions, goalOptions, metric
 import '../../styles/journey.css';
 
 export function JourneyDashboard({ saved, intake, sessions, onSave }: { saved?: Journey; intake: Intake | null; sessions: Session[]; onSave: (value: Journey) => void }) {
+  const [setupOpen,setSetupOpen]=useState(!saved&&!intake);
   const [base, setBase] = useState(() => saved || createJourney(intake));
   const [profile, setProfile] = useState<JourneyProfile>(base.profile);
   const [goals, setGoals] = useState(base.goals);
@@ -42,8 +44,9 @@ export function JourneyDashboard({ saved, intake, sessions, onSave }: { saved?: 
       onSave(next);setBase(next);setDirty(false);setMessage('Saved · This browser');setFailed(false);
     } catch { setMessage('Save failed · Retry');setFailed(true); }
   }
+  if(setupOpen)return <FirstUseSetup journey={base} onCancel={saved||intake?()=>setSetupOpen(false):undefined} onSave={value=>{onSave(value);setBase(value);setProfile(value.profile);setGoals(value.goals);setDirty(false);setSetupOpen(false);}}/>;
   return <form className="journey" onSubmit={submit}>
-    <div className="journey-heading"><div><span className="journey-kicker">YOUR BASELINE</span><h1>Journey<span>.</span></h1></div><div className="journey-local"><i/> This browser</div></div>
+    <div className="journey-heading"><div><span className="journey-kicker">YOUR BASELINE</span><h1>Journey<span>.</span></h1></div><div className="journey-local"><button type="button" className="setup-edit" onClick={()=>setSetupOpen(true)}>Edit setup</button></div></div>
     <div className="journey-summary">
       <div className="journey-identity"><div className="journey-avatar">{profile.name.trim().slice(0,1).toUpperCase() || <Plus size={24}/>}</div><div><label htmlFor="journey-name">Name</label><input id="journey-name" aria-label="Name" maxLength={60} placeholder="Your name" value={profile.name} onChange={e=>patchProfile({name:e.target.value})}/><span>{profile.experience || 'Experience · —'}</span></div></div>
       <div className="journey-completion"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="19"/><circle cx="24" cy="24" r="19" pathLength="100" strokeDasharray={`${complete/6*100} 100`}/></svg><div><strong>{complete}<small> / 6</small></strong><span>Profile fields</span></div></div>
