@@ -128,11 +128,11 @@
 .fit-app:not(.is-interview) .week-hero{background:linear-gradient(115deg,#ff4fa3,#ff91c4);padding:32px;min-height:300px;margin-bottom:24px}
 .fit-app .week-hero h3{font-size:36px!important;letter-spacing:-.045em}
 .fit-app .week-hero .muted,.fit-app .week-hero .week-days button:not(.selected),.fit-app .week-hero .week-detail small{color:#462132}
-.fit-app .week-hero .week-days{gap:16px;margin:24px 0}
+.fit-app .week-hero .week-days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:12px;margin:24px 0 0}
 .fit-app .week-hero .week-days button{flex:1;min-height:86px;border:1px solid #17141626;border-radius:18px}
 .fit-app .week-hero .week-days b{font-size:26px;font-weight:400}
 .fit-app .week-hero .week-days button:hover{background:#ffffff30}
-.fit-app .week-hero .week-days button.selected{background:var(--teddy-yellow)}
+.fit-app .week-hero .week-days button.selected{background:#fff;border-color:#fff}
 .fit-app .week-hero .week-detail{padding-top:20px}
 .fit-app .week-hero>.text-button{margin-top:18px}
 .fit-app.compact .week-hero{padding:22px;min-height:0}
@@ -140,3 +140,5 @@
 .fit-app.compact .week-hero .week-days button{min-width:0;min-height:72px;padding:10px 2px;border-radius:25px}
 .fit-app.compact .week-hero .week-days b{font-size:20px}
 @media(max-width:700px){.fit-app:not(.is-interview) .week-hero{padding:22px}.fit-app .week-hero .week-days{gap:5px}.fit-app .week-hero .week-days button{min-width:0;min-height:72px;padding:10px 2px;border-radius:25px}.fit-app .week-hero .week-days b{font-size:20px}}
+
+.fit-app .week-hero .section-top>.muted{color:#462132!important;font-size:12px}

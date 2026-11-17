@@ -97,6 +97,8 @@ export default function App() {
   const today = new Date();
   const weekStart = new Date(today);
   weekStart.setDate(today.getDate() - ((today.getDay() + 6) % 7));
+  const calendarEnd = new Date(weekStart);
+  calendarEnd.setDate(calendarEnd.getDate() + 20);
   const [selectedDay, setSelectedDay] = useState((today.getDay() + 6) % 7);
   const go = (p: Page) => {
     setPage(p);
@@ -393,21 +395,23 @@ export default function App() {
               <div className="overview-week">
                 <section className="card week-card week-hero">
                   <div className="section-top">
-                    <h3>Your week</h3>
+                    <h3>Your weeks</h3>
                     <span className="muted">
-                      {today.toLocaleDateString("en-US", { month: "short" })}
+                      {weekStart.toLocaleDateString("en-US", { month: "short", day: "numeric" })} – {calendarEnd.toLocaleDateString("en-US", { month: "short", day: "numeric" })}
                     </span>
                   </div>
                   <div className="week-days">
-                    {weekDays.map((d, i) => {
+                    {Array.from({ length: 21 }, (_, i) => {
+                      const d = weekDays[i % 7];
                       const date = new Date(weekStart);
                       date.setDate(date.getDate() + i);
                       return (
                         <button
-                          key={d}
+                          key={i}
                           className={selectedDay === i ? "selected" : ""}
                           onClick={() => setSelectedDay(i)}
-                          aria-label={`View ${d}`}
+                          aria-label={date.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" })}
+                          aria-pressed={selectedDay === i}
                         >
                           <span>{d[0]}</span>
                           <b>{date.getDate()}</b>
@@ -420,32 +424,6 @@ export default function App() {
                       );
                     })}
                   </div>
-                  <div className="week-detail">
-                    <div className="icon-tile">
-                      <Dumbbell size={20} />
-                    </div>
-                    <div>
-                      <b>
-                        {intake?.days.includes(weekDays[selectedDay])
-                          ? "Training day"
-                          : "Make space to move"}
-                      </b>
-                      <small>
-                        {intake?.days.includes(weekDays[selectedDay])
-                          ? `${intake.minutes} minutes · Choose a routine`
-                          : "Choose your training days"}
-                      </small>
-                    </div>
-                  </div>
-                  <button
-                    className="text-button"
-                    onClick={() => go(intake ? "workouts" : "interview")}
-                  >
-                    {intake
-                      ? "Explore your workouts"
-                      : "Set your training days"}
-                    <ArrowRight size={15} />
-                  </button>
                 </section>
               </div>
               <OverviewMetrics saved={cloud.journey} intake={intake} onSave={cloud.saveJourney} />
