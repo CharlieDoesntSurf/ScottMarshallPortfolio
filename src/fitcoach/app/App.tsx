@@ -1,4 +1,3 @@
-import teddyLogo from "../assets/coach-teddy.png";
 import { TeddyBrand } from "./prototype/TeddyBrand";
 import { CoachChat } from "./prototype/CoachChat";
 import { MetricArt } from "./prototype/MetricArt";
@@ -391,29 +390,8 @@ export default function App() {
                   })}
                 </span>
               </div>
-              <div className="overview-grid">
-                <section className="hero-card">
-                  <div className="hero-copy">
-                    <span className="pill">
-                      <Sparkles size={13} /> BUILT AROUND YOU
-                    </span>
-                    <h2>
-                      Your pace.
-                      <br />
-                      Your plan.
-                    </h2>
-
-                    <button className="primary" onClick={() => go("interview")}>
-                      {intake
-                        ? "Update my profile"
-                        : "Open Journey"}
-                      <ArrowRight size={17} />
-                    </button>
-                    <small>Profile · Metrics · Goals</small>
-                  </div>
-                  <img className="teddy-hero-logo" src={teddyLogo} alt="Coach Teddy" />
-                </section>
-                <section className="card week-card">
+              <div className="overview-week">
+                <section className="card week-card week-hero">
                   <div className="section-top">
                     <h3>Your week</h3>
                     <span className="muted">
