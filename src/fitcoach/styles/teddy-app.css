@@ -193,3 +193,21 @@
 .fit-app .recent-workout-empty{justify-content:center;min-height:150px}
 .fit-app.compact .recent-workout-days{grid-template-columns:repeat(7,120px);overflow-x:auto}
 @media(max-width:800px){.fit-app .recent-workout-days{grid-template-columns:repeat(7,120px);overflow-x:auto}}
+.fit-app .journey .journey-calendar{padding:8px;min-height:0}
+.fit-app .journey .journey-calendar .week-days{margin:0}
+.fit-app .journey .daily-focus{background:#fffaf6;color:#171416}
+.fit-app .journey .daily-focus p{color:#171416}
+.fit-app .journey .daily-focus span{color:#66535d}
+.fit-app .journey .daily-focus button{background:#171416;color:#fffaf6}
+.fit-app .inline-checkin{background:#fffaf6;border-radius:18px;padding:24px;color:#171416}
+.fit-app .checkin-fields{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px;margin-top:22px}
+.fit-app .checkin-fields label{font-size:12px;min-width:0}
+.fit-app .checkin-fields label>div{display:flex;align-items:baseline;border-bottom:1px solid #17141655;margin-top:14px;gap:6px}
+.fit-app .checkin-fields input{width:100%;min-width:0;background:transparent;border:0;color:#171416;font:inherit;font-size:32px;padding:8px 0}
+.fit-app .checkin-fields label>div>span{white-space:nowrap;font-size:11px;color:#66535d}
+.fit-app .checkin-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:22px;font-size:12px}
+.fit-app .checkin-actions .primary{background:#171416;border-color:#171416;color:#fffaf6}
+.fit-app .journey .checkin-summary .overview-metric{cursor:default}
+.fit-app .journey .checkin-summary .overview-metric:hover{background:transparent}
+.fit-app.compact .checkin-fields{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:800px){.fit-app .checkin-fields{grid-template-columns:repeat(2,minmax(0,1fr))}}

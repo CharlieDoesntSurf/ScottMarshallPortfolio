@@ -1,3 +1,4 @@
+import { CheckIn, CheckInSummary } from './CheckIn';
 import { WeeklyCalendar } from './WeeklyCalendar';
 import { DailyFocus } from './DailyFocus';
 import { OverviewMetrics } from './OverviewMetrics';
@@ -48,9 +49,9 @@ export function JourneyDashboard({ saved, intake, sessions, onSave }: { saved?: 
       <div className="journey-completion"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="19"/><circle cx="24" cy="24" r="19" pathLength="100" strokeDasharray={`${complete/6*100} 100`}/></svg><div><strong>{complete}<small> / 6</small></strong><span>Profile fields</span></div></div>
     </div>
 
+    <CheckIn journey={base} onSave={value=>{onSave(value);setBase(value);}}/>
     <DailyFocus journey={base} sessions={sessions}/>
-    <div className="journey-section-title"><h2>Check-in</h2><span>{new Date().toLocaleDateString(undefined,{month:'short',day:'numeric'})}</span></div>
-    <OverviewMetrics all bar keys={["weight","sleep","energy","bodyFat","soreness","sleepQuality"]} saved={base} intake={intake} onSave={value=>{onSave(value);setBase(value);setGoals(value.goals);}} />
+    <CheckInSummary journey={base}/>
 
     <section className="journey-intentions" aria-label="Personal goals">
       {([['fitnessGoal','Fitness goal'],['reason','Reason'],['additionalInfo','Additional info']] as const).map(([key,label])=><label key={key}>{label}<textarea aria-label={label} rows={4} maxLength={2000} placeholder="—" defaultValue={base.intentions?.[key] || (key==='reason'?profile.motivation:key==='additionalInfo'?profile.limitations:'')} onBlur={e=>{const intentions={fitnessGoal:'',reason:profile.motivation,additionalInfo:profile.limitations,...base.intentions,[key]:e.target.value};if(JSON.stringify(intentions)===JSON.stringify(base.intentions))return;try{const next={...base,intentions,updatedAt:new Date().toISOString()};onSave(next);setBase(next);}catch{setMessage('Save failed · Retry');setFailed(true);}}}/></label>)}
