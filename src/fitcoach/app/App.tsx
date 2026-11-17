@@ -98,7 +98,7 @@ export default function App() {
   const weekStart = new Date(today);
   weekStart.setDate(today.getDate() - ((today.getDay() + 6) % 7));
   const calendarEnd = new Date(weekStart);
-  calendarEnd.setDate(calendarEnd.getDate() + 20);
+  calendarEnd.setDate(calendarEnd.getDate() + 6);
   const [selectedDay, setSelectedDay] = useState((today.getDay() + 6) % 7);
   const go = (p: Page) => {
     setPage(p);
@@ -151,7 +151,6 @@ export default function App() {
         </section>
       </div>
     );
-  const title = nav.find((n) => n.id === page)!.label;
   const content = (
     <div className={`fit-app ${view === "phone" ? "compact" : ""} ${page === "interview" && !active ? "is-interview" : ""}`}>
       {view === "phone" && (
@@ -164,53 +163,12 @@ export default function App() {
           </span>
         </div>
       )}
-      <aside className="sidebar">
-        <a
-          className="brand"
-          href="#"
-          onClick={(e) => {
-            e.preventDefault();
-            go("overview");
-          }}
-        >
-          <TeddyBrand />
-        </a>
-        <div className="nav-label">YOUR SPACE</div>
-        <nav>
-          {nav.map((n) => (
-            <button
-              key={n.id}
-              aria-label={n.label}
-              className={page === n.id ? "active" : ""}
-              onClick={() => go(n.id)}
-            >
-              <n.icon size={19} />
-              <span>{n.label}</span>
-              {n.id === "agent" && <i />}
-            </button>
-          ))}
-        </nav>
-        <div className="sidebar-bottom">
-          <div className="local-dot" /> DEMO WORKSPACE
-
-          <div className="profile">
-            <span>{intake?.name.charAt(0).toUpperCase() || "Y"}</span>
-            <div>
-              <b>{intake?.name || "Your space"}</b>
-              <small>Personal fitness journal</small>
-            </div>
-          </div>
-        </div>
-      </aside>
       <div className="main-shell" ref={mainShellRef}>
-        <header className="app-header">
-          <div>
-            <span className="header-path">YOUR JOURNEY</span>
-            <span className="header-title">{title}</span>
-          </div>
-          <span className="demo-chip">
-            <i /> Portfolio demo
-          </span>
+        <header className="app-header top-navigation">
+          <a className="top-brand" href="#" aria-label="Coach Teddy home" onClick={e=>{e.preventDefault();go("overview");}}><TeddyBrand /></a>
+          <nav aria-label="Main navigation">
+            {nav.map(n=><button key={n.id} aria-label={n.label} aria-current={page===n.id?"page":undefined} className={page===n.id?"active":""} onClick={()=>go(n.id)}><n.icon size={17}/><span>{n.label}</span></button>)}
+          </nav>
         </header>
         <main className="main-content">
           <div
@@ -395,13 +353,13 @@ export default function App() {
               <div className="overview-week">
                 <section className="card week-card week-hero">
                   <div className="section-top">
-                    <h3>Your weeks</h3>
+                    <h3>Your week</h3>
                     <span className="muted">
                       {weekStart.toLocaleDateString("en-US", { month: "short", day: "numeric" })} – {calendarEnd.toLocaleDateString("en-US", { month: "short", day: "numeric" })}
                     </span>
                   </div>
                   <div className="week-days">
-                    {Array.from({ length: 21 }, (_, i) => {
+                    {Array.from({ length: 7 }, (_, i) => {
                       const d = weekDays[i % 7];
                       const date = new Date(weekStart);
                       date.setDate(date.getDate() + i);
@@ -947,27 +905,6 @@ export default function App() {
           <span>Browser-saved demo · In Dev</span>
         </footer>
       </div>
-      <nav className="mobile-nav">
-        {nav.map((n) => (
-          <button
-            key={n.id}
-            className={page === n.id ? "active" : ""}
-            aria-label={n.label}
-            onClick={() => go(n.id)}
-          >
-            <n.icon size={19} />
-            <span>
-              {n.id === "interview"
-                ? "Journey"
-                : n.id === "database"
-                  ? "Blueprint"
-                  : n.id === "agent"
-                    ? "Coach"
-                    : n.label}
-            </span>
-          </button>
-        ))}
-      </nav>
       {selectedRoutine && (
         <div
           className="modal-backdrop"
