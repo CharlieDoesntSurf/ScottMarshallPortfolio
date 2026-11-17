@@ -155,3 +155,26 @@
 .fit-app.compact .top-navigation nav button{padding:10px;font-size:11px;gap:5px}
 .fit-app.compact .main-shell{padding-bottom:0}
 @media(max-width:700px){.fit-app .top-navigation{padding:18px;gap:16px}.fit-app .top-navigation nav{width:100%;flex-wrap:nowrap;overflow-x:auto}.fit-app .top-navigation nav button{padding:10px;font-size:12px}}
+.fit-app .journey{max-width:1400px;width:100%}
+.fit-app .journey>.metric-bar{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;background:#fffaf6;border-radius:18px;overflow:hidden}
+.fit-app .journey>.metric-bar .overview-metric{border:0;border-right:1px solid #17141620;border-radius:0;background:transparent;padding:22px 18px;min-width:0;transform:none}
+.fit-app .journey>.metric-bar .overview-metric:last-child{border:0}
+.fit-app .journey>.metric-bar .overview-metric:hover{background:#fff}
+.fit-app .journey>.metric-bar .overview-metric-value{font-size:36px;margin:18px 0}
+.fit-app .journey>.metric-bar:has(>button:nth-child(3):last-child){grid-template-columns:repeat(3,minmax(0,1fr))}
+.fit-app .journey-intentions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-radius:18px;background:#fffaf6;overflow:hidden}
+.fit-app .journey-intentions label{padding:24px;border-right:1px solid #17141620;font-size:13px}
+.fit-app .journey-intentions label:last-child{border:0}
+.fit-app .journey-intentions textarea{display:block;width:100%;resize:vertical;min-height:120px;margin-top:16px;background:transparent;border:0;color:#171416;font:inherit;font-size:15px;line-height:1.6}
+.fit-app .daily-focus{background:#171416;color:#fffaf6;border-radius:18px;padding:26px 30px}
+.fit-app .daily-focus>div{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.fit-app .daily-focus h2{font-size:24px!important;margin:0}
+.fit-app .daily-focus span{font-size:11px;color:#ff96c7}
+.fit-app .daily-focus p{font-size:16px;line-height:1.7;margin:16px 0 0;color:#fffaf6}
+.fit-app .daily-focus button{background:#fffaf6;color:#171416;border:0;border-radius:30px;padding:10px 18px;margin-top:12px}
+.fit-app .journey-middle{grid-template-columns:1fr}
+.fit-app.compact .journey>.metric-bar{grid-template-columns:repeat(6,130px);overflow-x:auto}
+.fit-app.compact .journey-intentions{grid-template-columns:1fr}
+.fit-app.compact .journey-intentions label{border-right:0;border-bottom:1px solid #17141620}
+.fit-app.compact .journey>.metric-bar:has(>button:nth-child(3):last-child){grid-template-columns:repeat(3,130px)}
+@media(max-width:800px){.fit-app .journey>.metric-bar{grid-template-columns:repeat(6,145px);overflow-x:auto}.fit-app .journey-intentions{grid-template-columns:1fr}.fit-app .journey-intentions label{border-right:0;border-bottom:1px solid #17141620}.fit-app .journey>.metric-bar:has(>button:nth-child(3):last-child){grid-template-columns:repeat(3,145px)}}

@@ -55,3 +55,13 @@ test('daily sleep and energy history preserves previous readings and replaces sa
   assert.equal(state.metricHistory?.energy?.length,1);
   assert.equal(state.goals.energy,8);
 });
+
+test('nutrition and BMI persist with history and personal intentions',()=>{
+ const base={...createJourney(null),intentions:{fitnessGoal:'Build strength',reason:'More energy',additionalInfo:'Morning workouts'}};
+ const next=recordJourney(base,base.profile,{...base.goals,protein:120},{calories:'2200',protein:'110',bmi:'24.5'},['calories','protein','bmi']);
+ assert.equal(next.metrics.calories?.value,2200);
+ assert.equal(next.metricHistory?.protein?.[0].value,110);
+ assert.equal(next.metrics.bmi?.value,24.5);
+ assert.deepEqual(next.intentions,base.intentions);
+ assert.throws(()=>recordJourney(base,base.profile,base.goals,{protein:'-5'},['protein']));
+});

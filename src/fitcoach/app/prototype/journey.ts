@@ -7,14 +7,18 @@ export const metricDefinitions = [
   { key: 'bodyFat', label: 'Body fat', unit: '%', min: 1, max: 75, step: 0.1, days: 30 },
   { key: 'soreness', label: 'Soreness', unit: '/ 10', min: 0, max: 10, step: 1, days: 1 },
   { key: 'sleepQuality', label: 'Sleep quality', unit: '/ 10', min: 1, max: 10, step: 1, days: 1 },
+  { key: 'calories', label: 'Calories', unit: 'kcal', min: 0, max: 15000, step: 1, days: 1 },
+  { key: 'protein', label: 'Protein', unit: 'g', min: 0, max: 1000, step: 1, days: 1 },
+  { key: 'bmi', label: 'BMI', unit: 'kg/m²', min: 5, max: 100, step: 0.1, days: 30 },
 ] as const;
 export type MetricKey = typeof metricDefinitions[number]['key'];
 export type Reading = { value: number; at: string };
 export type JourneyProfile = Omit<Intake, 'minutes'> & { minutes: number | null };
 export type Journey = {
   profile: JourneyProfile;
+  intentions?: { fitnessGoal: string; reason: string; additionalInfo: string };
   metrics: Partial<Record<MetricKey, Reading>>;
-  goals: { weight: number | null; sleep: number | null; energy?: number | null; bodyFat?: number | null; soreness?: number | null; sleepQuality?: number | null };
+  goals: { weight: number | null; sleep: number | null; energy?: number | null; bodyFat?: number | null; soreness?: number | null; sleepQuality?: number | null; calories?: number | null; protein?: number | null; bmi?: number | null };
   weightHistory: Reading[];
   metricHistory?: Partial<Record<MetricKey, Reading[]>>;
   profileUpdatedAt?: string;

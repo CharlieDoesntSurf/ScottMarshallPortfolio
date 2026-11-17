@@ -1,31 +1,11 @@
+import { DailyFocus } from './DailyFocus';
 import { OverviewMetrics } from './OverviewMetrics';
 import { useState } from 'react';
 import { ArrowUpRight, Check, CheckCheck, Plus, Target } from 'lucide-react';
 import type { Intake, Session } from './data';
 import { weekDays } from './data';
-import { createJourney, equipmentOptions, experienceOptions, goalOptions, metricDefinitions, readingStatus, recordJourney, weightProgress, type Journey, type JourneyProfile, type Reading } from './journey';
+import { createJourney, equipmentOptions, experienceOptions, goalOptions, metricDefinitions, readingStatus, recordJourney, weightProgress, type Journey, type JourneyProfile } from './journey';
 import '../../styles/journey.css';
-
-function WeightChart({ history }: { history: Reading[] }) {
-  const cutoff = Date.now() - 30 * 86400000;
-  const points = history.filter(x => Date.parse(x.at) >= cutoff);
-  const low = points.length ? Math.min(...points.map(x => x.value)) - .5 : 0;
-  const high = points.length ? Math.max(...points.map(x => x.value)) + .5 : 1;
-  const first = points.length ? Date.parse(points[0].at) : 0;
-  const last = points.length ? Date.parse(points.at(-1)!.at) : 1;
-  const xy = points.map(p => ({ x: points.length === 1 ? 300 : 24 + (Date.parse(p.at) - first) / Math.max(1,last-first) * 552, y: 114 - (p.value-low)/(high-low)*88, ...p }));
-  const line = xy.map(p => `${p.x},${p.y}`).join(' ');
-  return <div className="journey-chart">
-    <svg viewBox="0 0 600 140" role="img" aria-label={points.length ? `Weight history, ${points.length} readings, ${points.at(-1)!.value} kilograms latest` : 'Weight history: no readings'}>
-      <defs><linearGradient id="journey-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#ff79b7" stopOpacity=".25"/><stop offset="100%" stopColor="#ff79b7" stopOpacity="0"/></linearGradient></defs>
-      {[30,70,110].map(y=><line key={y} x1="20" x2="580" y1={y} y2={y} stroke="#303434" strokeDasharray="3 6"/>)}
-      {xy.length > 1 && <><polygon points={`${xy[0].x},130 ${line} ${xy.at(-1)!.x},130`} fill="url(#journey-fill)"/><polyline points={line} fill="none" stroke="#ff79b7" strokeWidth="3" strokeLinejoin="round"/></>}
-      {xy.map(p=><circle key={p.at} cx={p.x} cy={p.y} r="4" fill="#ff79b7" stroke="#191c1b" strokeWidth="2"><title>{new Date(p.at).toLocaleDateString()} · {p.value} kg</title></circle>)}
-      {!xy.length && <text x="300" y="76" textAnchor="middle" fill="#8f9692" fontSize="13">No readings</text>}
-    </svg>
-    <div className="journey-axis"><span>{points.length ? new Date(points[0].at).toLocaleDateString(undefined,{month:'short',day:'numeric'}) : '—'}</span><span>{points.length ? new Date(points.at(-1)!.at).toLocaleDateString(undefined,{month:'short',day:'numeric'}) : '—'}</span></div>
-  </div>;
-}
 
 export function JourneyDashboard({ saved, intake, sessions, onSave }: { saved?: Journey; intake: Intake | null; sessions: Session[]; onSave: (value: Journey) => void }) {
   const [base, setBase] = useState(() => saved || createJourney(intake));
@@ -67,11 +47,16 @@ export function JourneyDashboard({ saved, intake, sessions, onSave }: { saved?: 
       <div className="journey-completion"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="19"/><circle cx="24" cy="24" r="19" pathLength="100" strokeDasharray={`${complete/6*100} 100`}/></svg><div><strong>{complete}<small> / 6</small></strong><span>Profile fields</span></div></div>
     </div>
 
+    <DailyFocus journey={base} sessions={sessions}/>
     <div className="journey-section-title"><h2>Check-in</h2><span>{new Date().toLocaleDateString(undefined,{month:'short',day:'numeric'})}</span></div>
-    <OverviewMetrics all saved={base} intake={intake} onSave={value=>{onSave(value);setBase(value);setGoals(value.goals);}} />
+    <OverviewMetrics all bar keys={["weight","sleep","energy","bodyFat","soreness","sleepQuality"]} saved={base} intake={intake} onSave={value=>{onSave(value);setBase(value);setGoals(value.goals);}} />
 
+    <section className="journey-intentions" aria-label="Personal goals">
+      {([['fitnessGoal','Fitness goal'],['reason','Reason'],['additionalInfo','Additional info']] as const).map(([key,label])=><label key={key}>{label}<textarea aria-label={label} rows={4} maxLength={2000} placeholder="—" defaultValue={base.intentions?.[key] || (key==='reason'?profile.motivation:key==='additionalInfo'?profile.limitations:'')} onBlur={e=>{const intentions={fitnessGoal:'',reason:profile.motivation,additionalInfo:profile.limitations,...base.intentions,[key]:e.target.value};if(JSON.stringify(intentions)===JSON.stringify(base.intentions))return;try{const next={...base,intentions,updatedAt:new Date().toISOString()};onSave(next);setBase(next);}catch{setMessage('Save failed · Retry');setFailed(true);}}}/></label>)}
+    </section>
+    <div className="journey-section-title"><h2>Nutrition & body</h2></div>
+    <OverviewMetrics all bar keys={["calories","protein","bmi"]} saved={base} intake={intake} onSave={value=>{onSave(value);setBase(value);setGoals(value.goals);}}/>
     <div className="journey-middle">
-      <section className="journey-panel journey-weight-panel"><div className="journey-section-title"><h2>Weight trend</h2><span>30 days</span></div><div className="journey-trend-summary"><strong>{weight ?? '—'}<small>kg</small></strong><span>{base.weightHistory.filter(x=>Date.parse(x.at)>=Date.now()-30*86400000).length} readings</span></div><WeightChart history={base.weightHistory}/></section>
       <section className="journey-panel journey-goals"><div className="journey-section-title"><h2>Targets</h2><Target size={17}/></div><div className="journey-target-inputs"><label>Goal weight <div><input aria-label="Goal weight" type="number" inputMode="decimal" min="20" max="400" step="0.1" placeholder="—" value={goals.weight??''} onChange={e=>{setGoals({...goals,weight:e.target.value===''?null:Number(e.target.value)});setDirty(true);setMessage('');}}/><span>kg</span></div></label><label>Sleep target <div><input aria-label="Sleep target" type="number" inputMode="decimal" min="1" max="24" step="0.1" placeholder="—" value={goals.sleep??''} onChange={e=>{setGoals({...goals,sleep:e.target.value===''?null:Number(e.target.value)});setDirty(true);setMessage('');}}/><span>hrs</span></div></label></div><div className="journey-progress-label"><span>Weight goal</span><strong>{progress==null?'—':`${progress}%`}</strong></div><div className="journey-progress"><i style={{width:`${progress??0}%`}}/></div><div className="journey-goal-foot"><span>{delta==null?'—':`${Number(delta.toFixed(1))} kg`} remaining</span><span>{base.metrics.sleep && goals.sleep ? `${Number((base.metrics.sleep.value-goals.sleep).toFixed(1)) > 0 ? '+' : ''}${Number((base.metrics.sleep.value-goals.sleep).toFixed(1))} hrs` : '—'} · Sleep Δ</span></div></section>
     </div>
 
