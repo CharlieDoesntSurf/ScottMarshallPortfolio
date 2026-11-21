@@ -1,9 +1,10 @@
+import { demoKey } from './demoIdentity';
 import { useEffect, useState } from 'react';
 import type { Journey } from './journey';
 import type { Session } from './data';
-const cacheKey='teddy.daily-focus.v1';
+const cacheKey=demoKey('daily-focus');
 export function DailyFocus({journey,sessions}:{journey:Journey;sessions:Session[]}) {
- const context={date:new Date().toLocaleDateString('en-CA'),preferences:journey.preferences,dailyDetails:journey.dailyDetails?.slice(-7),profile:journey.profile,intentions:journey.intentions,metrics:journey.metrics,goals:journey.goals,history:Object.fromEntries(Object.entries(journey.metricHistory||{}).map(([key,readings])=>[key,readings?.slice(-14)])),workouts:sessions.slice(-5).map(s=>({name:s.name,completedAt:s.completedAt,completedSets:s.sets.filter(x=>x.done).length}))};
+ const context={coaching:journey.coaching?{...journey.coaching,observations:journey.coaching.observations.filter(o=>o.status==='user_confirmed')}:undefined,date:new Date().toLocaleDateString('en-CA'),preferences:journey.preferences,dailyDetails:journey.dailyDetails?.slice(-7),profile:journey.profile,intentions:journey.intentions,metrics:journey.metrics,goals:journey.goals,history:Object.fromEntries(Object.entries(journey.metricHistory||{}).map(([key,readings])=>[key,readings?.slice(-14)])),workouts:sessions.slice(-5).map(s=>({name:s.name,completedAt:s.completedAt,completedSets:s.sets.filter(x=>x.done).length}))};
  const signature=JSON.stringify(context);
  const [text,setText]=useState(''),[error,setError]=useState(''),[busy,setBusy]=useState(false),[retry,setRetry]=useState(0);
  useEffect(()=>{

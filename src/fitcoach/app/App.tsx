@@ -67,7 +67,7 @@ function download(name: string, value: unknown) {
 }
 export default function App() {
   const mainShellRef = useRef<HTMLDivElement>(null);
-  const [view, setView] = useState<"web" | "phone">("web");
+  const [view, setView] = useState<"web" | "phone">("phone");
   const [page, setPage] = useState<Page>("interview");
   const cloud = useDemoWorkspace();
   const {
@@ -864,7 +864,7 @@ export default function App() {
         </main>
         <footer className="app-footer">
           <span>COACH TEDDY · BE WELL, YOUR WAY.</span>
-          <span>Browser-saved demo · In Dev</span>
+          <span>Charlie Surf · Browser-saved demo</span>
         </footer>
       </div>
       {selectedRoutine && (
@@ -952,7 +952,7 @@ export default function App() {
   );
   return (
     <div className={`prototype-stage ${view}`}>
-      <div className="demo-disclosure">Demo · Workouts saved in this browser</div>
+      <div className="demo-disclosure">Charlie Surf · Developer demo · Fake data only</div>
       <div className="preview-toolbar">
         <div>
           <Activity size={18} />

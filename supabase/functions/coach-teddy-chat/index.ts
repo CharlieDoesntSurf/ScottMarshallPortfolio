@@ -1,3 +1,4 @@
+import { interview } from './interview.mjs';
 import { chat, validate } from './chat.mjs';
 const allowedOrigins=new Set(['https://charliedoesntsurf.github.io','http://127.0.0.1:5186','http://localhost:5186']);
 Deno.serve(async req=>{
@@ -18,6 +19,6 @@ Deno.serve(async req=>{
   const quota=await fetch(`${Deno.env.get('SUPABASE_URL')}/rest/v1/rpc/teddy_chat_take_slot`,{method:'POST',headers:{apikey:serviceKey,Authorization:`Bearer ${serviceKey}`,'Content-Type':'application/json'},body:'{}',signal:AbortSignal.timeout(10000)});
   if(!quota.ok)return send(503,{error:'Chat is temporarily unavailable. Please try again later.'});
   if(await quota.json()!==true)return send(429,{error:'Testing limit reached. Try again later (12/minute, 100/day).'});
-  return send(200,await chat(body,Deno.env.get('GPTSUB1'),Deno.env.get('TEDDY_MODEL')||'gpt-4.1-mini'));
+  return send(200,await (body.mode==='interview'?interview:chat)(body,Deno.env.get('GPTSUB1'),Deno.env.get('TEDDY_MODEL')||'gpt-4.1-mini'));
  }catch(error){return send(error.status||502,{error:error.status?error.message:'Teddy could not connect. Please try again.'});}
 });

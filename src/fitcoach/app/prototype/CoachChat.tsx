@@ -1,3 +1,4 @@
+import { demoKey } from './demoIdentity';
 import { useEffect, useRef, useState } from 'react';
 import { ArrowUp, RotateCcw } from 'lucide-react';
 import { TeddyBrand } from './TeddyBrand';
@@ -5,7 +6,7 @@ import { createJourney, metricDefinitions, recordJourney, type Journey, type Met
 import type { Exercise, Intake, Session } from './data';
 import '../../styles/coach-chat.css';
 const url=import.meta.env.VITE_SUPABASE_URL,anon=import.meta.env.VITE_SUPABASE_ANON_KEY;
-const storageKey='teddy.chat.demo.v1';
+const storageKey=demoKey('chat');
 type Message={role:'user'|'assistant';content:string};
 type Update={metric:MetricKey;value:number;quote:string};
 export function CoachChat({journey,intake,sessions,exercises,onSave}:{journey?:Journey;intake:Intake|null;sessions:Session[];exercises:Exercise[];onSave:(j:Journey)=>void}){
@@ -17,7 +18,7 @@ export function CoachChat({journey,intake,sessions,exercises,onSave}:{journey?:J
  function keep(next:Message[]){setMessages(next);try{localStorage.setItem(storageKey,JSON.stringify(next));}catch{setNotice('Conversation could not save in this browser.');}}
  async function send(history:Message[]){if(!url||flight.current)return;flight.current=true;setBusy(true);setError('');setRetry(false);setUndo(null);const abort=new AbortController();controller.current=abort;const timer=setTimeout(()=>abort.abort(),60000);
  try{
- const context={intentions:latest.current.intentions,preferences:latest.current.preferences,dailyDetails:latest.current.dailyDetails?.slice(-7),profile:latest.current.profile,metrics:latest.current.metrics,goals:latest.current.goals,workouts:sessions.slice(-5).map(s=>({name:s.name,completedAt:s.completedAt,sets:s.sets.slice(0,60).map(set=>({...set,exercise:exercises.find(e=>e.id===set.exerciseId)?.name}))}))};
+ const context={coaching:latest.current.coaching?{...latest.current.coaching,observations:latest.current.coaching.observations.filter(o=>o.status==='user_confirmed')}:undefined,intentions:latest.current.intentions,preferences:latest.current.preferences,dailyDetails:latest.current.dailyDetails?.slice(-7),profile:latest.current.profile,metrics:latest.current.metrics,goals:latest.current.goals,workouts:sessions.slice(-5).map(s=>({name:s.name,completedAt:s.completedAt,sets:s.sets.slice(0,60).map(set=>({...set,exercise:exercises.find(e=>e.id===set.exerciseId)?.name}))}))};
  const response=await fetch(`${url}/functions/v1/coach-teddy-chat`,{method:'POST',headers:{'Content-Type':'application/json',apikey:anon},body:JSON.stringify({messages:history.slice(-39),context}),signal:abort.signal});
  const result=await response.json();if(!response.ok)throw new Error(result.error||'Teddy could not reply.');if(typeof result.reply!=='string')throw new Error('Teddy could not finish that reply.');if(abort.signal.aborted)return;
  keep([...history,{role:'assistant' as const,content:result.reply}].slice(-40));

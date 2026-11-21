@@ -1,13 +1,15 @@
 import {useEffect,useState} from 'react';
 import type {Exercise,Intake,Routine,Session} from './data';
-import { toIntake, type Journey } from './journey';
+import { DEMO_NAME, demoKey } from './demoIdentity';
+import { createJourney, toIntake, type Journey } from './journey';
 type Workspace={journey?:Journey;intake:Intake|null;sessions:Session[];active:Session|null;customExercises:Exercise[];customRoutines:Routine[]};
-const KEY='fitcoach.portfolio.workspace.v1';
-let state:Workspace={intake:null,sessions:[],active:null,customExercises:[],customRoutines:[]};
+const KEY=demoKey('workspace');
+const initialJourney=createJourney(null);initialJourney.profile.name=DEMO_NAME;
+let state:Workspace={journey:initialJourney,intake:null,sessions:[],active:null,customExercises:[],customRoutines:[]};
 let catalog:{exercises:Exercise[];routines:Routine[]}|null=null;
 let initialized=false;
 function persist(){localStorage.setItem(KEY,JSON.stringify(state));}
-function initialize(){if(initialized)return;const text=localStorage.getItem(KEY);if(text){const saved=JSON.parse(text);if(!Array.isArray(saved.sessions)||!Array.isArray(saved.customExercises)||!Array.isArray(saved.customRoutines))throw new Error('Could not read the saved demo. Export or clear this site’s storage to start again.');state=saved;}initialized=true;}
+function initialize(){if(initialized)return;const text=localStorage.getItem(KEY);if(text){const saved=JSON.parse(text);if(!Array.isArray(saved.sessions)||!Array.isArray(saved.customExercises)||!Array.isArray(saved.customRoutines))throw new Error('Could not read the saved demo. Export or clear this site’s storage to start again.');state=saved;if(state.journey)state.journey.profile.name=DEMO_NAME;if(state.intake)state.intake.name=DEMO_NAME;}initialized=true;}
 export async function api(path:string,body:any){
  initialize();
  if(path==='exercise'){
@@ -27,8 +29,9 @@ export function useDemoWorkspace(){
  useEffect(()=>{let disposed=false;async function load(){try{initialize();if(!catalog){const response=await fetch(new URL('./catalog.json',document.baseURI));if(!response.ok)throw new Error('The exercise library could not load. Please reload to retry.');catalog=await response.json();}if(disposed)return;await refreshCatalog();setReady(true);setError('');}catch(e){if(!disposed)setError((e as Error).message);}}void load();return()=>{disposed=true;};},[]);
  return {exercises,routines,...snapshot,ready,error,pending:0,
   setActive:(s:Session|null)=>{if(!s&&state.active?.completedAt)commit({sessions:state.sessions.map(x=>x.id===state.active!.id?state.active!:x),active:null});else commit({active:s});},
-  saveIntake:(intake:Intake)=>commit({intake}),
+  saveIntake:(intake:Intake)=>commit({intake:{...intake,name:DEMO_NAME}}),
   saveJourney:(journey:Journey)=>{
+    journey={...journey,profile:{...journey.profile,name:DEMO_NAME}};
     const next={...state,journey,intake:toIntake(journey.profile)};
     localStorage.setItem(KEY,JSON.stringify(next));
     state=next;setSnapshot(next);setError('');

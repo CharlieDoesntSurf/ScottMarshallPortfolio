@@ -17,6 +17,7 @@ export type JourneyProfile = Omit<Intake, 'minutes'> & { minutes: number | null 
 export type Journey = {
   profile: JourneyProfile;
   setupCompletedAt?: string;
+  coaching?: { summary: Record<string,string>; actions: string[]; observations: { id:string;label:string;context:string;behavior:string;outcome:string;quote:string;sourceMessageId:string;status:string;evidenceType:string }[]; interviewVersion:string; reviewedAt:string };
   preferences?: { heightCm: string; diet: string; foodNotes: string; supplements: string };
   dailyDetails?: { at: string; bedtime: string; wakeTime: string; supplements: string }[];
   intentions?: { fitnessGoal: string; reason: string; additionalInfo: string };
